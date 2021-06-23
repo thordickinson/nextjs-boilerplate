@@ -9,11 +9,7 @@
     
     text-align: center;
     
-    padding: 60px 0;
-    
-    @respond-to("medium"){      
-    }
-    @respond-to("large"){
-
+    @include respond-to("medium"){     
+        padding: 60px 0; 
     }
 }

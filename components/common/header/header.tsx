@@ -40,6 +40,9 @@ export default function HeaderComponent({ links }) {
                 Signed in as {session.user.email} <br />
                 <button onClick={() => signOut()}>Sign out</button>
             </>}
+            <div className={styles.headerRight}>
+                <a className={styles.mainLink}>Main Link</a>
+            </div>
         </div>
     </header>
 }

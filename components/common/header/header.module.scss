@@ -197,3 +197,24 @@ ul.nav > li > a {
     line-height: inherit;
     white-space: nowrap;
 }
+
+.mainLink {
+    background-color: #2500f9;
+    color: #fff !important;
+    padding: 0 30px;
+    border-radius: 30px;
+    line-height: 45px;
+    display: inline-block;
+    font-family: work sans, sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    margin: 0;
+    height: 45px;
+    overflow: hidden;
+}
+
+.headerRight{
+    display: flex;
+    align-items: center;
+}

@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { GetStaticPropsResult, GetStaticPropsContext } from 'next'
 import DefaultLayout from '../../components/layouts/default-layout'
-import styles from "./index.module.scss"
 import BlogEntryCard from  '../../components/blog/entry-card/entry-card'
 import PageHeader from '../../components/common/page-header/page-header'
 import AsideContentSection from '../../components/common/aside-content-section/aside-content-section'
+import styles from "./index.module.scss"
 
 
 export default function PostList({ posts }) {
