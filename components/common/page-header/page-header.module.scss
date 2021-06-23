@@ -1,0 +1,19 @@
+@import '~/styles/utils.scss';
+
+.page-header {
+    height: 250px;
+    background-color: #0c0829;
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    text-align: center;
+    
+    padding: 60px 0;
+    
+    @respond-to("medium"){      
+    }
+    @respond-to("large"){
+
+    }
+}

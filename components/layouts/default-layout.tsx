@@ -9,7 +9,7 @@ export default function DefaultLayout({ children }: ComponentPropsWithRef<any>) 
             <title>Create Next App</title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <HeaderComponent links={[{ url: '/test', label: 'Hola mundo' }, { url: '/test', label: 'Hola mundo' }, { url: '/test', label: 'Hola mundo' }]}></HeaderComponent>
+        <HeaderComponent links={[{ url: '/blog', label: 'Blog' }, { url: '/test', label: 'Hola mundo' }, { url: '/test', label: 'Hola mundo' }]}></HeaderComponent>
         <main className={styles.main}>
             {children}
         </main>

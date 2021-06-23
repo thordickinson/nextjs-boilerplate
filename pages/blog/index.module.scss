@@ -1,3 +1,10 @@
-.post-list {
+.postList {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.entryCard {
+    flex: 47% 0;
+    padding-bottom: 30px;
 }
