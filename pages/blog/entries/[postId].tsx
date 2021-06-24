@@ -27,11 +27,13 @@ export async function getStaticProps(ctx: GetStaticPropsContext): Promise<GetSta
     if (idx > 0) {
         postId = (postId as string).substring(idx)
     }
+    console.log(postId)
     const res = await fetch(`${process.env.BACKEND_URL}/api/posts/${postId}`)
     if (res.status == 404) {
         return { notFound: true }
     }
     const post = await res.json()
+    console.log(post)
     return {
         props: { post },
         revalidate: 60 * 60 //1 hour

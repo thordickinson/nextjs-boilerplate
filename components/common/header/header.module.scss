@@ -1,9 +1,11 @@
 @import "~/styles/variables.scss";
+@import "~/styles/utils.scss";
 
 .menuContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .nav {
@@ -36,8 +38,12 @@ ul.nav > li > a {
 
 .mainmenu {
     flex: 1;
-    display: flex;
+    display: none;
     justify-content: flex-end;
+
+    @include respond-to("medium") {
+        display: flex;
+    }
 }
 
 .mainmenu li ul {
@@ -198,6 +204,11 @@ ul.nav > li > a {
     white-space: nowrap;
 }
 
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
 .mainLink {
     background-color: #2500f9;
     color: #fff !important;
@@ -214,7 +225,38 @@ ul.nav > li > a {
     overflow: hidden;
 }
 
-.headerRight{
+.headerRight {
+    display: none;
+    align-items: center;
+    flex: 100%;
+    justify-content: flex-end;
+    @include respond-to("small") {
+        display: flex;
+    }
+    @include respond-to("medium") {
+        flex: unset;
+    }
+}
+
+
+.loginButtonWrapper {
+    display: none;
+    align-items: center;
+    padding: 0 20px;
+
+    @include respond-to("medium") {
+        display: flex;
+    }
+}
+
+.menuIconContainer {
     display: flex;
     align-items: center;
+    align-items: center;
+    font-size: 1.5em;
+    margin-left: 10px;
+
+    @include respond-to("medium") {
+        display: none;
+    }
 }
