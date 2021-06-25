@@ -2,10 +2,12 @@ import { GetServerSideProps, GetServerSidePropsContext, GetStaticPropsResult, Ge
 import DefaultLayout from '../../../components/layouts/default-layout';
 import PageHeader from '../../../components/common/page-header/page-header';
 import AsideContentSection from '../../../components/common/aside-content-section/aside-content-section';
+import { DateTime } from 'luxon'
 import styles from './[postId].module.scss'
 
 export default function PostEntry({ post }) {
     const aside = <div>Aside content</div>
+    const date = DateTime.fromISO(post.createdAt).toLocaleString(DateTime.DATE_MED);
     return <DefaultLayout>
         <PageHeader sectionTitle={post.title} subtitle={post.summary}></PageHeader>
         <AsideContentSection aside={aside}>
@@ -13,11 +15,11 @@ export default function PostEntry({ post }) {
             <div className={styles.metadata}>
                 <div>
                     <i className="fa fa-user"></i>
-                    HOLI
+                    {post.author}
                 </div>
                 <div>
                     <i className="fa fa-calendar"></i>
-                    MUNDI
+                    {date}
                 </div>
             </div>
             <div dangerouslySetInnerHTML={{ __html: post.content }}></div>

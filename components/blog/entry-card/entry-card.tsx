@@ -5,13 +5,13 @@ export default function BlogEntryCard({ entry }) {
 
 
     const link = `/blog/entries/${entry._id}`
-
+    const tag = entry.tags && entry.tags.length > 0? entry.tags[0] : undefined
     return <div className={styles.blogEntryCard}>
         <div className={styles.blogThumb}>
             <img src={entry.image} alt={entry.title} />
             <div className={styles.imageOverlay}>
                 <span className={styles.category}>
-                    {entry.tags.map((t, i) => <a key={i} href={`/blog?tag=t`}>{t}</a>)}
+                    {tag && <a href={`/blog?tag=${tag}`}>{tag}</a>}
                 </span>
             </div>
         </div>

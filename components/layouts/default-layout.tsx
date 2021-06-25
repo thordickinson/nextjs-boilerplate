@@ -7,13 +7,10 @@ import FooterComponent from "../common/footer/footer";
 export default function DefaultLayout({ children }: ComponentPropsWithRef<any>) {
   return <div className={styles.container}>
     <Head>
-      <title>Create Next App</title>
+      <title>My Awesome App</title>
       <link rel="icon" href="/favicon.ico" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css"
-        integrity="sha512-apX8rFN/KxJW8rniQbkvzrshQ3KvyEH+4szT3Sno5svdr6E/CP0QE862yEeLBMUnCqLko8QaugGkzvWS7uNfFQ=="
-        crossOrigin="anonymous" referrerPolicy="no-referrer" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css"
-        integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA=="
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossOrigin="anonymous" referrerPolicy="no-referrer" />
     </Head>
     <HeaderComponent links={[{ url: '/blog', label: 'Blog' }, { url: '/test', label: 'Hola mundo' }, { url: '/test', label: 'Hola mundo' }]}></HeaderComponent>
