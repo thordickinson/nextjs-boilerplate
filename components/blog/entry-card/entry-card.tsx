@@ -1,11 +1,10 @@
 import post from '../../../models/post'
 import styles from './entry-card.module.scss'
-import slugify from 'slugify'
 
 export default function BlogEntryCard({ entry }) {
 
 
-    const link = `/blog/entries/${entry._id}-${slugify(entry.title)}`
+    const link = `/blog/entries/${entry._id}`
 
     return <div className={styles.blogEntryCard}>
         <div className={styles.blogThumb}>

@@ -5,7 +5,9 @@ import Posts from '../../../models/post'
 
 async function getPost(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
-    const post = await Posts.findById(req.query.id)
+    const { id } = req.query
+    if(id.length != 24) return res.status(404).end()
+    const post = await Posts.findById(id)
     if (!post) res.status(404).end()
     res.json(post)
 }
