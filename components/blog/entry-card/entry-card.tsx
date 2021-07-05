@@ -1,4 +1,4 @@
-import post from '../../../models/post'
+import post from '../../../models/blog/post'
 import styles from './entry-card.module.scss'
 
 export default function BlogEntryCard({ entry }) {

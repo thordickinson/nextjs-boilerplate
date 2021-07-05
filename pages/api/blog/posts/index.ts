@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "../../../utils/dbConnect";
-import Posts from "../../../models/post";
-import pagedResult from "../../../utils/pagination";
+import dbConnect from "../../../../utils/dbConnect";
+import Posts from "../../../../models/blog/post";
+import pagedResult from "../../../../utils/pagination";
 
 async function listPosts(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()

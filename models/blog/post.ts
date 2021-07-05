@@ -10,4 +10,4 @@ const PostSchema = new mongoose.Schema({
     author: { type: String, immutable: true }
 })
 
-export default mongoose.models.Post || mongoose.model('Post', PostSchema, 'posts')
+export default mongoose.models.Post || mongoose.model('Post', PostSchema, 'blog_posts')
