@@ -1,30 +1,16 @@
-import { GetServerSideProps, GetServerSidePropsContext, GetStaticPropsResult, GetStaticPropsContext, GetStaticPathsContext, GetStaticPathsResult } from 'next'
+import { GetStaticPropsResult, GetStaticPropsContext, GetStaticPathsContext, GetStaticPathsResult } from 'next'
 import DefaultLayout from '../../../components/layouts/default-layout';
 import PageHeader from '../../../components/common/page-header/page-header';
 import AsideContentSection from '../../../components/common/aside-content-section/aside-content-section';
 import { DateTime } from 'luxon'
 import styles from './[postId].module.scss'
-import AsideWidgetComponent from '../../../components/widgets/aside-widget/aside-widget';
+import TagsWidget from '../../../components/blog/tags-widget/tags-widget';
+import RecentPostsWidgets from '../../../components/blog/recent-widget/recent-widget';
 
 export default function PostEntry({ post, tags, recent }) {
     const aside = <div>
-        <AsideWidgetComponent widgetTitle="Categories">
-            <ul>
-                {tags && tags.map(t => <li key={t.key}>
-                    <a className={styles.tagLink} href={`/blog?tag=${t.key}`}>{t.label}</a>
-                </li>)}
-            </ul>
-        </AsideWidgetComponent>
-        <AsideWidgetComponent widgetTitle="Recent Posts">
-            <ul>
-                {recent && recent.filter(r => r._id != post._id).map(r => <li key={r._id}>
-                    <div className={styles.recent}>
-                        <img src={r.image}></img>
-                        <a href={`/blog/entries/${r._id}`}>{r.title}</a>
-                    </div>
-                </li>)}
-            </ul>
-        </AsideWidgetComponent>
+        <TagsWidget tags={tags}></TagsWidget>
+        <RecentPostsWidgets recent={recent} currentPost={post}></RecentPostsWidgets>
     </div>
     const date = DateTime.fromISO(post.createdAt).toLocaleString(DateTime.DATE_MED);
     return <DefaultLayout>

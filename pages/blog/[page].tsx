@@ -7,13 +7,18 @@ import AsideContentSection from '../../components/common/aside-content-section/a
 import styles from "./[page].module.scss"
 import PaginatorComponent from '../../components/common/paginator/paginator'
 import { PagedResult } from '../../utils/pagination'
+import TagsWidget from '../../components/blog/tags-widget/tags-widget'
+import RecentPostsWidgets from '../../components/blog/recent-widget/recent-widget'
 
 
 const PAGE_SIZE = 6
-const REVALIDATION = 60 * 60
+const REVALIDATION = 60 * 60 //1 hour
 
-export default function PostList({ posts }) {
-    const asideContent = <div>Hola aside</div>
+export default function PostList({ posts, tags, recent }) {
+    const asideContent = <div>
+        <TagsWidget tags={tags}></TagsWidget>
+        <RecentPostsWidgets recent={recent}></RecentPostsWidgets>
+    </div>
     return <DefaultLayout>
         <PageHeader sectionTitle="Blog" subtitle="This is the subtitle of the blog" ></PageHeader>
         <AsideContentSection aside={asideContent}>
@@ -44,8 +49,17 @@ export async function getStaticProps(ctx: GetStaticPropsContext): Promise<GetSta
     const { page = 1 } = ctx.params || {}
     const res = await fetch(`${process.env.BACKEND_URL}/api/blog/posts?limit=6&sort=-createdAt&page=${page}`)
     const posts = await res.json()
+
+    const tagsResponse = await fetch(`${process.env.BACKEND_URL}/api/blog/tags`)
+    const tagPage = await tagsResponse.json()
+    const tags = tagPage.content
+
+    const recentResponse = await fetch(`${process.env.BACKEND_URL}/api/blog/posts?sort=-creacion&limit=4`)
+    const recentPage = await recentResponse.json()
+    const recent = recentPage.content
+
     return {
-        props: { posts },
-        revalidate: 60 * 60 //1 hour
+        props: { posts, tags, recent },
+        revalidate: REVALIDATION 
     }
 }
