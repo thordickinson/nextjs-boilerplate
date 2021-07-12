@@ -7,7 +7,7 @@ const PostSchema = new mongoose.Schema({
     image: { type: String },
     tags: [{ type: String }],
     createdAt: { type: Date, default: () => new Date(), immutable: true },
-    createdBy: { type: String, immutable: true }
+    author: { type: String, immutable: true }
 })
 
-export default mongoose.models.Post || mongoose.model('Post', PostSchema, 'posts')
+export default mongoose.models.Post || mongoose.model('Post', PostSchema, 'blog_posts')

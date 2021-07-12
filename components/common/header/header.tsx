@@ -27,7 +27,7 @@ export default function HeaderComponent({ links }) {
             <div className={`${styles.menuContainer} container`}>
                 <div className={styles.logoContainer}>
                     <a href="/" className={styles['navbar-brand']}>
-                        <img src="img/logo-dark.png" alt="Saasbiz" />
+                        <img src="/img/logo-dark.png" alt="Saasbiz" />
                     </a>
                 </div>
                 <div className={styles.mainmenu}>

@@ -1,0 +1,25 @@
+.asideWidget {
+    margin-bottom: 40px;
+    h4 {
+        margin-bottom: 30px;
+        color: #204163;
+        font-size: 16px;
+        margin: 0 0 10px;
+        font-weight: 600;
+        line-height: 1.7;
+        letter-spacing: -0.5px;
+    }
+
+    h4:before {
+        background-color: #2500f9;
+        content: "";
+        width: 130px;
+        height: 3px;
+        position: absolute;
+        margin-top: 30px;
+    }
+}
+
+.content {
+    margin-top: 30px;
+}

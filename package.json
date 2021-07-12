@@ -10,6 +10,7 @@
   "dependencies": {
     "@tinymce/tinymce-react": "^3.12.6",
     "antd": "^4.16.2",
+    "luxon": "^1.27.0",
     "mongoose": "^5.12.13",
     "next": "^10.0.0",
     "next-auth": "^3.26.1",
