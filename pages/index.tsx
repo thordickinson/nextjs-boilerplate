@@ -1,9 +1,15 @@
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
+import FeaturesBanner from '../components/banner/features-banner'
 import DefaultLayout from '../components/layouts/default-layout'
 
 
 export default function Home({ Component, pageProps }: AppProps) {
+  const features = [
+    { title: "This is an awesome feature", description: "dont forget to set the features property" },
+    { title: "You can set any icon", description: "Search for an icon on fontawesome and you can set it here", icon: "fas fa-award" },
+    { title: "Set up to three elements", description: "Please set exactly three elements on this section", icon: "fas fa-bacterium" }
+  ]
   return (
     <DefaultLayout>
 
@@ -11,6 +17,9 @@ export default function Home({ Component, pageProps }: AppProps) {
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!!!</a>
         </h1>
+        <FeaturesBanner title="Hello world"
+          description="This is an awesome template for your business"
+          features={features}></FeaturesBanner>
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
