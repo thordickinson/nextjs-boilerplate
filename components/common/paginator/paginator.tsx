@@ -16,7 +16,6 @@ function calculateVisibleElements(currentPage, pageCount): number[] {
     }
 
     const half = Math.floor(maxVisibleCount / 2)
-    console.log(half, currentPage, pageCount)
     const halfStart = currentPage - half
     const halfEnd = currentPage + half
     let start = halfStart
