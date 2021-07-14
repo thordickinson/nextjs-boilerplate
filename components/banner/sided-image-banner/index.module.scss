@@ -1,0 +1,14 @@
+@import "~/styles/utils.scss";
+
+
+.elementContainer {
+    display: flex;
+}
+
+.imageContainer{
+    flex: 50 0;
+}
+
+.informationContainer {
+    flex: 50 0;
+}

@@ -1,0 +1,31 @@
+.padding {
+    padding: 100px 0;
+}
+.description {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    text-align: center;
+}
+
+.leftBackground {
+    background-image: url('/img/left-pattern.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+}
+
+.rightBackground {
+    background-image: url('/img/right-pattern.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+}
+
+.centeredBackground {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}

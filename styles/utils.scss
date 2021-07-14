@@ -1,7 +1,7 @@
 $breakpoints: (
-  'small':  600px,
-  'medium': 960px,
-  'large':  1200px
+  "small": 600px,
+  "medium": 960px,
+  "large": 1200px,
 ) !default;
 
 /// https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
@@ -17,10 +17,185 @@ $breakpoints: (
       @content;
     }
   }
- 
+
   // If the key doesn't exist in the map
   @else {
     @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
         + "Available breakpoints are: #{map-keys($breakpoints)}.";
   }
+}
+
+.padding {
+  padding: 100px 0;
+}
+.padding-60 {
+  padding: 60px 0;
+}
+.no-padding {
+  padding: 0;
+}
+.padding-15 {
+  padding: 15px;
+}
+.padding-20 {
+  padding: 20px;
+}
+.box-padding {
+  padding: 0 50px;
+}
+.pb-30 {
+  padding-bottom: 30px;
+}
+.pb-80 {
+  padding-bottom: 80px;
+}
+.pt-80 {
+  padding-top: 80px;
+}
+.pb-100 {
+  padding-bottom: 100px;
+}
+.pt-100 {
+  padding-top: 100px;
+}
+.bg-white {
+  background-color: #fff;
+}
+.bg-grey {
+  background-color: #f6f7ff;
+}
+.bd-top {
+  border-top: 2px solid #eee;
+}
+.bd-bottom {
+  border-bottom: 2px solid #eee;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.mb-25 {
+  margin-bottom: 25px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.mb-35 {
+  margin-bottom: 35px;
+}
+.mb-40 {
+  margin-bottom: 40px !important;
+}
+.mb-45 {
+  margin-bottom: 45px;
+}
+.mb-50 {
+  margin-bottom: 50px;
+}
+.mb-55 {
+  margin-bottom: 55px;
+}
+.mb-60 {
+  margin-bottom: 60px;
+}
+.ml-15 {
+  margin-left: 15px;
+}
+.ml-20 {
+  margin-left: 20px;
+}
+.ml-25 {
+  margin-left: 25px;
+}
+.ml-30 {
+  margin-left: 30px;
+}
+.ml-35 {
+  margin-left: 35px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.mt-40 {
+  margin-top: 40px;
+}
+.mt-50 {
+  margin-top: 50px;
+}
+.fz-28 {
+  font-size: 28px;
+}
+.fz-24 {
+  font-size: 24px;
+}
+.fz-22 {
+  font-size: 22px;
+}
+.fz-20 {
+  font-size: 20px;
+}
+.fz-18 {
+  font-size: 18px;
+}
+.fz-16 {
+  font-size: 16px;
+}
+.color-red {
+  color: #ff4c4c !important;
+}
+.color-blue {
+  color: #0099e5 !important;
+}
+.color-yellow {
+  color: #fd0 !important;
+}
+.color-green {
+  color: #36bca1 !important;
+}
+.color-orange {
+  color: #f76b1c !important;
+}
+.color-purple {
+  color: #a560e8 !important;
+}
+.bg-red {
+  background-color: rgba(255, 76, 76, 0.1) !important;
+}
+.bg-blue {
+  background-color: rgba(0, 153, 229, 0.1) !important;
+}
+.bg-yellow {
+  background-color: rgba(255, 221, 0, 0.1) !important;
+}
+.bg-green {
+  background-color: rgba(10, 191, 83, 0.1) !important;
+}
+.bg-orange {
+  background-color: rgba(255, 121, 0, 0.1) !important;
+}
+.bg-purple {
+  background-color: rgba(165, 96, 232, 0.1) !important;
+}
+.text-black {
+  color: #333;
+}
+.text-white {
+  color: #fff;
+}
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+.align-center {
+  text-align: center;
 }

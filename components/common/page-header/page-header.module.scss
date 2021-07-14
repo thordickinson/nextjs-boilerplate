@@ -3,6 +3,7 @@
 .page-header {
     height: 250px;
     background-color: #0c0829;
+    color: white !important;
     display: flex;
     align-items: center;
     position: relative;
@@ -11,5 +12,13 @@
     
     @include respond-to("medium"){     
         padding: 60px 0; 
+    }
+}
+
+
+.headerTitle {
+    color:white !important;
+    h2 {
+        color:white !important;    
     }
 }
