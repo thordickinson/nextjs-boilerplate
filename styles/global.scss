@@ -124,10 +124,6 @@ input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
     color: #ddd !important;
 }
-button {
-    border: none;
-    background: 0 0;
-}
 
 a,
 a:hover,
@@ -190,9 +186,8 @@ button {
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
-    height: 45px;
     line-height: 45px;
-    padding: 0 35px;
+    padding: 15px 35px;
     letter-spacing: 0;
     border-radius: 30px;
     overflow: hidden;

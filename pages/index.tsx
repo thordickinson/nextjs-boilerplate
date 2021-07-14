@@ -4,6 +4,19 @@ import FeaturesBanner from '../components/banner/features-banner'
 import SidedImageBanner from '../components/banner/sided-image-banner'
 import DefaultLayout from '../components/layouts/default-layout'
 
+const LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+const randWord = (length: number) => {
+  let word = ""
+  for (var i = 0; i < length; i++) word += LETTERS.charAt(Math.round(Math.random() * LETTERS.length))
+  return word
+}
+
+const randText = (wordCount: number) => {
+  let words = ""
+  for (let i = 0; i < wordCount; i++) words += ` ` + randWord(Math.round(Math.random() * 10))
+  return words
+}
 
 export default function Home({ Component, pageProps }: AppProps) {
   const features = [
@@ -20,10 +33,10 @@ export default function Home({ Component, pageProps }: AppProps) {
       <FeaturesBanner title="Hello world"
         description="This is an awesome template for your business"
         features={features}></FeaturesBanner>
-      <SidedImageBanner title="This is a great feature"
-        description="This feature"
+      <SidedImageBanner title="Simple Proven Way To Boost Your Team Performance."
+        description={randText(50)}
         action={{ link: '#', label: 'Go to page', target: '_blank' }}>
-        Hello!
+        <img style={{ width: "62%" }} src="/img/content-moc-1.png"></img>
       </SidedImageBanner>
 
       <p className="description">

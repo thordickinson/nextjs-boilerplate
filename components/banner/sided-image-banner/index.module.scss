@@ -5,10 +5,9 @@
     display: flex;
 }
 
-.imageContainer{
-    flex: 50 0;
-}
 
 .informationContainer {
-    flex: 50 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }

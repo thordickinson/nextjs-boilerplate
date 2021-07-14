@@ -9,11 +9,13 @@ export default function SidedImageBanner({ title, description, action, backgroun
                 {children}
             </div>
             <div className={styles.informationContainer}>
-                <h2>{title}</h2>
-                <p>{description}</p>
-                <a href={action.link} target={action.target || ''}>
-                    {action.label}
-                </a>
+                <div>
+                    <h2>{title}</h2>
+                    <p>{description}</p>
+                    <a href={action.link} className={`button button-primary`} target={action.target || ''}>
+                        {action.label}
+                    </a>
+                </div>
             </div>
         </div>
     </TitledSection>
