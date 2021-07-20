@@ -1,5 +1,6 @@
 import { Provider } from 'next-auth/client'
 import { AppProps } from 'next/app'
+import BrandsBanner from '../components/banner/brands-banner'
 import CountersBanner from '../components/banner/couters-banner'
 import FeaturesBanner from '../components/banner/features-banner'
 import SidedImageBanner from '../components/banner/sided-image-banner'
@@ -26,11 +27,14 @@ export default function Home({ Component, pageProps }: AppProps) {
     { title: "Set up to three elements", description: "Please set exactly three elements on this section", icon: "fas fa-bacterium" }
   ]
 
+
+  const sponsors = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map(n => `/img/brands/sponsor-${n}.png`)
+
   const counters = [
-    {icon:'fa fa-download',  label: 'Total downloaded', value: 2345},
-    {icon:'fa fa-chart-bar',  label: 'Grow on Year', value: 6543},
-    {icon:'fa fa-star',  label: 'Client Reviews', value: 3453},
-    {icon:'fa fa-bookmark',  label: 'People subscribed', value: 3453}
+    { icon: 'fa fa-download', label: 'Total downloaded', value: 2345 },
+    { icon: 'fa fa-chart-bar', label: 'Grow on Year', value: 6543 },
+    { icon: 'fa fa-star', label: 'Client Reviews', value: 3453 },
+    { icon: 'fa fa-bookmark', label: 'People subscribed', value: 3453 }
   ]
   return (
     <DefaultLayout>
@@ -44,9 +48,10 @@ export default function Home({ Component, pageProps }: AppProps) {
       <SidedImageBanner title="Simple Proven Way To Boost Your Team Performance."
         description={randText(50)}
         action={{ link: '#', label: 'Go to page', target: '_blank' }}>
-        <img style={{ height: "600px", padding:"0 30px" }} src="/img/content-moc-1.png"></img>
+        <img style={{ height: "600px", padding: "0 30px" }} src="/img/content-moc-1.png"></img>
       </SidedImageBanner>
       <CountersBanner counters={counters}></CountersBanner>
+      <BrandsBanner logos={sponsors}></BrandsBanner>
 
       <p className="description">
         Get started by editing <code>pages/index.js</code>
