@@ -1,0 +1,51 @@
+.carouselItem {
+    padding: 60px 20px 40px;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    span {
+        color: #8495a7;
+        display: block;
+        font-size: 12px;
+        line-height: 22px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+    }
+}
+.testimonial {
+    background-color: #fff;
+    position: relative;
+    padding: 10px 30px 30px 30px;
+    box-shadow: 0px 3px 20px 0px rgb(50 65 80 / 10%);
+    z-index: -1;
+
+    p {
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 26px;
+        margin-bottom: 15px;
+        font-family: 'Open Sans', sans-serif;
+        height: 130px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+        margin-top: -50px;
+        position: absolute;
+    }
+
+    .authorInfo {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        margin-top: 40px;
+        h3 {
+            margin: 0;
+        }
+    }
+}

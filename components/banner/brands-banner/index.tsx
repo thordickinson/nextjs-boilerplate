@@ -26,7 +26,7 @@ export default function BrandsBanner({ logos, ssr = true }) {
         <div className={`container`}>
             <Carousel responsive={responsive} autoPlay={true} ssr={ssr} infinite={true} autoPlaySpeed={4000}
                 removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}>
-                {logos.map((l, i) => <div className={styles.carouselItem}> <img key={i} src={l}></img> </div>)}
+                {logos.map((l, i) => <div  key={i} className={styles.carouselItem}> <img key={i} src={l}></img> </div>)}
             </Carousel>
         </div>
     </section>

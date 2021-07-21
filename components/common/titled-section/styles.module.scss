@@ -1,9 +1,16 @@
 .padding {
     padding: 100px 0;
 }
+
+.descriptionContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .description {
     text-align: center;
     margin-bottom: 40px;
+    max-width: 600px;
 }
 
 .title {
@@ -25,6 +32,7 @@
 }
 
 .centeredBackground {
+    background-image: url('/img/right-pattern.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
