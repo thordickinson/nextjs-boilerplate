@@ -6,7 +6,7 @@ export default function FooterComponent() {
             <div className={styles.columns}>
                 <div className={styles.brand}>
                     <div className="widget-content">
-                        <a href="#"><img src="img/logo-light.png" alt="brand" /></a>
+                        <a href="#"><img src="/img/logo-light.png" alt="brand" /></a>
                         <p>Building your own home is about desire, fantasy. But it’s achievable anyone can do it.</p>
                         <ul className="widget-social">
                             <li><a href="#"><i className="fa fa-facebook-f"></i></a></li>

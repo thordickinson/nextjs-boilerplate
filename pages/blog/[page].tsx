@@ -9,13 +9,17 @@ import PaginatorComponent from '../../components/common/paginator/paginator'
 import { PagedResult } from '../../utils/pagination'
 import TagsWidget from '../../components/blog/tags-widget/tags-widget'
 import RecentPostsWidgets from '../../components/blog/recent-widget/recent-widget'
+import { useSession } from 'next-auth/client'
 
 
 const PAGE_SIZE = 6
 const REVALIDATION = 60 * 60 //1 hour
 
 export default function PostList({ posts, tags, recent }) {
+    const [ session, loading ] = useSession()
+
     const asideContent = <div>
+        {session?.user?.email}
         <TagsWidget tags={tags}></TagsWidget>
         <RecentPostsWidgets recent={recent}></RecentPostsWidgets>
     </div>
