@@ -1,6 +1,5 @@
 import Dragger from "antd/lib/upload/Dragger";
 
-
 const props = {
     name: 'file',
     multiple: false,

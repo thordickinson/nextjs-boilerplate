@@ -193,6 +193,13 @@ button {
     overflow: hidden;
 }
 
+/* Styles for react-markdown-editor-lite*/
+.button-wrap > .button {
+    padding: 0;
+    font-weight: 400;
+    overflow: visible;
+}
+/* End of styles for react-markdown-editor-lite*/
 .button-primary {
     background: #2500f9;
     color: #FFF;

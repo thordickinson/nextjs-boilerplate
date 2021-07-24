@@ -1,11 +1,11 @@
 import { GetStaticPropsResult, GetStaticPropsContext, GetStaticPathsContext, GetStaticPathsResult } from 'next'
-import DefaultLayout from '../../../components/layouts/default-layout';
-import PageHeader from '../../../components/common/page-header/page-header';
-import AsideContentSection from '../../../components/common/aside-content-section/aside-content-section';
+import DefaultLayout from '../../../../components/layouts/default-layout';
+import PageHeader from '../../../../components/common/page-header/page-header';
+import AsideContentSection from '../../../../components/common/aside-content-section/aside-content-section';
 import { DateTime } from 'luxon'
-import styles from './[postId].module.scss'
-import TagsWidget from '../../../components/blog/tags-widget/tags-widget';
-import RecentPostsWidgets from '../../../components/blog/recent-widget/recent-widget';
+import styles from './index.module.scss'
+import TagsWidget from '../../../../components/blog/tags-widget/tags-widget';
+import RecentPostsWidgets from '../../../../components/blog/recent-widget/recent-widget';
 
 export default function PostEntry({ post, tags, recent }) {
     const aside = <div>
