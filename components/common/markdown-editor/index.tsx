@@ -8,8 +8,8 @@ const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
 });
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-export default function MarkdownEditor({ content, setContent = undefined }) {
+export default function MarkdownEditor({ content, setContent = undefined, name="content" }) {
     const onChange = (c) => { if (setContent) { setContent(c.text) } }
-    return <MdEditor className={styles.editor} style={{ height: '500px' }} value={content}
+    return <MdEditor name={name} className={styles.editor} style={{ height: '500px' }} value={content}
         renderHTML={text => mdParser.render(text)} onChange={onChange} />;
 }

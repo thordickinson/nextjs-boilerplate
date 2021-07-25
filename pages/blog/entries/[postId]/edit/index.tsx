@@ -18,16 +18,19 @@ export default function EditPost({ }: any) {
     const [content, setContent] = useState()
     useEffect(() => setContent(query.data?.content), [query.data])
     const aside = <span></span>
-    
+
     if (typeof (window) == 'undefined' || query.isLoading) return <div>Loading...</div>
     if (query.isError) return <div>Error loading</div>
 
-
+    const saveChanges = () => console.log()
 
     return <DefaultLayout>
         <AsideContentSection aside={aside}>
             <ImageUpload></ImageUpload>
             <MarkdownEditor content={content} setContent={setContent}></MarkdownEditor>
+            <div>
+                <button className="button button-primary" onClick={saveChanges}>Save Changes</button>
+            </div>
         </AsideContentSection>
     </DefaultLayout>
 

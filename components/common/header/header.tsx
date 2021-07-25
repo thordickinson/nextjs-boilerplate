@@ -14,12 +14,12 @@ export default function HeaderComponent({ links }) {
     const [scrolled, setScrolled] = useState(false)
     const [drawerVisible, setDrawerVisible] = useState(false)
 
+    const scrollListener = () => setScrolled(window.scrollY != 0)
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {
-            const scroll = window.scrollY
-            setScrolled(scroll != 0)
-        })
+        window.addEventListener('scroll', scrollListener)
+        return () => window.removeEventListener('scroll', scrollListener)
+        
     }, [])
 
     return <>

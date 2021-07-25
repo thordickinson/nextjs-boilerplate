@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from '../../../../utils/dbConnect'
 import Posts from '../../../../models/blog/post'
 
-
 async function getPost(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
     const { id } = req.query
