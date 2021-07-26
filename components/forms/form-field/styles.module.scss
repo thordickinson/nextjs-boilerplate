@@ -1,0 +1,11 @@
+.formField {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 0.75em;
+    }
+    .message{
+        height: 30px;
+        font-size: 0.75em;
+    }
+}

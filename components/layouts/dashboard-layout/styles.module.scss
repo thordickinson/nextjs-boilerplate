@@ -1,0 +1,13 @@
+.dashboard {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    .menu {
+        width: 160px;
+        background: #2500f9;
+    }
+    .content{
+        flex: 1;
+        background: #F1F4F9;
+    }
+}

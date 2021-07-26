@@ -1,8 +1,8 @@
 import { ComponentPropsWithRef } from "react";
 import Head from 'next/head'
-import styles from './default-layout.module.scss'
-import HeaderComponent from "../common/header/header";
-import FooterComponent from "../common/footer/footer";
+import styles from './styles.module.scss'
+import HeaderComponent from "../../common/header/header";
+import FooterComponent from "../../common/footer/footer";
 
 export default function DefaultLayout({ children }: ComponentPropsWithRef<any>) {
   return <div className={styles.container}>
