@@ -1,7 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,500,600|Work+Sans:600&display=swap";
 @import "./variables.scss";
 @import "./utils.scss";
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 * {
     padding: 0;
@@ -137,7 +137,6 @@ button {
     transition: all 0.5s;
 }
 
-
 #scroll-to-top {
     background-color: $primary;
     display: none;
@@ -159,7 +158,6 @@ button {
     opacity: 0.8;
 }
 
-
 .container {
     width: 100%;
     padding-right: 15px;
@@ -180,9 +178,8 @@ button {
     }
 }
 
-
 .button {
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -194,6 +191,12 @@ button {
     border: none;
 }
 
+.clean-button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
 /* Styles for react-markdown-editor-lite*/
 .button-wrap > .button {
     padding: 0;
@@ -203,5 +206,5 @@ button {
 /* End of styles for react-markdown-editor-lite*/
 .button-primary {
     background: #2500f9;
-    color: #FFF;
+    color: #fff;
 }

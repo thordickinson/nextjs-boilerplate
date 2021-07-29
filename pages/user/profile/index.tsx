@@ -1,8 +1,8 @@
 import DashboardLayout from '../../../components/layouts/dashboard-layout'
 import styles from './styles.module.scss'
 
-export default function UserInfo(){
+export default function UserProfile(){
     return <DashboardLayout>
-        <div>User Info</div>
+        <div>User Profile</div>
     </DashboardLayout>
 }
