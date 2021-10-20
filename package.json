@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3100",
     "build": "next build",
     "start": "next start"
   },
@@ -13,6 +13,7 @@
     "@types/markdown-it": "^12.0.3",
     "antd": "^4.16.2",
     "draft-js": "^0.11.7",
+    "log4js": "^6.3.0",
     "luxon": "^1.27.0",
     "markdown-it": "^12.1.0",
     "mongoose": "^5.12.13",
