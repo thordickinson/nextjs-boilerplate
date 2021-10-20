@@ -1,0 +1,28 @@
+.counterCard {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.value {
+    flex: 1 1;
+    font-size: 28px;
+    margin-bottom: 14px;
+    color: #374051;
+    font-weight: 300;
+}
+
+.icon {
+    font-size: 31px;
+    color: #B0B0B0;
+}
+
+.label {
+    flex: 100%;
+    display: block;
+    font-size: 13px;
+    color: #B0B0B0;
+}
+.progress {
+    flex: 100%;
+}

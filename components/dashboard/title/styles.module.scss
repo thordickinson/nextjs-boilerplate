@@ -1,0 +1,19 @@
+.dashboardTitle {
+    padding: 20px;
+    background: #e9edf2;
+    border-bottom: 1px solid #dee2e8;
+}
+
+.breadcrumb {
+    list-style: none;
+    display: flex;
+    a {
+        color: #204163;
+    }
+}
+
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}

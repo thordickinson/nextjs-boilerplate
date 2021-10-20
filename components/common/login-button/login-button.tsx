@@ -14,7 +14,7 @@ export default function LoginButtonComponent() {
 
     const menu = <Menu onClick={onMenuClick}>
         <Menu.Item key="0">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">Other</a>
+            <a href="/user/profile">Profile</a>
         </Menu.Item>
         <Menu.Item key="1">
             <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">Menu</a>
