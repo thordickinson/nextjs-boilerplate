@@ -13,7 +13,7 @@ export default function DefaultLayout({ children }: ComponentPropsWithRef<any>) 
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossOrigin="anonymous" referrerPolicy="no-referrer" />
     </Head>
-    <HeaderComponent links={[{ url: '/blog', label: 'Blog' }, { url: '/test', label: 'Hola mundo' }, { url: '/test', label: 'Hola mundo' }]}></HeaderComponent>
+    <HeaderComponent links={[{ url: '/blog', label: 'Blog' }, { url: '/about-us', label: 'About Us' }, { url: '/test', label: 'Hola mundo' }]}></HeaderComponent>
     <main className={styles.main}>
       {children}
     </main>

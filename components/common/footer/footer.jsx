@@ -20,7 +20,7 @@ export default function FooterComponent() {
                     <div className="widget-content">
                         <h4>Company</h4>
                         <ul className="widget-links">
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="/about-us">About Us</a></li>
                             <li><a href="#">Our Services</a></li>
                             <li><a href="#">Clients Reviews</a></li>
                             <li><a href="#">Contact Us</a></li>
