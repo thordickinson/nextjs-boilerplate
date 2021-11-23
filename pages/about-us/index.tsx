@@ -49,6 +49,9 @@ export default function AboutUs() {
 
     const description1 = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation.";
 
+    const title = "Our Expert Team";
+    const description = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation.";
+
     return (
         <DefaultLayout>
             <section className={style.container}>
@@ -74,61 +77,8 @@ export default function AboutUs() {
                 action={{ link: '#', label: 'SEE PRICING', target: '_blank' }}>
                 <img style={{ width: "700px", padding: "0 30px" }} src="/img/dashboard-1.png"></img>
             </SidedImageBanner>
-
-            {/* 
-            <section className={style.productsSection}>
-                <div className={style.gridItems}>
-
-                    <div className={`${style["product_text"]} ${style["obj1"]}`}>
-                        <h2>The #1 Tool For Creating</h2>
-                        <h2>Stunning Marketing</h2>
-
-                        <p>
-                            We provide marketing services to startups and small
-                            businesses to looking for a partner of their digital media,
-                            design & development, lead generation.
-                        </p>
-                        <p>
-                            It is a long established fact that a reader will be distract
-                            ed by the readable content of a page when looking at its layout.
-                            The point of using Lorem Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using and content here.
-                        </p>
-                        <button className={style.button}>see pricing</button>
-                    </div>
-
-                    <div className={`${style["product_image"]} ${style["obj2"]}`}>
-                        <img src="/img/dashboard-2.png"></img>
-                    </div>
-
-                    <div className={`${style["product_image"]} ${style["obj3"]}`}>
-                        <img src="/img/dashboard-1.png"></img>
-                    </div>
-
-                    <div className={`${style["product_text"]} ${style["obj4"]}`}>
-                        <h2>The #1 Tool For Creating</h2>
-                        <h2>Stunning Marketing</h2>
-
-                        <p>
-                            We provide marketing services to startups and small
-                            businesses to looking for a partner of their digital media,
-                            design & development, lead generation.
-                        </p>
-                        <p>
-                            It is a long established fact that a reader will be distract
-                            ed by the readable content of a page when looking at its layout.
-                            The point of using Lorem Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using and content here.
-                        </p>
-
-                        <button className={style.button}>see pricing</button>
-                    </div>
-
-                </div>
-            </section>
-            */}
-
-            <TeamBanner members={members}></TeamBanner>
+            
+            <TeamBanner members={members} title ={title} description={description}></TeamBanner>
 
             <CountersBanner counters={counters}></CountersBanner>
             <TestimonialsBanner title="What People Say!" description={text30}

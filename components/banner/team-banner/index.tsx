@@ -1,18 +1,13 @@
 import style from "./index.module.scss"
+import TitledSection from "../../common/titled-section"
 
-export default function TeamBanner({ members }) {
+export default function TeamBanner({ members, title, description }) {
 
     
-    return (
-        <section className={style.teamSection}>
-            <div className={style.teamDesc}>
-                <h2>
-                    Our Expert Team
-                </h2>
-                <p>We provide marketing services to startups and small businesses to looking for a partner
-                    of their digital media, design & development, lead generation.</p>
 
-            </div>
+    return (
+        <div className={style.teamSection}>
+            <TitledSection title = {title} description={description}> </TitledSection>
 
             <div className={style.gridTeam}>
                 {members.map((m, i) => <div key={i} className={style.member}>
@@ -24,6 +19,6 @@ export default function TeamBanner({ members }) {
                     </div>
                 </div>)}
             </div>
-        </section >
+        </div >
     )
 }
