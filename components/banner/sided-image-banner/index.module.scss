@@ -1,17 +1,29 @@
 @import "~/styles/utils.scss";
 
-
 .elementContainer {
-    display: flex;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .imageContainer {
-    flex: 1 0;
+  display: flex;
+  justify-content: center;
+  width: 600px;
 }
 
 .informationContainer {
-    flex: 1 0;
-    display: flex;
-    align-items: center;
-}
+  width: 500px;
 
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    @include respond-to("medium") {
+      text-align: left;
+    }
+  }
+}

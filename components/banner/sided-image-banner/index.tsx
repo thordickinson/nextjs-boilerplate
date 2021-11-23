@@ -1,7 +1,7 @@
 import TitledSection from '../../common/titled-section'
 import styles from './index.module.scss'
 
-export default function SidedImageBanner({ title, description, action, backgroundPosition = 'left',
+export default function SidedImageBanner({ title, description, action, backgroundPosition,
     backgroundImage = undefined, children }) {
     return <TitledSection backgroundPosition={backgroundPosition} backgroundImage={backgroundImage}>
         <div className={styles.elementContainer}>
@@ -12,7 +12,7 @@ export default function SidedImageBanner({ title, description, action, backgroun
                 <div>
                     <h2>{title}</h2>
                     <p>{description}</p>
-                    <a href={action.link} className={`button button-primary`} target={action.target || ''}>
+                    <a href={action.link} className={`button-big`} target={action.target || ''}>
                         {action.label}
                     </a>
                 </div>

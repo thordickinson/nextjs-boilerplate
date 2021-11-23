@@ -61,10 +61,10 @@ export default function Home({ Component, pageProps }: AppProps) {
       <FeaturesBanner title="Hello world"
         description="This is an awesome template for your business"
         features={features}></FeaturesBanner>
-      <SidedImageBanner title="Simple Proven Way To Boost Your Team Performance."
+      <SidedImageBanner backgroundPosition="right" title="Simple Proven Way To Boost Your Team Performance."
         description={text50}
         action={{ link: '#', label: 'Go to page', target: '_blank' }}>
-        <img style={{ height: "600px", padding: "0 30px" }} src="/img/content-moc-1.png"></img>
+        <img style={{ height: "600px", padding: "0 30px" }} src="/img/content-moc-1.png"></img>        
       </SidedImageBanner>
       <CountersBanner counters={counters}></CountersBanner>
       <TestimonialsBanner title="What People Say!" description={text30} 
