@@ -3,6 +3,10 @@ import DefaultLayout from "../../components/layouts/default-layout";
 import BrandsBanner from "../../components/banner/brands-banner";
 import CountersBanner from "../../components/banner/counters-banner";
 import FeaturesBanner from "../../components/banner/features-banner";
+import SidedImageBanner from "../../components/banner/sided-image-banner";
+import TeamBanner from "../../components/banner/team-banner";
+import TestimonialsBanner from "../../components/banner/testimonials-banner";
+
 
 
 
@@ -26,6 +30,33 @@ export default function Showcase() {
         { title: "Set up to three elements", description: "Please set exactly three elements on this section", icon: "fas fa-bacterium" }
       ]
 
+    //sided image banner require this
+    const description1 = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation.";
+    
+    //team banner require this
+    const members = [
+        { photo: '/img/team/team-1.png', name: 'Fiorella Ibañez', position: 'Designer' },
+        { photo: '/img/team/team-2.png', name: 'nombre2 apellido2', position: 'cargo' },
+        { photo: '/img/team/team-3.png', name: 'nombre3 apellido3', position: 'Cargo' },
+        { photo: '/img/team/team-4.png', name: 'nombre4 apellido4', position: 'CARGO' }
+    ]
+
+    
+    //testimonials banner require this
+    const textRand = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium erat sed rutrum efficitur."
+    
+    const testimonials = [
+        { avatar: '/img/testi-1.jpg', authorName: 'Eldie Goldey', authorTitle: 'Developer', rating: 4, text: textRand + textRand},
+        { avatar: '/img/testi-2.jpg', authorName: 'Peter Scenzency', authorTitle: 'Designer', rating: 3, text: textRand + textRand },
+        { avatar: '/img/testi-3.jpg', authorName: 'Fiorella Ibanez', authorTitle: 'Marketer', rating: 4, text: textRand + textRand },
+        { avatar: '/img/testi-1.jpg', authorName: 'Laura Fies', authorTitle: 'Architect', rating: 5, text: textRand + textRand },
+        { avatar: '/img/testi-2.jpg', authorName: 'Ivan Prince', authorTitle: 'Singer', rating: 4, text: textRand + textRand },
+        { avatar: '/img/testi-3.jpg', authorName: 'Michael Thomanson', authorTitle: 'Developer', rating: 5, text: textRand + textRand }
+    ]
+    
+
+
+
     return (
         <DefaultLayout>
         <div className={style.title}>
@@ -33,8 +64,10 @@ export default function Showcase() {
         </div>
         <div className={style.text}>Brands Banner</div>            
         <BrandsBanner logos={sponsors}></BrandsBanner>
+
         <div className={style.text}>Counters Banner</div>
         <CountersBanner counters={counters}></CountersBanner>
+
         <div className={style.text}>Features Banner</div>
         <FeaturesBanner 
             title="This is a Title for your features" 
@@ -42,7 +75,29 @@ export default function Showcase() {
             features={features}
         ></FeaturesBanner>
 
-        </DefaultLayout>
+        <div className={style.text}>Sided Image Banner</div>
+        <SidedImageBanner backgroundPosition="right" title="The #1 Tool For Creating Stunning Marketing"
+                description={description1}
+                action={{ link: '#', label: 'SEE PRICING', target: '_blank' }}>
+                <img style={{ padding: "0 30px" }} src="/img/dashboard-2.png"></img>
+        </SidedImageBanner>
+
+        <div className={style.text}>Team Banner</div>
+        <TeamBanner 
+            members={members} 
+            title ="Our Expert Team" 
+            description="We provide marketing services to startups
+             and small businesses to looking for a partner of their 
+             digital media, design & development, lead generation."
+        ></TeamBanner>
+
+        <div className={style.text}>Testimonials Banner</div>
+        <TestimonialsBanner 
+            title="What People Say!" 
+            description={textRand + textRand}
+            testimonials={testimonials}
+        ></TestimonialsBanner>
         
+        </DefaultLayout>
     )
 }
