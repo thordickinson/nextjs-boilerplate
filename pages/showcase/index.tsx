@@ -6,7 +6,7 @@ import FeaturesBanner from "../../components/banner/features-banner";
 import SidedImageBanner from "../../components/banner/sided-image-banner";
 import TeamBanner from "../../components/banner/team-banner";
 import TestimonialsBanner from "../../components/banner/testimonials-banner";
-
+import DownloadsBanner from "../../components/banner/downloads-banner";
 
 
 
@@ -28,11 +28,11 @@ export default function Showcase() {
         { title: "This is an awesome feature", description: "dont forget to set the features property" },
         { title: "You can set any icon", description: "Search for an icon on fontawesome and you can set it here", icon: "fas fa-award" },
         { title: "Set up to three elements", description: "Please set exactly three elements on this section", icon: "fas fa-bacterium" }
-      ]
+    ]
 
     //sided image banner require this
     const description1 = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation.";
-    
+
     //team banner require this
     const members = [
         { photo: '/img/team/team-1.png', name: 'Fiorella Ibañez', position: 'Designer' },
@@ -41,63 +41,71 @@ export default function Showcase() {
         { photo: '/img/team/team-4.png', name: 'nombre4 apellido4', position: 'CARGO' }
     ]
 
-    
+
     //testimonials banner require this
     const textRand = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium erat sed rutrum efficitur."
-    
+
     const testimonials = [
-        { avatar: '/img/testi-1.jpg', authorName: 'Eldie Goldey', authorTitle: 'Developer', rating: 4, text: textRand + textRand},
+        { avatar: '/img/testi-1.jpg', authorName: 'Eldie Goldey', authorTitle: 'Developer', rating: 4, text: textRand + textRand },
         { avatar: '/img/testi-2.jpg', authorName: 'Peter Scenzency', authorTitle: 'Designer', rating: 3, text: textRand + textRand },
         { avatar: '/img/testi-3.jpg', authorName: 'Fiorella Ibanez', authorTitle: 'Marketer', rating: 4, text: textRand + textRand },
         { avatar: '/img/testi-1.jpg', authorName: 'Laura Fies', authorTitle: 'Architect', rating: 5, text: textRand + textRand },
         { avatar: '/img/testi-2.jpg', authorName: 'Ivan Prince', authorTitle: 'Singer', rating: 4, text: textRand + textRand },
         { avatar: '/img/testi-3.jpg', authorName: 'Michael Thomanson', authorTitle: 'Developer', rating: 5, text: textRand + textRand }
     ]
-    
 
+    //dewnloads banner require this
+    const image = "/img/content-2.png"
+
+    const info = [{
+        title: "Download Truno App Now!",
+        description: "Make your awesome business idea a reality with Truno, the fresh new theme from Mikado - custom made for modern startups."
+    }]
 
 
     return (
         <DefaultLayout>
-        <div className={style.title}>
-            <h1>Showcase</h1>
-        </div>
-        <div className={style.text}>Brands Banner</div>            
-        <BrandsBanner logos={sponsors}></BrandsBanner>
+            <div className={style.title}>
+                <h1>Showcase</h1>
+            </div>
+            <div className={style.text}>Brands Banner</div>
+            <BrandsBanner logos={sponsors}></BrandsBanner>
 
-        <div className={style.text}>Counters Banner</div>
-        <CountersBanner counters={counters}></CountersBanner>
+            <div className={style.text}>Counters Banner</div>
+            <CountersBanner counters={counters}></CountersBanner>
 
-        <div className={style.text}>Features Banner</div>
-        <FeaturesBanner 
-            title="This is a Title for your features" 
-            description="This is a long description for your services, This is a long description for your services." 
-            features={features}
-        ></FeaturesBanner>
+            <div className={style.text}>Features Banner</div>
+            <FeaturesBanner
+                title="This is a Title for your features"
+                description="This is a long description for your services, This is a long description for your services."
+                features={features}
+            ></FeaturesBanner>
 
-        <div className={style.text}>Sided Image Banner</div>
-        <SidedImageBanner backgroundPosition="right" title="The #1 Tool For Creating Stunning Marketing"
+            <div className={style.text}>Sided Image Banner</div>
+            <SidedImageBanner backgroundPosition="right" title="The #1 Tool For Creating Stunning Marketing"
                 description={description1}
                 action={{ link: '#', label: 'SEE PRICING', target: '_blank' }}>
                 <img style={{ padding: "0 30px" }} src="/img/dashboard-2.png"></img>
-        </SidedImageBanner>
+            </SidedImageBanner>
 
-        <div className={style.text}>Team Banner</div>
-        <TeamBanner 
-            members={members} 
-            title ="Our Expert Team" 
-            description="We provide marketing services to startups
-             and small businesses to looking for a partner of their 
-             digital media, design & development, lead generation."
-        ></TeamBanner>
+            <div className={style.text}>Team Banner</div>
+            <TeamBanner
+                members={members}
+                title="Our Expert Team"
+                description="We provide marketing services to startups
+                and small businesses to looking for a partner of their 
+                digital media, design & development, lead generation."
+            ></TeamBanner>
 
-        <div className={style.text}>Testimonials Banner</div>
-        <TestimonialsBanner 
-            title="What People Say!" 
-            description={textRand + textRand}
-            testimonials={testimonials}
-        ></TestimonialsBanner>
-        
+            <div className={style.text}>Testimonials Banner</div>
+            <TestimonialsBanner
+                title="What People Say!"
+                description={textRand + textRand}
+                testimonials={testimonials}
+            ></TestimonialsBanner>
+            <div className={style.text}>Downloads Banner</div>
+            <DownloadsBanner image={image} information={info} ></DownloadsBanner>
+
         </DefaultLayout>
     )
 }
