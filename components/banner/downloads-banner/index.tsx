@@ -1,4 +1,6 @@
 import style from "./index.module.scss"
+import Button_apple_store from "../../common/button-apple-store/button-apple-store"
+import Button_googleplay from "../../common/button-googleplay/button-googleplay"
 
 export default function DownloadsBanner({ information, image }) {
 
@@ -10,18 +12,8 @@ export default function DownloadsBanner({ information, image }) {
                         <h2>{information[0].title}</h2>
                         <p>{information[0].description}</p>
                         <div className={style.buttons}>
-                            <a
-                                className={style.appleButton}
-                                href="#">
-                                <img src="/img/icons/appleIcon.png" alt="googleplayIcon" />
-                                <div><span>Download on the</span><p>App Store</p></div>
-                            </a>
-                            <a
-                                className={style.googleButton}
-                                href="#">
-                                <img src="/img/icons/googlePlayIcon.png" alt="googleplayIcon" />
-                                <div><span> Get it on</span> <p>Google Play</p></div>
-                            </a>
+                            <Button_apple_store></Button_apple_store>
+                            <Button_googleplay></Button_googleplay>
                         </div>
                     </div>
                     <div className={style.item}>

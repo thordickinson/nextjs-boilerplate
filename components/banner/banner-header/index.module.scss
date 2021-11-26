@@ -1,0 +1,100 @@
+@import "../../../styles/utils.scss";
+
+.hero {
+  background-image: url(/img/hero-bg-1.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  position: relative;
+  border-top: 1px solid #eaeaea;
+  z-index: 1;
+
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 30px;
+
+  .containerTop {
+    max-width: 560px;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: center;
+    padding: 0 15px;
+
+    h4 {
+      background-color: rgba(0, 153, 229, 0.1);
+      font-weight: 500;
+      font-size: 14px;
+      display: inline-block;
+      border-radius: 30px;
+      width: auto;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 15px;
+
+      i {
+        background-color: #ff9933;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 50%;
+        margin-left: -15px;
+        margin-right: 10px;
+      }
+    }
+
+    h1 {
+      max-width: 380px;
+    }
+
+    .buttons {
+      display: flex;
+      width: 350px;
+      height: 80px;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+
+  .hero_moc {
+    background-image: url(/img/hero-moc.png);
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 58%;
+    width: 500px;
+    height: 640px;
+    right: -20px;
+    top: -20px;
+
+    overflow: hidden;
+    transform: translateY(0px);
+    //para animacion de flote
+    animation: float 6s ease-in-out infinite;
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    //para responsividad
+    @include respond-to("medium") {
+      background-position: right top;
+    }
+  }
+}

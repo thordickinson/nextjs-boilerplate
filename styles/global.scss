@@ -219,12 +219,31 @@ button {
   text-transform: uppercase;
   align-self: center;
 
-  @include respond-to("medium") {
-    align-self: baseline;
-  }
-
   &:hover {
     background-color: $accent;
     cursor: pointer;
+  }
+}
+
+.button-media {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Work Sans", sans-serif;
+  text-transform: uppercase;
+  color: #204163;
+  transition: all 0.2s ease-in-out;
+  margin-left: 20px !important;
+
+  i {
+    background-color: #f42267;
+    box-shadow: 0px 15px 25px 0px rgb(244 34 103 / 50%);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 15px;
+    margin-right: 10px;
   }
 }

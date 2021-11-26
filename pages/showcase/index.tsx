@@ -7,6 +7,7 @@ import SidedImageBanner from "../../components/banner/sided-image-banner";
 import TeamBanner from "../../components/banner/team-banner";
 import TestimonialsBanner from "../../components/banner/testimonials-banner";
 import DownloadsBanner from "../../components/banner/downloads-banner";
+import Banner_Header from "../../components/banner/banner-header";
 
 
 
@@ -24,6 +25,8 @@ export default function Showcase() {
     ]
 
     //features banner require this
+    const title_features = "This is a Title for your features";
+    const descri_features = "This is a long description for your services, This is a long description for your services.";
     const features = [
         { title: "This is an awesome feature", description: "dont forget to set the features property" },
         { title: "You can set any icon", description: "Search for an icon on fontawesome and you can set it here", icon: "fas fa-award" },
@@ -31,9 +34,14 @@ export default function Showcase() {
     ]
 
     //sided image banner require this
-    const description1 = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation.";
+    const title_sidedimage = "The #1 Tool For Creating Stunning Marketing";
+    const description_sidedImage = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation.";
 
     //team banner require this
+    const title_team = "Our Expert Team";
+    const desc_team = "We provide marketing services to startups" +
+        " and small businesses to looking for a partner of their " +
+        "digital media, design & development, lead generation.";
     const members = [
         { photo: '/img/team/team-1.png', name: 'Fiorella Ibañez', position: 'Designer' },
         { photo: '/img/team/team-2.png', name: 'nombre2 apellido2', position: 'cargo' },
@@ -43,6 +51,7 @@ export default function Showcase() {
 
 
     //testimonials banner require this
+    const title_testimonials = "What People Say!";
     const textRand = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium erat sed rutrum efficitur."
 
     const testimonials = [
@@ -54,7 +63,7 @@ export default function Showcase() {
         { avatar: '/img/testi-3.jpg', authorName: 'Michael Thomanson', authorTitle: 'Developer', rating: 5, text: textRand + textRand }
     ]
 
-    //dewnloads banner require this
+    //downloads banner require this
     const image = "/img/content-2.png"
 
     const info = [{
@@ -62,6 +71,10 @@ export default function Showcase() {
         description: "Make your awesome business idea a reality with Truno, the fresh new theme from Mikado - custom made for modern startups."
     }]
 
+    //banner header require this
+    const title_bannerheader = "Best App For Your Modern Lifestyle.";
+    const description_bannerheader = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation and communications requirents.";
+    const hashTag = "#Editors Choice App of 2020"
 
     return (
         <DefaultLayout>
@@ -76,35 +89,44 @@ export default function Showcase() {
 
             <div className={style.text}>Features Banner</div>
             <FeaturesBanner
-                title="This is a Title for your features"
-                description="This is a long description for your services, This is a long description for your services."
+                title={title_features}
+                description={descri_features}
                 features={features}
             ></FeaturesBanner>
 
             <div className={style.text}>Sided Image Banner</div>
-            <SidedImageBanner backgroundPosition="right" title="The #1 Tool For Creating Stunning Marketing"
-                description={description1}
-                action={{ link: '#', label: 'SEE PRICING', target: '_blank' }}>
+            <SidedImageBanner backgroundPosition="right" title={title_sidedimage}
+                description={description_sidedImage}
+                action={{ link: '#', label: "SEE PRICING", target: '_blank' }}>
                 <img style={{ padding: "0 30px" }} src="/img/dashboard-2.png"></img>
             </SidedImageBanner>
 
             <div className={style.text}>Team Banner</div>
             <TeamBanner
                 members={members}
-                title="Our Expert Team"
-                description="We provide marketing services to startups
-                and small businesses to looking for a partner of their 
-                digital media, design & development, lead generation."
+                title={title_team}
+                description={desc_team}
             ></TeamBanner>
 
             <div className={style.text}>Testimonials Banner</div>
             <TestimonialsBanner
-                title="What People Say!"
+                title={title_testimonials}
                 description={textRand + textRand}
                 testimonials={testimonials}
             ></TestimonialsBanner>
+
             <div className={style.text}>Downloads Banner</div>
-            <DownloadsBanner image={image} information={info} ></DownloadsBanner>
+            <DownloadsBanner
+                image={image}
+                information={info}
+            ></DownloadsBanner>
+
+            <div className={style.text}>Banner Header</div>
+            <Banner_Header
+                title={title_bannerheader}
+                description={description_bannerheader}
+                hashtag={hashTag}
+            ></Banner_Header>
 
         </DefaultLayout>
     )
