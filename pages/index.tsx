@@ -24,7 +24,7 @@ const text50 = "coOB ba wGwVSUN IsjTjopjf jTeELsH DueQMvQJR p c Q UdxUuo SdUtKQb
   "VWEVlmEB ZXnDd w SyWNNq OfrxoTK PfjymhpLju Ld qa TZMtQGAX uvUGbzVPe QVVQ LVU zypvH IQmWTp " +
   "AN OqSZIOT jqj bcgQQ aWTPpEIP Zj OjvEGgQLU doDSlQxQ kxk DTqRfbDd CZXIBw ZQkF eWHGrJ MyhadeurA wx MNZCB ztTdr dnY JYpJqGg IPsJHnb jrW"
 const text30 = "coOB ba wGwVSUN IsjTjopjf jTeELsH DueQMvQJR p c Q UdxUuo SdUtKQbG wSfQvzita " +
-"VWEVlmEB ZXnDd w SyWNNq OfrxoTK PfjymhpLju Ld qa TZMtQGAX uvUGbzVPe QVVQ LVU zypvH IQmWTp"
+  "VWEVlmEB ZXnDd w SyWNNq OfrxoTK PfjymhpLju Ld qa TZMtQGAX uvUGbzVPe QVVQ LVU zypvH IQmWTp"
 
 export default function Home({ Component, pageProps }: AppProps) {
   const features = [
@@ -64,11 +64,14 @@ export default function Home({ Component, pageProps }: AppProps) {
       <SidedImageBanner backgroundPosition="right" title="Simple Proven Way To Boost Your Team Performance."
         description={text50}
         action={{ link: '#', label: 'Go to page', target: '_blank' }}>
-        <img style={{ height: "600px", padding: "0 30px" }} src="/img/content-moc-1.png"></img>        
+        <img style={{ height: "600px", padding: "0 30px" }} src="/img/content-moc-1.png"></img>
       </SidedImageBanner>
       <CountersBanner counters={counters}></CountersBanner>
-      <TestimonialsBanner title="What People Say!" description={text30} 
-      testimonials={testimonials}></TestimonialsBanner>
+      <TestimonialsBanner
+        title="What People Say!"
+        description={text30}
+        testimonials={testimonials}
+      ></TestimonialsBanner>
       <BrandsBanner logos={sponsors}></BrandsBanner>
     </DefaultLayout>
   )

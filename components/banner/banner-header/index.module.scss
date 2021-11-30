@@ -72,10 +72,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 58%;
-    width: 500px;
+    width: 95%;
     height: 640px;
     right: -20px;
     top: -20px;
+
+    @include respond-to("medium") {
+      width: 500px;
+    }
 
     overflow: hidden;
     transform: translateY(0px);
