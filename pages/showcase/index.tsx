@@ -8,6 +8,7 @@ import TeamBanner from "../../components/banner/team-banner";
 import TestimonialsBanner from "../../components/banner/testimonials-banner";
 import DownloadsBanner from "../../components/banner/downloads-banner";
 import Banner_Header from "../../components/banner/banner-header";
+import Banner_ScreenShots from "../../components/banner/banner-screenshots";
 
 
 
@@ -76,6 +77,18 @@ export default function Showcase() {
     const description_bannerheader = "We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & development, lead generation and communications requirents.";
     const hashTag = "#Editors Choice App of 2020"
 
+    //banner screenShots
+    const titleBanner = "Truno Screenshots";
+    const descBanner = "Make your awesome business idea a reality with Truno, the fresh new theme from Mikado - custom made for modern startups.";
+    const screenShots = [
+        { shot: '/img/screenShots/app-ss-1.png' },
+        { shot: '/img/screenShots/app-ss-2.png' },
+        { shot: '/img/screenShots/app-ss-1.png' },
+        { shot: '/img/screenShots/app-ss-2.png' },
+        { shot: '/img/screenShots/app-ss-1.png' },
+        { shot: '/img/screenShots/app-ss-2.png' }
+    ]
+
     return (
         <DefaultLayout>
             <div className={style.title}>
@@ -128,6 +141,13 @@ export default function Showcase() {
                 hashtag={hashTag}
             ></Banner_Header>
 
+            <div className={style.text}>Banner ScreenShots</div>
+            <Banner_ScreenShots 
+                titleBanner={titleBanner} 
+                descBanner={descBanner} 
+                screenshots={screenShots} 
+                ssr={true}
+            ></Banner_ScreenShots>
         </DefaultLayout>
     )
 }

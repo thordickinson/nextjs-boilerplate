@@ -4,6 +4,7 @@ import Banner_ScreenShots from "../../components/banner/banner-screenshots";
 import FeaturesBanner from "../../components/banner/features-banner";
 import SidedImageBanner from "../../components/banner/sided-image-banner";
 import CountersBanner from "../../components/banner/counters-banner";
+import Banner_Pricing from "../../components/banner/banner-pricing";
 import style from "./styles.module.scss"
 
 export default function Pricing() {
@@ -59,11 +60,10 @@ export default function Pricing() {
                 <img style={{ height: "600px", padding: "0 30px" }} src="/img/content-moc-1.png"></img>
             </SidedImageBanner>
 
-            <div className={style.posCounters}>
-                <CountersBanner counters={counters}></CountersBanner>
-            </div>
+            <CountersBanner counters={counters}></CountersBanner>
 
             <Banner_ScreenShots titleBanner={titleBanner} descBanner={descBanner} screenshots={screenShots}></Banner_ScreenShots>
+            <Banner_Pricing></Banner_Pricing>
         </DefaultLayout>
     )
 }
