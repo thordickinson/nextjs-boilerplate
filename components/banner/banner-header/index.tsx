@@ -6,6 +6,13 @@ export default function Banner_Header({ title, description, hashtag }) {
 
     return (
         <div className={style.hero}>
+            <div className={style.anim_elements}>
+                <div className={style.anim_element}></div>              {/*punto cyan*/}
+                <div className={style.anim_element}></div>              {/*circulo*/}
+                <div className={style.anim_element}></div>              {/*cuadro*/}
+                <div className={style.anim_element}></div>              {/*punto naranja*/}
+                <div className={style.anim_element}></div>              {/*equis*/}
+            </div>
             <div className={style.grid}>
                 <div className={style.containerTop}>
                     <h4>
