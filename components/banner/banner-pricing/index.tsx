@@ -2,16 +2,37 @@ import style from "./index.module.scss"
 
 export default function Banner_Pricing() {
 
-    const icons=[
-        {icon: "fa fa-trophy", color: "#008f39"},
-        {icon: "fa fa-clipboard", color: "#0000ff"}
+    const prices = [
+        {
+            icon: "fas fa-file-contract", 
+            color: "#85ccff", 
+            price:"$10.00", 
+            category: "starter", 
+            space:"1 GB", 
+            websites: "10 websites", 
+            bandwidth:"Unlimited bandwidth", 
+            support:"24/7 Support",
+            url:"#",
+            extra:""
+        },
+        {
+            icon: "fa fa-award", 
+            color: "#09cc55", 
+            price:"$20.00", 
+            category: "Premium", 
+            space:"10 GB", 
+            websites: "20 websites", 
+            bandwidth:"Unlimited bandwidth", 
+            support:"24/7 Support",
+            url:"#",
+            extra:"OR START 14 DAYS TRIAL"
+        }
     ]
 
     return (
         <div className={style.pricing_section}>
-            <div className={style.container}>
-                <div className={style.row}>
-                    <div className={style.element}>
+            <div className={style.row}>
+                    <div className={style.elementA}>
                         <div className={style.heading}>
                             <span>explore the plans</span>
                             <h2>No Hidden Charges!</h2>
@@ -25,44 +46,35 @@ export default function Banner_Pricing() {
                             </div>
                         </div>
                     </div>
-                    <div className={style.element}>
+                    <div className={style.elementB}>
                         <div className={style.pricing_container}>
-                            <div className={style.typePrice}>
+                            {/*aqui debo insertar el map para generar cada tarjeta de precios */}
+                            {prices.map((p, i) => 
+                            <div key={i} className={style.typePrice}>
                                 <div className={style.price}>
-                                <i className={icons[1].icon}></i>
-                                    <h3>$10.00</h3>
-                                    <span>Starter</span>
+                                    <i className={`${p.icon}`}></i>
+                                    <style jsx>{`i{ color: ${p.color};}`}</style>
+                                    <h3>{`${p.price}`}</h3>
+                                    <span>{`${p.category}`}</span>
                                 </div>
                                 <div className={style.description}>
-                                    <p>
-                                        1024 MB Memory
-                                        10 Websites
-                                        Unlimited Bandwidth
-                                        24/7 Support
-                                    </p>
+                                    <div>
+                                        <ul>
+                                            <li>{`${p.space}`}</li>
+                                            <li>{`${p.websites}`}</li>
+                                            <li>{`${p.bandwidth}`}</li>
+                                            <li>{`${p.support}`}</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <a href={p.url} className={style.buttonPrice}>Suscribe Now</a>                                        
+                                    </div>
+                                    <span>{p.extra}</span>
                                 </div>
-                            </div>
-                            <div className={style.typePrice}>
-                                <div className={style.price}>
-                                    <i className={icons[0].icon}></i>
-                                    <h3>$20.00</h3>
-                                    <span>Premium</span>
-                                </div>
-                                <div>
-                                    <p>
-                                        1 Tb Memory
-                                        20 Websites
-                                        Unlimited Bandwidth
-                                        24/7 Support
-                                    </p>
-                                </div>
-                            </div>
-                            
+                            </div>)}
                         </div>
                     </div>
-                    
                 </div>
-            </div>
         </div>
     )
 }
