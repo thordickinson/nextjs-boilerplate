@@ -9,6 +9,7 @@ import TestimonialsBanner from "../../components/banner/testimonials-banner";
 import DownloadsBanner from "../../components/banner/downloads-banner";
 import Banner_Header from "../../components/banner/banner-header";
 import Banner_ScreenShots from "../../components/banner/banner-screenshots";
+import Banner_Pricing from "../../components/banner/banner-pricing";
 
 
 
@@ -148,6 +149,8 @@ export default function Showcase() {
                 screenshots={screenShots} 
                 ssr={true}
             ></Banner_ScreenShots>
+            <div className={style.text}>Banner Pricing</div>
+            <Banner_Pricing></Banner_Pricing>
         </DefaultLayout>
     )
 }

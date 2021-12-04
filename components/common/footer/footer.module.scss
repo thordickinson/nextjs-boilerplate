@@ -52,3 +52,37 @@
     flex: 24% 0;
   }
 }
+
+.footer_section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .footer_items {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    justify-content: center;
+
+    @include respond-to("medium") {
+      justify-content: space-between;
+    }
+
+    p {
+      padding: 0 10px;
+    }
+
+    a {
+      padding: 0 10px;
+      color: #8495a7;
+    }
+  }
+}
+
+.widget_social {
+  list-style-type: none;
+}
+
+.widget_links {
+  list-style-type: none;
+}
