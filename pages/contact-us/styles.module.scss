@@ -1,0 +1,36 @@
+.contact_section {
+  background-image: url(/img/satellite-map.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.contact_wrap {
+  display: flex;
+}
+
+.itemA {
+  h2 {
+    max-width: 400px;
+  }
+  max-width: 570px;
+  padding: 0 20px;
+
+  .address {
+    max-width: 300px;
+  }
+
+  .phones {
+    max-width: 240px;
+  }
+}
+
+.itemB {
+  background-color: blue;
+  width: 570px;
+}
