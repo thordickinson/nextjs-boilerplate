@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss"
 import DefaultLayout from "../../components/layouts/default-layout"
-import { Formik } from "formik"
+import { Formik, Form, Field, ErrorMessage } from "formik"
 import React, {useState} from "react"
 
 
@@ -47,17 +47,22 @@ const [formSend, setFormSend] = useState(false)
                                     let errores = {};
                                     //validacion nombre
                                     if(!values.name){
-                                        errores.name = "por favor ingresa un nombre";
+                                        errores.name = "Ingresa un nombre";
                                     }else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.name)){
                                         errores.name = "El nombre solo puede contener letras y espacios";
                                     }
 
                                     //validacion mail
                                     if(!values.email){
-                                        errores.email = "por favor ingresa un correo electronico";
+                                        errores.email = "Ingresa un correo electronico";
                                     }else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)){
                                         errores.email = "El correo solo puede contener letras, numeros, puntos, guiones y guion bajo";
                                     }
+
+                                    if(!values.message){
+                                        errores.message = "El mensaje no puede estar vacio";
+                                    }
+
                                     return errores;
                                 }}
                                 onSubmit={(values, {resetForm})=>{
@@ -67,52 +72,50 @@ const [formSend, setFormSend] = useState(false)
                                     setTimeout(() =>setFormSend(false), 5000);
                                 }}
                             >
-                                {( {values, errors, touched, handleSubmit, handleChange, handleBlur}) =>(
-                                    <form className={styles.containerItems} onSubmit={handleSubmit}>
-                                        {console.log(errors)}
+                                {( { errors}) =>(
+                                    <Form className={styles.containerItems}>
                                         <div className={styles.inputNameCont}>
-                                            <input 
+                                            <Field 
                                                 type="text" 
                                                 id="name" 
                                                 name="name" 
                                                 placeholder="your name"
-                                                value={values.name}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
                                                 className={styles.inputName}
                                             />
-                                            {touched.name && errors.name && <div className={styles.error}>{errors.name}</div>}
+                                            <ErrorMessage name="name" component={()=>(
+                                                <div className={styles.error}>{errors.name}</div>
+                                            )} />
                                         </div>
                                         <div className={styles.inputEmailCont}>
-                                            <input 
+                                            <Field 
                                                 type="text" 
                                                 id="email" 
                                                 name="email" 
-                                                placeholder="correo@correo.com" 
-                                                value={values.email}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
+                                                placeholder="correo@correo.com"
                                                 className={styles.inputEmail}
                                             />
-                                            {touched.email && errors.email && <div className={styles.error}>{errors.email}</div>}
+                                            <ErrorMessage name="email" component={()=>(
+                                                <div className={styles.error}>{errors.email}</div>
+                                            )} />
                                         </div>
                                         <div className={styles.inputMessageCont}>
-                                            <input 
+                                            <Field 
                                                 type="text" 
                                                 id="message" 
-                                                name="message" 
+                                                name="message"
+                                                as="textarea"
                                                 placeholder="message..."
-                                                value={values.message}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
                                                 className={styles.inputMessage}
                                             />
+                                            <ErrorMessage name="message" component={()=>(
+                                                <div className={styles.error}>{errors.message}</div>
+                                            )} />
                                         </div>
                                         <div className={styles.buttonForm}>
                                             <button type="submit">Send Message</button>
                                             {formSend && <p className={styles.exito}>Formulario enviado con exito!</p>}
                                         </div>
-                                     </form>
+                                     </Form>
                                  )}
                             </Formik>
                         </div>

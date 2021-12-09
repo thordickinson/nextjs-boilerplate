@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "~/styles/utils.scss";
 
 .contact_section {
   background-image: url(/img/satellite-map.png);
@@ -14,14 +15,34 @@
 
 .contact_wrap {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+
+  @include respond-to("medium") {
+    width: 80%;
+  }
 }
 
 .itemA {
-  h2 {
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-items: center;
+
+  @include respond-to("medium") {
+    max-width: 50%;
+    align-items: flex-start;
+    padding: 0 20px;
   }
-  max-width: 570px;
-  padding: 0 20px;
+
+  h2 {
+    max-width: 70%;
+  }
+
+  p {
+    max-width: 70%;
+  }
 
   .address {
     max-width: 300px;
@@ -34,19 +55,36 @@
 
 .itemB {
   background-color: white;
-  width: 570px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+
+  @include respond-to("medium") {
+    max-width: 50%;
+  }
 
   .containerItems {
     display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 50px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    @include respond-to("medium") {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   .inputNameCont {
-    padding: 30px 20px 10px 40px;
-    width: 50%;
+    padding: 30px 20px;
+    width: 80%;
+
+    @include respond-to("medium") {
+      padding: 30px 20px 10px 40px;
+      width: 50%;
+    }
 
     .inputName {
       border: #cccccc 0.5px solid;
@@ -56,8 +94,13 @@
   }
 
   .inputEmailCont {
-    padding: 30px 40px 10px 20px;
-    width: 50%;
+    padding: 30px 20px;
+    width: 80%;
+
+    @include respond-to("medium") {
+      padding: 30px 40px 10px 20px;
+      width: 50%;
+    }
 
     .inputEmail {
       border: #cccccc 0.5px solid;
@@ -90,4 +133,8 @@
       font-size: 12px;
     }
   }
+}
+
+.error {
+  color: red;
 }
