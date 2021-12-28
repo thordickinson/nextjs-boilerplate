@@ -8,7 +8,7 @@ export default function DashboardTitle({title, breadcrumb}){
 
     return <div className={styles.dashboardTitle}>
         <Head>
-            <title>{title}</title>
+            <title>{title} profile</title>
         </Head>
         <h3>{title}</h3>
         <div className={styles.breadcrumbContainer}>

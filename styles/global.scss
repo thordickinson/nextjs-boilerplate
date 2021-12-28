@@ -2,49 +2,50 @@
 @import "./variables.scss";
 @import "./utils.scss";
 @import "~antd/dist/antd.css";
+@import "../pages/chartistTest/chartist.scss";
 
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    background-color: #fff;
-    font-family: open sans, sans-serif;
-    font-size: 15px;
-    line-height: 26px;
-    color: #8495a7;
-    font-weight: 400;
-    letter-spacing: -0.2px;
-    position: relative;
-    overflow-x: hidden;
+  background-color: #fff;
+  font-family: open sans, sans-serif;
+  font-size: 15px;
+  line-height: 26px;
+  color: #8495a7;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  position: relative;
+  overflow-x: hidden;
 }
 
 img {
-    max-width: 100%;
-    border: none;
-    outline: none;
+  max-width: 100%;
+  border: none;
+  outline: none;
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-    cursor: pointer;
-    background: $primary;
+  cursor: pointer;
+  background: $primary;
 }
 ::selection {
-    background-color: $primary;
-    color: #fff;
+  background-color: $primary;
+  color: #fff;
 }
 -webkit-::selection {
-    background-color: $primary;
-    color: #fff;
+  background-color: $primary;
+  color: #fff;
 }
 ::-moz-selection {
-    background-color: $primary;
-    color: #fff;
+  background-color: $primary;
+  color: #fff;
 }
 h1,
 h2,
@@ -52,77 +53,77 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: poppins, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    color: #204163;
+  font-family: poppins, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #204163;
 }
 h1 {
-    font-size: 46px;
-    font-weight: 600;
-    line-height: 56px;
-    margin: 0 0 10px;
-    color: #204163;
-    letter-spacing: -2px;
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 56px;
+  margin: 0 0 10px;
+  color: #204163;
+  letter-spacing: -2px;
 }
 h2 {
-    font-size: 32px;
-    line-height: 42px;
-    color: #204163;
-    margin: 0 0 10px;
-    font-weight: 600;
-    letter-spacing: -1px;
+  font-size: 32px;
+  line-height: 42px;
+  color: #204163;
+  margin: 0 0 10px;
+  font-weight: 600;
+  letter-spacing: -1px;
 }
 h3,
 h4 {
-    margin: 0 0 10px;
-    font-weight: 600;
-    line-height: 1.7;
-    color: #204163;
-    letter-spacing: -0.5px;
+  margin: 0 0 10px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: #204163;
+  letter-spacing: -0.5px;
 }
 h3 {
-    font-size: 20px;
+  font-size: 20px;
 }
 h4 {
-    font-size: 16px;
+  font-size: 16px;
 }
 h5,
 h6 {
-    font-size: 14px;
-    margin: 0 0 10px;
+  font-size: 14px;
+  margin: 0 0 10px;
 }
 
 p {
-    font-size: 15px;
-    line-height: 26px;
-    margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 26px;
+  margin-bottom: 15px;
 }
 a,
 a:hover,
 a:focus {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:focus,
 input:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-    color: #ddd !important;
+  color: #ddd !important;
 }
 input:-moz-placeholder,
 textarea:-moz-placeholder {
-    color: #ddd !important;
+  color: #ddd !important;
 }
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-    color: #ddd !important;
+  color: #ddd !important;
 }
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-    color: #ddd !important;
+  color: #ddd !important;
 }
 
 a,
@@ -132,79 +133,118 @@ img,
 .form-control,
 .form-control:hover,
 button {
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 #scroll-to-top {
-    background-color: $primary;
-    display: none;
-    width: 45px;
-    height: 45px;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 50%;
-    line-height: 45px;
-    color: #fff;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    z-index: 999;
+  background-color: $primary;
+  display: none;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 50%;
+  line-height: 45px;
+  color: #fff;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 999;
 }
 #scroll-to-top:hover {
-    background-color: $primary;
-    color: #fff;
-    opacity: 0.8;
+  background-color: $primary;
+  color: #fff;
+  opacity: 0.8;
 }
 
 .container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 
-    @include respond-to("small") {
-        max-width: 720px;
-    }
+  @include respond-to("small") {
+    max-width: 720px;
+  }
 
-    @include respond-to("medium") {
-        max-width: 960px;
-    }
+  @include respond-to("medium") {
+    max-width: 960px;
+  }
 
-    @include respond-to("large") {
-        max-width: 1140px;
-    }
+  @include respond-to("large") {
+    max-width: 1140px;
+  }
 }
 
 .button {
-    font-family: "Work Sans", sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 45px;
-    padding: 0 35px;
-    letter-spacing: 0;
-    border-radius: 30px;
-    overflow: hidden;
-    border: none;
+  font-family: "Work Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 45px;
+  padding: 0 35px;
+  letter-spacing: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  border: none;
 }
 
 .clean-button {
-    padding: 0;
-    border: none;
-    background: none;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 /* Styles for react-markdown-editor-lite*/
 .button-wrap > .button {
-    padding: 0;
-    font-weight: 400;
-    overflow: visible;
+  padding: 0;
+  font-weight: 400;
+  overflow: visible;
 }
 /* End of styles for react-markdown-editor-lite*/
 .button-primary {
-    background: #2500f9;
+  background: #2500f9;
+  color: #fff;
+}
+
+.button-big {
+  background-color: $primary;
+  padding: 10px 4%;
+  color: #fff !important;
+  border-radius: 30px;
+  line-height: 40px;
+  font-family: work sans, sans-serif;
+  text-transform: uppercase;
+  align-self: center;
+
+  &:hover {
+    background-color: $accent;
+    cursor: pointer;
+  }
+}
+
+.button-media {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Work Sans", sans-serif;
+  text-transform: uppercase;
+  color: #204163;
+  transition: all 0.2s ease-in-out;
+  margin-left: 20px !important;
+
+  i {
+    background-color: #f42267;
+    box-shadow: 0px 15px 25px 0px rgb(244 34 103 / 50%);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
     color: #fff;
+    font-size: 15px;
+    margin-right: 10px;
+  }
 }

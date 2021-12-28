@@ -1,0 +1,66 @@
+@import "../../../styles/variables.scss";
+@import "~/styles/utils.scss";
+
+/* Team Section */
+.teamSection {
+  //max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+
+  .teamDesc {
+    max-width: 600px;
+    font-size: 15px;
+    line-height: 26px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .gridTeam {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 15px;
+    max-width: 1140px;
+
+    .member {
+      margin: 15px;
+
+      .teamItem {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .team_content {
+          display: block;
+          background-color: #fff;
+          box-shadow: 0px 3px 20px 0px rgb(50 65 80 / 10%);
+          padding: 0;
+          margin: 0 20px;
+          transform: translateY(-30px);
+          transition: transform 0.3s ease-out;
+
+          &:hover {
+            transform: translateY(-35px);
+          }
+
+          h3 {
+            padding: 10px;
+            text-align: center;
+          }
+
+          span {
+            font-family: "Work Sans", sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,76 +1,78 @@
 @import "~/styles/utils.scss";
 
 .featuresBanner {
-    padding: 100px 0;
-    text-align: center;
-    h2 {
-        font-size: 32px;
-        display: block;
-    }
-    .description {
-        font-size: 15px;
-        line-height: 26px;
-        margin-bottom: 40px;
-    }
+  padding: 100px 0;
+  text-align: center;
+  h2 {
+    font-size: 32px;
+    display: block;
+  }
+  .description {
+    font-size: 15px;
+    line-height: 26px;
+    margin-bottom: 40px;
+  }
 }
 
 .featuresContainer {
-    display: flex;
-    justify-content: space-between;
-    .featureWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .featureWrapper {
+    text-align: center;
+    padding: 40px;
+    transition: all 0.2s ease-in-out;
+    flex: 30 0;
+    .feature {
+      i {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
         text-align: center;
-        padding: 40px;
-        transition: all 0.2s ease-in-out;
-        flex: 30 0;
-        .feature {
-            i {
-                width: 80px;
-                height: 80px;
-                line-height: 80px;
-                text-align: center;
-                border-radius: 50%;
-                display: inline-block;
-                font-size: 40px;
-                margin-bottom: 15px;
-            }
-        }
+        border-radius: 50%;
+        display: inline-block;
+        font-size: 40px;
+        margin-bottom: 15px;
+      }
     }
+  }
 }
 
 .featureWrapper:hover,
 .featureWrapper.active {
-    -webkit-box-shadow: 0px 50px 100px 0px rgb(64 1 4 / 10%), 0px -6px 0px 0px rgb(248 99 107 / 0%);
-    box-shadow: 0px 50px 100px 0px rgb(64 1 4 / 10%), 0px -6px 0px 0px rgb(248 99 107 / 0%);
-    transition: all 0.2s ease-in-out;
+  -webkit-box-shadow: 0px 50px 100px 0px rgb(64 1 4 / 10%),
+    0px -6px 0px 0px rgb(248 99 107 / 0%);
+  box-shadow: 0px 50px 100px 0px rgb(64 1 4 / 10%),
+    0px -6px 0px 0px rgb(248 99 107 / 0%);
+  transition: all 0.2s ease-in-out;
 }
 
-
 .blue {
-    i {
-        background-color: rgba(0, 153, 229,0.1)!important;
-        color: #0099e5!important;
-    }
-    h3 {
-        color: #0099e5!important;
-    }
+  i {
+    background-color: rgba(0, 153, 229, 0.1) !important;
+    color: #0099e5 !important;
+  }
+  h3 {
+    color: #0099e5 !important;
+  }
 }
 
 .red {
-    i {
-        background-color: rgba(255, 76, 76,0.1)!important;
-        color: #ff4c4c!important;
-    }
-    h3 {
-        color: #ff4c4c!important;
-    }
+  i {
+    background-color: rgba(255, 76, 76, 0.1) !important;
+    color: #ff4c4c !important;
+  }
+  h3 {
+    color: #ff4c4c !important;
+  }
 }
 
 .green {
-    i {
-        background-color: rgba(10, 191, 83,0.1)!important;
-        color: #36bca1!important;
-    }
-    h3 {
-        color: #36bca1!important;
-    }
+  i {
+    background-color: rgba(10, 191, 83, 0.1) !important;
+    color: #36bca1 !important;
+  }
+  h3 {
+    color: #36bca1 !important;
+  }
 }

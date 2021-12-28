@@ -1,0 +1,147 @@
+@import "../../styles/variables.scss";
+@import "~/styles/utils.scss";
+
+.contact_section {
+  background-image: url(/img/satellite-map.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.contact_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+
+  @include respond-to("medium") {
+    width: 80%;
+  }
+}
+
+.itemA {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-items: center;
+
+  @include respond-to("medium") {
+    max-width: 50%;
+    align-items: flex-start;
+    padding: 0 20px;
+  }
+
+  h2 {
+    max-width: 70%;
+  }
+
+  p {
+    max-width: 70%;
+  }
+
+  .address {
+    max-width: 300px;
+  }
+
+  .phones {
+    max-width: 240px;
+    li {
+      list-style-type: none;
+    }
+  }
+}
+
+.itemB {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include respond-to("medium") {
+    max-width: 50%;
+  }
+
+  .containerItems {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 20px;
+
+    @include respond-to("medium") {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  .inputCont {
+    padding: 0px 20px 0px 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .input {
+      border: #cccccc 0.5px solid;
+      width: 100%;
+      height: 50px;
+    }
+
+    span {
+      font-size: 10px;
+      align-self: flex-end;
+    }
+  }
+
+  .inputMessageCont {
+    padding: 0 20px 0 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .inputMessage {
+      display: flex;
+      border: #cccccc 0.5px solid;
+      width: 100%;
+      height: 200px;
+    }
+
+    span {
+      font-size: 10px;
+      align-self: flex-end;
+    }
+  }
+
+  .buttonForm {
+    padding: 20px 0 0 40px;
+
+    button {
+      padding: 10px 35px;
+      background-color: $primary;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    p {
+      height: 20px;
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+}
+
+.error {
+  color: red;
+}
+
+.noError {
+  color: $primary;
+}

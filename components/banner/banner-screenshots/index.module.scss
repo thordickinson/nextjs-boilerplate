@@ -1,0 +1,21 @@
+.container {
+  padding: 50px 0 0 0;
+  max-width: 100%;
+  background-image: url(/img/right-pattern.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.carouselItem {
+  padding: 10px 0 40px;
+}
+
+.screenshot {
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-height: 600px;
+  }
+}

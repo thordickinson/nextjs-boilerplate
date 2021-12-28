@@ -1,0 +1,29 @@
+@import "../../styles/variables.scss";
+@import "~/styles/utils.scss";
+
+/* Global */
+.container {
+  max-width: 1600px;
+  margin: 0 0;
+}
+
+/* Banner About Us */
+.bannerAbout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $accent;
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  color: #ffffff;
+
+  h2 {
+    color: #ffffff;
+  }
+
+  p {
+    width: 70%;
+  }
+}

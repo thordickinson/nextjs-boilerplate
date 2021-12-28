@@ -8,22 +8,22 @@ export default function FooterComponent() {
                     <div className="widget-content">
                         <a href="#"><img src="/img/logo-light.png" alt="brand" /></a>
                         <p>Building your own home is about desire, fantasy. But it’s achievable anyone can do it.</p>
-                        <ul className="widget-social">
-                            <li><a href="#"><i className="fa fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i className="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i className="fa fa-youtube"></i></a></li>
+                        <ul className={styles.widget_social}>
+                            <li><a href="#"><i className="fab fa-facebook-square"></i> Our Facebook</a></li>
+                            <li><a href="#"><i className="fab fa-twitter-square"></i> Our Twitter</a></li>
+                            <li><a href="#"><i className="fab fa-instagram-square"></i> Our Instagram</a></li>
+                            <li><a href="#"><i className="fab fa-youtube-square"></i> Our Youtube</a></li>
                         </ul>
                     </div>
                 </div>
                 <div className={styles.companyLinks}>
                     <div className="widget-content">
                         <h4>Company</h4>
-                        <ul className="widget-links">
-                            <li><a href="#">About Us</a></li>
+                        <ul className={styles.widget_links}>
+                            <li><a href="/about-us">About Us</a></li>
                             <li><a href="#">Our Services</a></li>
                             <li><a href="#">Clients Reviews</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="/contact-us">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -54,8 +54,13 @@ export default function FooterComponent() {
                     </div>
                 </div>
             </div>
-            <div className="footer-section text-center">
-                <p>© <span id="currentYear">2021</span> Truno Powered by DynamicLayers</p>
+            <div className={styles.footer_section}>
+                <div className={styles.footer_items}>
+                    <p>© 2021 Truno Powered by DynamicLayers</p> |
+                    <a href="/policy"> Privacy Policy</a> |
+                    <a href="/terms-conditions">Terms and Conditions</a> |
+                    <a href="#">Job Opportunities</a> 
+                </div>
             </div>
         </div>
     </footer>

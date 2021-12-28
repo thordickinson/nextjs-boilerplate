@@ -1,0 +1,37 @@
+.googleButton {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 180px;
+  height: 60px;
+  border-radius: 5px;
+  margin-top: 15px;
+
+  img {
+    padding: 0 0 0 10px;
+    width: 50px;
+  }
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    color: white;
+    width: 125px;
+
+    span {
+      padding: 15px 0 0 10px;
+      font-size: 10px;
+    }
+    p {
+      transform: translateY(-10px);
+      font-size: 19px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  }
+  &:hover {
+    background-color: rgb(70, 70, 70);
+  }
+}

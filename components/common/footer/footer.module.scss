@@ -1,54 +1,88 @@
 @import "~/styles/utils.scss";
 
 .footer {
-    background-color: #0c0829;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 1;
-    width: 100%;
-    padding-top: 100px;
-    h4 {
-        margin-top: 20px;
-    }
+  background-color: #0c0829;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  width: 100%;
+  padding-top: 100px;
+  h4 {
+    margin-top: 20px;
+  }
 }
 
 .columns {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .brand {
-    flex: 100%;
-    @include respond-to("large") {
-        flex: 24% 0;
-    }
+  flex: 100%;
+  @include respond-to("large") {
+    flex: 24% 0;
+  }
 }
 
 .companyLinks {
-    flex: 100%;
-    @include respond-to("medium") {
-        flex: 50% 0;
-    }
-    @include respond-to("large") {
-        flex: 24% 0;
-    }
+  flex: 100%;
+  @include respond-to("medium") {
+    flex: 50% 0;
+  }
+  @include respond-to("large") {
+    flex: 24% 0;
+  }
 }
 
 .headQuarters {
-    flex: 100%;
-    @include respond-to("medium") {
-        flex: 50% 0;
-    }
-    @include respond-to("large") {
-        flex: 24% 0;
-    }
+  flex: 100%;
+  @include respond-to("medium") {
+    flex: 50% 0;
+  }
+  @include respond-to("large") {
+    flex: 24% 0;
+  }
 }
 
 .newsletter {
-    flex: 100%;
-    @include respond-to("large") {
-        flex: 24% 0;
+  flex: 100%;
+  @include respond-to("large") {
+    flex: 24% 0;
+  }
+}
+
+.footer_section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .footer_items {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    justify-content: center;
+
+    @include respond-to("medium") {
+      justify-content: space-between;
     }
+
+    p {
+      padding: 0 10px;
+    }
+
+    a {
+      padding: 0 10px;
+      color: #8495a7;
+    }
+  }
+}
+
+.widget_social {
+  list-style-type: none;
+}
+
+.widget_links {
+  list-style-type: none;
 }

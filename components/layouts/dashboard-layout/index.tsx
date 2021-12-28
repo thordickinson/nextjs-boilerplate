@@ -1,14 +1,22 @@
 import styles from './styles.module.scss'
 import Head from 'next/head'
 import { Menu } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { MailOutlined, SettingOutlined, DashboardOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+
+import { useRouter } from "next/router"
+import { signIn, signOut, useSession, getSession } from 'next-auth/client'
+import React, { useState, useEffect } from 'react'
+
 const { SubMenu } = Menu;
 
 export default function DashboardLayout({ children }) {
-    const year = new Date().getFullYear()
 
+    const year = new Date().getFullYear()
     const [menuCollapsed, setMenuCollapsed] = useState(false)
+
+    const [userstate, setUserstate] = useState(undefined);
+    const router = useRouter();
+    const [session, status] = useSession();
 
     const menu = [
         { icon: 'fas fa-tachometer-alt', label: 'Dashboard', link: '/user/dashboard' },
@@ -26,6 +34,22 @@ export default function DashboardLayout({ children }) {
     const handleClick = e => {
         console.log('click ', e);
     };
+
+    useEffect(() => {
+        (async () => {
+            const response = await getSession();
+            setUserstate(response || null);
+        })()
+    }, [session]);
+
+    if (userstate === undefined) return null;
+
+    if (!session && !userstate) {
+        router.push("/");
+        return null;
+    }
+
+
 
     return <>
         <Head>
@@ -64,18 +88,20 @@ export default function DashboardLayout({ children }) {
                         mode="inline"
                         inlineCollapsed={menuCollapsed}
                     >
-                        <Menu.Item icon={<MailOutlined />} key="5">Option 5</Menu.Item>
-                        <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-                        </SubMenu>
-                        <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-                            <Menu.Item key="6">Option 6</Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub4" icon={<SettingOutlined />} title="Navigation Three">
-                            <Menu.Item key="9">Option 9</Menu.Item>
+                        <Menu.Item icon={<DashboardOutlined />} key="dashboardUser" onClick={() => router.replace("/user/dashboardUser")}>Dashboard</Menu.Item>
+
+                        <Menu.Item key="sub1" icon={<UserOutlined />} title="My Profile" onClick={() => router.replace("/user/profile")}>
+                            My Profile
+                        </Menu.Item>
+
+                        <SubMenu key="sub2" icon={<SettingOutlined />} title="Settings">
+                            <Menu.Item icon={<MailOutlined />} key="notifications" onClick={() => router.replace("/user/settings/notifications")}>Notifications</Menu.Item>
                             <Menu.Item key="10">Option 10</Menu.Item>
                             <Menu.Item key="11">Option 11</Menu.Item>
                             <Menu.Item key="12">Option 12</Menu.Item>
                         </SubMenu>
+
+                        <Menu.Item icon={<LogoutOutlined />} key="sub3" onClick={() => signOut()}> Logout</Menu.Item>
                     </Menu>
                 </div>
                 <div className={styles.content}>

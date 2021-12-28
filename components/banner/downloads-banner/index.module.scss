@@ -1,0 +1,42 @@
+@import "~/styles/utils.scss";
+
+.downloads_banner {
+  margin: 50px 0 70px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    max-width: 1100px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .item {
+        max-width: 550px;
+        padding-top: 20px;
+
+        h2 {
+          padding: 30px 10px;
+        }
+        p {
+          padding: 0 10px;
+        }
+
+        .buttons {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          @include respond-to("medium") {
+            justify-content: left;
+          }
+        }
+      }
+    }
+  }
+}
