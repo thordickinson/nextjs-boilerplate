@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import style from "./styles.module.scss";
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
 import DefaultLayout from "../../components/layouts/default-layout";
 import BrandsBanner from "../../components/banner/brands-banner";
 import CountersBanner from "../../components/banner/counters-banner";
@@ -9,8 +13,13 @@ import DownloadsBanner from "../../components/banner/downloads-banner";
 import Banner_Header from "../../components/banner/banner-header";
 import Banner_ScreenShots from "../../components/banner/banner-screenshots";
 import Banner_Pricing from "../../components/banner/banner-pricing";
+<<<<<<< HEAD
 import ChartistGraph from 'react-chartist';
 import style from './styles.module.scss';
+=======
+
+
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
 
 export default function Showcase() {
 
@@ -89,6 +98,7 @@ export default function Showcase() {
         { shot: '/img/screenShots/app-ss-2.png' }
     ]
 
+<<<<<<< HEAD
     //graphics Data
     //Bar & line values
 
@@ -147,53 +157,92 @@ export default function Showcase() {
             <CountersBanner counters={counters}></CountersBanner>
 
             <div className={style.textShowCase}>Features Banner</div>
+=======
+    return (
+        <DefaultLayout>
+            <div className={style.title}>
+                <h1>Showcase</h1>
+            </div>
+            <div className={style.text}>Brands Banner</div>
+            <BrandsBanner logos={sponsors}></BrandsBanner>
+
+            <div className={style.text}>Counters Banner</div>
+            <CountersBanner counters={counters}></CountersBanner>
+
+            <div className={style.text}>Features Banner</div>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
             <FeaturesBanner
                 title={title_features}
                 description={descri_features}
                 features={features}
             ></FeaturesBanner>
 
+<<<<<<< HEAD
             <div className={style.textShowCase}>Sided Image Banner</div>
+=======
+            <div className={style.text}>Sided Image Banner</div>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
             <SidedImageBanner backgroundPosition="right" title={title_sidedimage}
                 description={description_sidedImage}
                 action={{ link: '#', label: "SEE PRICING", target: '_blank' }}>
                 <img style={{ padding: "0 30px" }} src="/img/dashboard-2.png"></img>
             </SidedImageBanner>
 
+<<<<<<< HEAD
             <div className={style.textShowCase}>Team Banner</div>
+=======
+            <div className={style.text}>Team Banner</div>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
             <TeamBanner
                 members={members}
                 title={title_team}
                 description={desc_team}
             ></TeamBanner>
 
+<<<<<<< HEAD
             <div className={style.textShowCase}>Testimonials Banner</div>
+=======
+            <div className={style.text}>Testimonials Banner</div>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
             <TestimonialsBanner
                 title={title_testimonials}
                 description={textRand + textRand}
                 testimonials={testimonials}
             ></TestimonialsBanner>
 
+<<<<<<< HEAD
             <div className={style.textShowCase}>Downloads Banner</div>
+=======
+            <div className={style.text}>Downloads Banner</div>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
             <DownloadsBanner
                 image={image}
                 information={info}
             ></DownloadsBanner>
 
+<<<<<<< HEAD
             <div className={style.textShowCase}>Banner Header</div>
+=======
+            <div className={style.text}>Banner Header</div>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
             <Banner_Header
                 title={title_bannerheader}
                 description={description_bannerheader}
                 hashtag={hashTag}
             ></Banner_Header>
 
+<<<<<<< HEAD
             <div className={style.textShowCase}>Banner ScreenShots</div>
+=======
+            <div className={style.text}>Banner ScreenShots</div>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
             <Banner_ScreenShots 
                 titleBanner={titleBanner} 
                 descBanner={descBanner} 
                 screenshots={screenShots} 
                 ssr={true}
             ></Banner_ScreenShots>
+<<<<<<< HEAD
             <div className={style.textShowCase}>Banner Pricing</div>
             <Banner_Pricing></Banner_Pricing>
 
@@ -209,6 +258,10 @@ export default function Showcase() {
             </div>
 
             
+=======
+            <div className={style.text}>Banner Pricing</div>
+            <Banner_Pricing></Banner_Pricing>
+>>>>>>> 4220d653b022245e9eba87d357a41ee976854bc9
         </DefaultLayout>
     )
 }
