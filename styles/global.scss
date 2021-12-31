@@ -248,3 +248,14 @@ button {
     margin-right: 10px;
   }
 }
+
+.navigation-menu {
+  .ant-menu-item {
+    &:hover {
+      background-color: $primary;
+    }
+  }
+  .ant-menu-item-selected {
+    background-color: $background-selected !important;
+  }
+}

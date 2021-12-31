@@ -7,8 +7,7 @@ export default function Notifications() {
         <DashboardLayout>
             <DashboardTitle title="Notifications" breadcrumb={["User", "Profile"]}></DashboardTitle>
             <div>
-
-
+                Notificaciones reales...
             </div>
         </DashboardLayout>
     )

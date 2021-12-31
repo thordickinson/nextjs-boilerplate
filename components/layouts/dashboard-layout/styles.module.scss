@@ -2,76 +2,181 @@
 @import "~/styles/variables.scss";
 
 .layout {
-    height: 100vh;
+  height: 100vh;
 }
 
 .dashboard {
+  display: flex;
+  height: calc(100% - 60px);
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .menu {
+    background: $accent;
     display: flex;
-    height: calc(100% - 60px);
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    .menu {
-        background: $accent;
+    flex-direction: column;
+
+    .avatarSmall {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px 0 5px 0;
+
+      .photoSmall {
+        border-radius: 50%;
+        border: $primary 2px solid;
+      }
     }
-    .content {
-        flex: 1;
-        background: #f1f4f9;
-        .footer {
-            background: #fff;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 19px 25px;
+
+    .avatar {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px 0 5px 0;
+
+      .photo {
+        border-radius: 50%;
+        border: $primary 7px solid;
+      }
+
+      .userInfo {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 5px 0 0px 0;
+
+        span {
+          color: black;
+          font-weight: 600;
         }
+
+        h5 {
+          color: $primary;
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
     }
+  }
+  .content {
+    width: 100%;
+    flex: 1;
+    background: #f1f4f9;
+
+    .footer {
+      background: #fff;
+      position: absolute;
+      bottom: 0;
+      width: 250px;
+      padding: 19px 25px;
+
+      @include respond-to("medium") {
+        width: 100%;
+      }
+
+      span {
+        font-size: 15px;
+      }
+    }
+  }
 }
 .header {
-    height: 60px;
+  height: 60px;
+  display: flex;
+
+  .logo {
+    background: $primary;
+    transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+
+    a {
+      color: white;
+      text-decoration: none;
+      margin: 0 auto;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 60px;
+      padding: 0 15px;
+    }
+  }
+  .navBar {
+    flex: 1 1;
     display: flex;
-    .logo {
-        background: $primary;
-        transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
-        a {
-            color: white;
-            text-decoration: none;
-            margin: 0 auto;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 60px;
-            padding: 0 15px;
-        }
+    .navBarLeft {
+      flex: 50%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
     }
-    .navBar {
-        flex: 1 1;
+    .navBarRight {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      padding: 0 50px 0 0;
+
+      .barRightButton {
         display: flex;
-        .navBarLeft{
-            flex: 50%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        transition: all 0.5s;
+        width: 70px;
+        height: 80%;
+        i {
+          position: relative;
         }
-        .navBarRight{
-            
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
+
+        &:hover {
+          background-color: $hover-button-color;
+
+          i {
+            color: white;
+          }
         }
+
+        .numNot {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: translate(10px, -10px);
+
+          background-color: red;
+          border-radius: 50%;
+          width: 18px;
+          height: 18px;
+
+          span {
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+          }
+        }
+      }
     }
+  }
 }
 
 .expanded {
-    width: 256px;
+  width: 256px;
 }
 
 .collapsed {
-    width: 60px;
+  width: 60px;
 }
 
 .menuButton {
-    height: 100%;
-    padding: 0 20px;
-    cursor: pointer;
+  height: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.ant-menu-item {
+  &:hover {
+    background-color: yellow !important;
+  }
 }

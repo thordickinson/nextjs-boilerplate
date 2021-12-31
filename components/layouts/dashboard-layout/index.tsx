@@ -3,9 +3,12 @@ import Head from 'next/head'
 import { Menu } from 'antd';
 import { MailOutlined, SettingOutlined, DashboardOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
 
-import { useRouter } from "next/router"
+import Router, { useRouter } from "next/router"
 import { signIn, signOut, useSession, getSession } from 'next-auth/client'
 import React, { useState, useEffect } from 'react'
+import { func } from '@hapi/joi';
+
+
 
 const { SubMenu } = Menu;
 
@@ -17,6 +20,7 @@ export default function DashboardLayout({ children }) {
     const [userstate, setUserstate] = useState(undefined);
     const router = useRouter();
     const [session, status] = useSession();
+
 
     const menu = [
         { icon: 'fas fa-tachometer-alt', label: 'Dashboard', link: '/user/dashboard' },
@@ -31,10 +35,13 @@ export default function DashboardLayout({ children }) {
         }
     ]
 
-    const handleClick = e => {
-        console.log('click ', e);
+
+    const handleClick = c => {
+        console.log('click ', c);
     };
 
+
+    //effect para la sesion, si cambia la sesion, redirige al Home
     useEffect(() => {
         (async () => {
             const response = await getSession();
@@ -50,6 +57,10 @@ export default function DashboardLayout({ children }) {
     }
 
 
+    //variables para las notificaciones
+    const notifyA = 7;
+    const notifyB = 0;
+   
 
     return <>
         <Head>
@@ -66,36 +77,65 @@ export default function DashboardLayout({ children }) {
                         {menuCollapsed && <span>B</span>}
                     </a>
                 </div>
+
                 <div className={styles.navBar}>
                     <div className={styles.navBarLeft}>
                         <button className={`clean-button ${styles.menuButton}`} onClick={() => setMenuCollapsed(!menuCollapsed)}>
-                            <i className="fas fa-bars"></i>
+                            {!menuCollapsed? <i className="fa fa-arrow-left"></i>: <i className="fa fa-arrow-right"></i>}
                         </button>
                     </div>
                     <div className={styles.navBarRight}>
-                        User menu
+                        <div className={styles.barRightButton}>
+                            <i className="fa fa-envelope"></i>
+                            {!notifyA? null: <div className={styles.numNot}>
+                                <span>{notifyA}</span>
+                                </div>}
+                        </div>
+                        <div className={styles.barRightButton}>
+                            <i className="fa fa-bell"></i>
+                            {!notifyB? null: <div className={styles.numNot}>
+                                <span>{notifyB}</span>
+                                </div>}
+                        </div>
+                        <div className={styles.barRightButton}>
+                            <i className="fa fa-cog"></i>
+                        </div>
+                        <div className={styles.barRightButton} onClick={() => signOut()}>
+                            <i className="fa fa-power-off"></i>
+                        </div>
                     </div>
                 </div>
             </header>
             <div className={styles.dashboard}>
                 <div className={styles.menu}>
+                    {!menuCollapsed? <div className={styles.avatar}>
+                        <img src={session?.user?.image} alt="profilePhoto" width="130" className={styles.photo}/>
+                        <div className={styles.userInfo}>
+                            <span>Welcome,</span>
+                            <h5>{session?.user?.name}</h5>
+                        </div>
+                        
+                    </div>: <div className={styles.avatarSmall}>
+                        <img src={session?.user?.image} alt="profilePhoto" width="50" className={styles.photoSmall}/>
+                    </div> }
+
                     <Menu
                         theme="dark"
                         onClick={handleClick}
                         style={{ width: menuCollapsed ? 60 : 256 }}
-                        defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
+                        defaultSelectedKeys={[router.pathname]}
                         mode="inline"
                         inlineCollapsed={menuCollapsed}
+                        className="navigation-menu"
                     >
-                        <Menu.Item icon={<DashboardOutlined />} key="dashboardUser" onClick={() => router.replace("/user/dashboardUser")}>Dashboard</Menu.Item>
+                        <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser" onClick={() => router.push("/user/dashboardUser")}>Dashboard</Menu.Item>
 
-                        <Menu.Item key="sub1" icon={<UserOutlined />} title="My Profile" onClick={() => router.replace("/user/profile")}>
+                        <Menu.Item key="/user/profile" icon={<UserOutlined />} title="My Profile" onClick={() => router.push("/user/profile")}>
                             My Profile
                         </Menu.Item>
 
                         <SubMenu key="sub2" icon={<SettingOutlined />} title="Settings">
-                            <Menu.Item icon={<MailOutlined />} key="notifications" onClick={() => router.replace("/user/settings/notifications")}>Notifications</Menu.Item>
+                            <Menu.Item icon={<MailOutlined />} key="/user/settings/notifications" onClick={() => router.push("/user/settings/notifications")}>Notifications</Menu.Item>
                             <Menu.Item key="10">Option 10</Menu.Item>
                             <Menu.Item key="11">Option 11</Menu.Item>
                             <Menu.Item key="12">Option 12</Menu.Item>
@@ -107,7 +147,7 @@ export default function DashboardLayout({ children }) {
                 <div className={styles.content}>
                     {children}
                     <div className={styles.footer}>
-                        Copyright thordickinson@gmail.com {year}
+                        <span> Copyright thordickinson@gmail.com {year} </span>
                     </div>
                 </div>
             </div>
