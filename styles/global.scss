@@ -250,12 +250,34 @@ button {
 }
 
 .navigation-menu {
+  background-color: white !important;
   .ant-menu-item {
+    .anticon {
+      color: black;
+    }
+
     &:hover {
       background-color: $primary;
+
+      .anticon {
+        color: white;
+      }
+
+      .ant-menu-title-content {
+        color: white;
+      }
     }
   }
   .ant-menu-item-selected {
     background-color: $background-selected !important;
+    .anticon {
+      color: white;
+    }
+  }
+
+  .ant-menu-submenu {
+    .ant-menu-sub {
+      background-color: $background-subMenu !important;
+    }
   }
 }

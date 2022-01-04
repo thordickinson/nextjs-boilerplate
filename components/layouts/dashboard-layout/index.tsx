@@ -7,7 +7,7 @@ import Router, { useRouter } from "next/router"
 import { signIn, signOut, useSession, getSession } from 'next-auth/client'
 import React, { useState, useEffect } from 'react'
 import { func } from '@hapi/joi';
-
+import { Popover, Button } from 'antd';
 
 
 const { SubMenu } = Menu;
@@ -60,7 +60,8 @@ export default function DashboardLayout({ children }) {
     //variables para las notificaciones
     const notifyA = 7;
     const notifyB = 0;
-   
+    
+    const copyright = `Copyright thordickinson@gmail.com ${year}`;
 
     return <>
         <Head>
@@ -85,18 +86,18 @@ export default function DashboardLayout({ children }) {
                         </button>
                     </div>
                     <div className={styles.navBarRight}>
-                        <div className={styles.barRightButton}>
+                        <Popover className={styles.barRightButton} content="List Messages" placement="bottomRight" title="Messages" trigger="click">
                             <i className="fa fa-envelope"></i>
                             {!notifyA? null: <div className={styles.numNot}>
                                 <span>{notifyA}</span>
                                 </div>}
-                        </div>
-                        <div className={styles.barRightButton}>
+                        </Popover>
+                        <Popover className={styles.barRightButton} content="List Notify" placement="bottomRight" title="Notifications" trigger="click">
                             <i className="fa fa-bell"></i>
                             {!notifyB? null: <div className={styles.numNot}>
                                 <span>{notifyB}</span>
                                 </div>}
-                        </div>
+                        </Popover>
                         <div className={styles.barRightButton}>
                             <i className="fa fa-cog"></i>
                         </div>
@@ -143,12 +144,22 @@ export default function DashboardLayout({ children }) {
 
                         <Menu.Item icon={<LogoutOutlined />} key="sub3" onClick={() => signOut()}> Logout</Menu.Item>
                     </Menu>
+                    {!menuCollapsed? <div className={styles.footerContainer}>
+                        <div className={styles.footer}>
+                            <span>{copyright}</span>
+                        </div>
+                    </div>: 
+                    <div className={styles.copyrightContainer}>
+                        <Popover className={styles.copyrightButton} content={copyright} placement="right" trigger="click">
+                            <i className="fa fa-copyright"></i>
+                        </Popover>
+                    </div>
+                    }
+                    
                 </div>
+                
                 <div className={styles.content}>
                     {children}
-                    <div className={styles.footer}>
-                        <span> Copyright thordickinson@gmail.com {year} </span>
-                    </div>
                 </div>
             </div>
         </main>

@@ -11,10 +11,14 @@
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+
   .menu {
-    background: $accent;
     display: flex;
     flex-direction: column;
+
+    span {
+      color: black;
+    }
 
     .avatarSmall {
       background-color: white;
@@ -64,34 +68,69 @@
     width: 100%;
     flex: 1;
     background: #f1f4f9;
+  }
+}
 
-    .footer {
-      background: #fff;
-      position: absolute;
-      bottom: 0;
-      width: 250px;
-      padding: 19px 25px;
+.footerContainer {
+  display: flex;
+  justify-content: center;
 
-      @include respond-to("medium") {
-        width: 100%;
-      }
+  .footer {
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    padding: 100px 25px 0 0;
 
-      span {
-        font-size: 15px;
-      }
+    @include respond-to("medium") {
+      //width: 100%;
+    }
+
+    span {
+      font-size: 10px;
     }
   }
 }
+
+.copyrightContainer {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+
+  &:hover {
+    i {
+      color: white;
+    }
+    .copyrightButton {
+      background-color: $hover-button-color;
+    }
+  }
+
+  i {
+    color: grey;
+    position: absolute;
+  }
+
+  .copyrightButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    width: 60px;
+    height: 60px;
+  }
+}
+
 .header {
   height: 60px;
   display: flex;
 
   .logo {
-    background: $primary;
+    display: flex;
+    background: white;
     transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
 
     a {
-      color: white;
+      color: black;
       text-decoration: none;
       margin: 0 auto;
       font-size: 20px;
@@ -101,6 +140,7 @@
     }
   }
   .navBar {
+    background-color: $primary;
     flex: 1 1;
     display: flex;
     .navBarLeft {
