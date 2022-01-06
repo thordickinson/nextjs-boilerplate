@@ -7,8 +7,8 @@ import Router, { useRouter } from "next/router"
 import { signIn, signOut, useSession, getSession } from 'next-auth/client'
 import React, { useState, useEffect } from 'react'
 import { func } from '@hapi/joi';
-import { Popover, Button } from 'antd';
-
+import { Popover, Button, Drawer } from 'antd';
+import MenuMobile from '../../dashboard/menuMobile';
 
 const { SubMenu } = Menu;
 
@@ -20,6 +20,8 @@ export default function DashboardLayout({ children }) {
     const [userstate, setUserstate] = useState(undefined);
     const router = useRouter();
     const [session, status] = useSession();
+
+    const [visible, setVisible] = useState(false);
 
 
     const menu = [
@@ -41,6 +43,16 @@ export default function DashboardLayout({ children }) {
     };
 
 
+    const showDrawer = () => {
+        setVisible(true);
+      };
+
+    const onClose = () => {
+        setVisible(false);
+      };
+    
+
+
     //effect para la sesion, si cambia la sesion, redirige al Home
     useEffect(() => {
         (async () => {
@@ -56,12 +68,15 @@ export default function DashboardLayout({ children }) {
         return null;
     }
 
-
+  
+  
     //variables para las notificaciones
     const notifyA = 7;
     const notifyB = 0;
     
     const copyright = `Copyright thordickinson@gmail.com ${year}`;
+
+    
 
     return <>
         <Head>
@@ -80,8 +95,11 @@ export default function DashboardLayout({ children }) {
                 </div>
 
                 <div className={styles.navBar}>
+                    <div className={styles.menuButton} onClick={showDrawer}>
+                        <i className="fa fa-bars"></i>
+                    </div>
                     <div className={styles.navBarLeft}>
-                        <button className={`clean-button ${styles.menuButton}`} onClick={() => setMenuCollapsed(!menuCollapsed)}>
+                        <button className={`clean-button ${styles.menuArrowButton}`} onClick={() => setMenuCollapsed(!menuCollapsed)}>
                             {!menuCollapsed? <i className="fa fa-arrow-left"></i>: <i className="fa fa-arrow-right"></i>}
                         </button>
                     </div>
@@ -119,6 +137,10 @@ export default function DashboardLayout({ children }) {
                     </div>: <div className={styles.avatarSmall}>
                         <img src={session?.user?.image} alt="profilePhoto" width="50" className={styles.photoSmall}/>
                     </div> }
+
+                    <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible}>
+                        <MenuMobile />
+                    </Drawer>
 
                     <Menu
                         theme="dark"

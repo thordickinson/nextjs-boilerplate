@@ -1,0 +1,19 @@
+@import "../../../styles/variables.scss";
+
+.mobileMenu {
+  background-color: purple;
+  width: 500px;
+}
+
+.ant-menu-item-selected {
+  background-color: yellow !important;
+  .anticon {
+    color: white;
+  }
+}
+
+.ant-menu-submenu {
+  .ant-menu-sub {
+    background-color: purple !important;
+  }
+}
