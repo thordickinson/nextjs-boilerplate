@@ -45,12 +45,12 @@ export default function DashboardLayout({ children }) {
 
     const showDrawer = () => {
         setVisible(true);
-      };
+    };
 
     const onClose = () => {
         setVisible(false);
-      };
-    
+    };
+
 
 
     //effect para la sesion, si cambia la sesion, redirige al Home
@@ -68,15 +68,15 @@ export default function DashboardLayout({ children }) {
         return null;
     }
 
-  
-  
+
+
     //variables para las notificaciones
     const notifyA = 7;
     const notifyB = 0;
-    
+
     const copyright = `Copyright thordickinson@gmail.com ${year}`;
 
-    
+
 
     return <>
         <Head>
@@ -100,21 +100,21 @@ export default function DashboardLayout({ children }) {
                     </div>
                     <div className={styles.navBarLeft}>
                         <button className={`clean-button ${styles.menuArrowButton}`} onClick={() => setMenuCollapsed(!menuCollapsed)}>
-                            {!menuCollapsed? <i className="fa fa-arrow-left"></i>: <i className="fa fa-arrow-right"></i>}
+                            {!menuCollapsed ? <i className="fa fa-arrow-left"></i> : <i className="fa fa-arrow-right"></i>}
                         </button>
                     </div>
                     <div className={styles.navBarRight}>
                         <Popover className={styles.barRightButton} content="List Messages" placement="bottomRight" title="Messages" trigger="click">
                             <i className="fa fa-envelope"></i>
-                            {!notifyA? null: <div className={styles.numNot}>
+                            {!notifyA ? null : <div className={styles.numNot}>
                                 <span>{notifyA}</span>
-                                </div>}
+                            </div>}
                         </Popover>
                         <Popover className={styles.barRightButton} content="List Notify" placement="bottomRight" title="Notifications" trigger="click">
                             <i className="fa fa-bell"></i>
-                            {!notifyB? null: <div className={styles.numNot}>
+                            {!notifyB ? null : <div className={styles.numNot}>
                                 <span>{notifyB}</span>
-                                </div>}
+                            </div>}
                         </Popover>
                         <div className={styles.barRightButton}>
                             <i className="fa fa-cog"></i>
@@ -127,18 +127,18 @@ export default function DashboardLayout({ children }) {
             </header>
             <div className={styles.dashboard}>
                 <div className={styles.menu}>
-                    {!menuCollapsed? <div className={styles.avatar}>
-                        <img src={session?.user?.image} alt="profilePhoto" width="130" className={styles.photo}/>
+                    {!menuCollapsed ? <div className={styles.avatar}>
+                        <img src={session?.user?.image} alt="profilePhoto" width="130" className={styles.photo} />
                         <div className={styles.userInfo}>
                             <span>Welcome,</span>
                             <h5>{session?.user?.name}</h5>
                         </div>
-                        
-                    </div>: <div className={styles.avatarSmall}>
-                        <img src={session?.user?.image} alt="profilePhoto" width="50" className={styles.photoSmall}/>
-                    </div> }
 
-                    <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible} onClick={() => router.push("/")}>
+                    </div> : <div className={styles.avatarSmall}>
+                        <img src={session?.user?.image} alt="profilePhoto" width="50" className={styles.photoSmall} />
+                    </div>}
+
+                    <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible} >
                         <MenuMobile />
                     </Drawer>
 
@@ -166,20 +166,20 @@ export default function DashboardLayout({ children }) {
 
                         <Menu.Item icon={<LogoutOutlined />} key="sub3" onClick={() => signOut()}> Logout</Menu.Item>
                     </Menu>
-                    {!menuCollapsed? <div className={styles.footerContainer}>
+                    {!menuCollapsed ? <div className={styles.footerContainer}>
                         <div className={styles.footer}>
                             <span>{copyright}</span>
                         </div>
-                    </div>: 
-                    <div className={styles.copyrightContainer}>
-                        <Popover className={styles.copyrightButton} content={copyright} placement="right" trigger="click">
-                            <i className="fa fa-copyright"></i>
-                        </Popover>
-                    </div>
+                    </div> :
+                        <div className={styles.copyrightContainer}>
+                            <Popover className={styles.copyrightButton} content={copyright} placement="right" trigger="click">
+                                <i className="fa fa-copyright"></i>
+                            </Popover>
+                        </div>
                     }
-                    
+
                 </div>
-                
+
                 <div className={styles.content}>
                     {children}
                 </div>
