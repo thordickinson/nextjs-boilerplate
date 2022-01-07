@@ -217,13 +217,13 @@ export default function Showcase() {
             <Banner_Pricing></Banner_Pricing>
 
             <div className={style.textShowCase}>Graphs</div>
-            <div className="container">
-                <ChartistGraph data={dataLine} options={optionsLine} type="Line" />
+            <div className='container'>
+                <ChartistGraph className={`${style.graficaA}`} data={dataLine} options={optionsLine} type="Line" />
             </div>
-            <div className="container">
+            <div className='container'>
                 <ChartistGraph className=".ct-chart" data={data} options={options} type="Pie" />
             </div>
-            <div className="container">
+            <div className='container'>
                 <ChartistGraph data={dataLine} options={optionsLine} type="Bar" />
             </div>
 

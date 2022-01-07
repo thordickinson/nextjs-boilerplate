@@ -138,7 +138,7 @@ export default function DashboardLayout({ children }) {
                         <img src={session?.user?.image} alt="profilePhoto" width="50" className={styles.photoSmall}/>
                     </div> }
 
-                    <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible}>
+                    <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible} onClick={() => router.push("/")}>
                         <MenuMobile />
                     </Drawer>
 

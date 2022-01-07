@@ -14,7 +14,7 @@
 
   .menu {
     display: none;
-
+    background-color: $terciary;
     @include respond-to("medium") {
       display: flex;
       flex-direction: column;
@@ -80,14 +80,12 @@
   justify-content: center;
 
   .footer {
-    background: #fff;
+    display: flex;
+    justify-content: center;
+    width: 256px;
+    background-color: $secondary;
     position: absolute;
     bottom: 0;
-    //padding: 100px 25px 0 0;
-
-    @include respond-to("medium") {
-      //width: 100%;
-    }
 
     span {
       font-size: 10px;
@@ -248,10 +246,4 @@
   height: 100%;
   padding: 0 20px;
   cursor: pointer;
-}
-
-.ant-menu-item {
-  &:hover {
-    background-color: yellow !important;
-  }
 }

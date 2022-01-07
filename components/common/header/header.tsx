@@ -3,7 +3,8 @@ import { Drawer, Button, Radio, Space } from 'antd';
 import styles from './header.module.scss'
 import { useEffect, useState } from 'react';
 import LoginButtonComponent from '../login-button/login-button';
-
+import MenuMobile from '../../dashboard/menuMobile';
+import Router, { useRouter } from "next/router"
 
 export default interface MenuItem {
     label: string
@@ -11,10 +12,11 @@ export default interface MenuItem {
 }
 
 export default function HeaderComponent({ links }) {
-    const [scrolled, setScrolled] = useState(false)
-    const [drawerVisible, setDrawerVisible] = useState(false)
+    const [scrolled, setScrolled] = useState(false);
+    const scrollListener = () => setScrolled(window.scrollY != 0);
 
-    const scrollListener = () => setScrolled(window.scrollY != 0)
+    const [visible, setVisible] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         window.addEventListener('scroll', scrollListener)
@@ -22,9 +24,23 @@ export default function HeaderComponent({ links }) {
         
     }, [])
 
+    const showDrawer = () => {
+        setVisible(true);
+      };
+
+    const onClose = () => {
+        setVisible(false);
+      };
+    
+
     return <>
         <header className={`${styles.navbar} ${scrolled ? styles['navbar-shadow'] : ''}`} id="menuHeader">
             <div className={`${styles.menuContainer} container`}>
+                <div className={styles.menuIconContainer}>
+                    <button onClick={showDrawer} >
+                        <MenuOutlined />
+                    </button>
+                </div>
                 <div className={styles.logoContainer}>
                     <a href="/" className={styles['navbar-brand']}>
                         <img src="/img/logo-dark.png" alt="Saasbiz" />
@@ -43,24 +59,10 @@ export default function HeaderComponent({ links }) {
                 <div className={styles.headerRight}>
                     <a className={styles.mainLink}>Main Link</a>
                 </div>
-                <div className={styles.menuIconContainer}>
-                    <button onClick={() => setDrawerVisible(true)}>
-                        <MenuOutlined />
-                    </button>
-                </div>
             </div>
         </header>
-        <Drawer
-            title="Basic Drawer"
-            placement="right"
-            closable={false}
-            onClose={() => setDrawerVisible(false)}
-            visible={drawerVisible}
-            key="right"
-        >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+        <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible} onClick={()=> router.push("/")}>
+            <MenuMobile />
         </Drawer>
     </>
 }

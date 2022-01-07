@@ -251,7 +251,8 @@ button {
 
 .navigation-menu {
   background-color: white !important;
-  .ant-menu-item {
+  .ant-menu-item,
+  .ant-menu-submenu {
     .anticon {
       color: black;
     }
@@ -278,7 +279,48 @@ button {
 
   .ant-menu-submenu {
     .ant-menu-sub {
-      background-color: $background-subMenu !important;
+      background-color: $terciary !important;
+      span {
+        color: white;
+      }
     }
   }
+}
+
+.mobile-menu {
+  background-color: white !important;
+  width: 100% !important;
+  span {
+    color: black;
+    font-weight: 600;
+  }
+}
+
+.ant-drawer-header {
+  background-color: $primary;
+
+  .ant-drawer-title {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+  }
+}
+
+.ant-drawer-body {
+  padding: 5px !important;
+  background-color: $terciary;
+}
+
+.ant-popover-inner-content,
+.ant-popover-arrow {
+  background-color: $secondary !important;
+  border-left-color: $secondary !important;
+  border-bottom-color: $secondary !important;
+  color: white;
+}
+//se agrego para que se corrigiera la vista del showcase en formato movil
+.ct-chart-line,
+.ct-chart-bar {
+  width: 100% !important;
 }

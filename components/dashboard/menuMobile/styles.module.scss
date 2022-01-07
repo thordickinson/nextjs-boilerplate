@@ -1,4 +1,5 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/utils.scss";
 
 .mobileMenu {
   background-color: purple;
@@ -15,5 +16,24 @@
 .ant-menu-submenu {
   .ant-menu-sub {
     background-color: purple !important;
+  }
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: center;
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    background: $secondary;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    span {
+      font-size: 10px;
+      color: white;
+    }
   }
 }
