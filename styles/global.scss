@@ -249,44 +249,7 @@ button {
   }
 }
 
-.navigation-menu {
-  background-color: $terciary !important;
-  .ant-menu-item,
-  .ant-menu-submenu {
-    .anticon {
-      color: black;
-    }
-
-    &:hover {
-      background-color: $primary;
-
-      .anticon {
-        color: white;
-      }
-
-      .ant-menu-title-content {
-        color: white;
-      }
-    }
-  }
-
-  .ant-menu-item-selected {
-    background-color: $background-selected !important;
-    .anticon {
-      color: black;
-    }
-  }
-
-  .ant-menu-submenu {
-    .ant-menu-sub {
-      background-color: $terciary !important;
-      span {
-        color: black;
-      }
-    }
-  }
-}
-
+//mobile menu
 .mobile-menu {
   background-color: white !important;
   width: 100% !important;
@@ -312,41 +275,61 @@ button {
   background-color: $terciary;
 }
 
-.ant-popover-inner-content,
-.ant-popover-arrow {
-  background-color: $secondary !important;
-  border-left-color: $secondary !important;
-  border-bottom-color: $secondary !important;
-  color: white;
+//copyrightBubble
+.ant-popover-placement-right {
+  .ant-popover-content {
+    .ant-popover-inner-content,
+    .ant-popover-arrow {
+      background-color: $secondary !important;
+      border-left-color: $secondary !important;
+      border-bottom-color: $secondary !important;
+      color: white;
+    }
+  }
 }
+
 //se agrego para que se corrigiera la vista del showcase en formato movil
 .ct-chart-line,
 .ct-chart-bar {
   max-width: 100% !important;
 }
 
-//menu compacto
-.ant-menu-sub {
+//menu normal
+.navigation-menu {
   background-color: $terciary !important;
 
-  .ant-menu-item {
-    .anticon {
-      color: black;
-    }
-    .ant-menu-title-content {
-      color: black;
-    }
-
+  .ant-menu-item,
+  .ant-menu-submenu-title {
     &:hover {
-      background-color: $primary !important;
-
-      .anticon {
-        color: white;
+      background-color: $primary;
+      span {
+        color: $terciary;
       }
+    }
+  }
+}
 
-      .ant-menu-title-content {
-        color: white;
+.ant-menu-item-selected {
+  background-color: $secondary !important;
+}
+
+//submenu desplegable normal
+.ant-menu-sub {
+  background-color: $terciary !important;
+  .ant-menu-item {
+    span {
+      color: black;
+    }
+    &:hover {
+      background-color: $primary;
+      span {
+        color: $terciary;
       }
+    }
+  }
+  .ant-menu-item-selected {
+    span {
+      color: $terciary;
     }
   }
 }

@@ -54,10 +54,6 @@ export default function Home({ Component, pageProps }: AppProps) {
 
   return (
     <DefaultLayout>
-
-      <h1 className="title">
-        Welcome to <a href="https://nextjs.org">Next.js!!!</a>
-      </h1>
       <FeaturesBanner title="Hello world"
         description="This is an awesome template for your business"
         features={features}></FeaturesBanner>

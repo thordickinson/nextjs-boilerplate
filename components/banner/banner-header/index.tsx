@@ -28,8 +28,9 @@ export default function Banner_Header({ title, description, hashtag }) {
                         <a href="#" className={`button-media`}><i className="fa fa-play"></i> HOW IT WORKS?</a>
                     </div>
                 </div>
-
-                <div className={style.hero_moc}></div>
+                <div className={style.heroContainer}>
+                    <div className={style.hero_moc}></div>
+                </div>
             </div>
         </div>
     )

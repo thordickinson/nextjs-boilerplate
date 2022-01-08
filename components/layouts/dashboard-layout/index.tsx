@@ -1,7 +1,7 @@
 import styles from './styles.module.scss'
 import Head from 'next/head'
 import { Menu } from 'antd';
-import { MailOutlined, SettingOutlined, DashboardOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { MailOutlined, SettingOutlined, DashboardOutlined, UserOutlined, LogoutOutlined, HomeOutlined, SlackOutlined } from '@ant-design/icons';
 
 import Router, { useRouter } from "next/router"
 import { signIn, signOut, useSession, getSession } from 'next-auth/client'
@@ -96,6 +96,7 @@ export default function DashboardLayout({ children }) {
 
                 <div className={styles.navBar}>
                     <div className={styles.menuButton} onClick={showDrawer}>
+                        <div className={styles.brandIcon}><SlackOutlined /></div>
                         <i className="fa fa-bars"></i>
                     </div>
                     <div className={styles.navBarLeft}>
@@ -151,6 +152,7 @@ export default function DashboardLayout({ children }) {
                         inlineCollapsed={menuCollapsed}
                         className="navigation-menu"
                     >
+                        <Menu.Item icon={<HomeOutlined />} key="/" onClick={() => router.push("/")}>Home</Menu.Item>
                         <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser" onClick={() => router.push("/user/dashboardUser")}>Dashboard</Menu.Item>
 
                         <Menu.Item key="/user/profile" icon={<UserOutlined />} title="My Profile" onClick={() => router.push("/user/profile")}>

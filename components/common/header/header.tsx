@@ -4,7 +4,7 @@ import styles from './header.module.scss'
 import { useEffect, useState } from 'react';
 import LoginButtonComponent from '../login-button/login-button';
 import MenuMobile from '../../dashboard/menuMobile';
-import Router, { useRouter } from "next/router"
+import {SlackOutlined} from '@ant-design/icons';
 
 export default interface MenuItem {
     label: string
@@ -16,7 +16,7 @@ export default function HeaderComponent({ links }) {
     const scrollListener = () => setScrolled(window.scrollY != 0);
 
     const [visible, setVisible] = useState(false);
-    const router = useRouter();
+    
 
     useEffect(() => {
         window.addEventListener('scroll', scrollListener)
@@ -32,17 +32,18 @@ export default function HeaderComponent({ links }) {
         setVisible(false);
       };
     
-
+//dentro del logo container el link que habia direccionaba al home, este generaba el error
+//al tocar el drawer por fuera para cerrarlo, lo dejo en # para que no genere el fallo
     return <>
         <header className={`${styles.navbar} ${scrolled ? styles['navbar-shadow'] : ''}`} id="menuHeader">
             <div className={`${styles.menuContainer} container`}>
                 <div className={styles.menuIconContainer}>
-                    <button onClick={showDrawer} >
-                        <MenuOutlined />
-                    </button>
+                    <a onClick={showDrawer} >
+                        <i className="fa fa-bars"></i>
+                    </a>
                 </div>
                 <div className={styles.logoContainer}>
-                    <a href="/" className={styles['navbar-brand']}>
+                    <a href="#" className={styles['navbar-brand']}>
                         <img src="/img/logo-dark.png" alt="Saasbiz" />
                     </a>
                 </div>
@@ -61,7 +62,7 @@ export default function HeaderComponent({ links }) {
                 </div>
             </div>
         </header>
-        <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible} onClick={()=> router.push("/")}>
+        <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible}>
             <MenuMobile />
         </Drawer>
     </>

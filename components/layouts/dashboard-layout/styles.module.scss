@@ -155,8 +155,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 60px;
-      height: 60px;
+      width: 100px;
+      height: 40px;
+      color: $terciary;
+      border-right: $terciary 1px solid;
+      margin-top: 10px;
+
+      .brandIcon {
+        padding: 0 10px;
+      }
+
+      i {
+        padding: 0 10px;
+      }
 
       &:hover {
         background-color: $hover-button-color;
@@ -189,7 +200,10 @@
       align-items: center;
       height: 100%;
       width: 100%;
-      padding: 0 50px 0 0;
+      padding: 0 0 0 0;
+      @include respond-to("medium") {
+        padding: 0 20px 0 0;
+      }
 
       .barRightButton {
         display: flex;
@@ -200,6 +214,7 @@
         width: 70px;
         height: 80%;
         i {
+          color: $terciary;
           position: relative;
         }
 
@@ -245,5 +260,6 @@
 .menuArrowButton {
   height: 100%;
   padding: 0 20px;
+  color: $terciary;
   cursor: pointer;
 }

@@ -312,39 +312,41 @@
     }
   }
 
-  .hero_moc {
-    background-image: url(/img/hero-moc.png);
-    position: relative;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 58%;
-    width: 95%;
-    height: 640px;
-    right: -20px;
-    top: -20px;
+  .heroContainer {
+    .hero_moc {
+      background-image: url(/img/hero-moc.png);
+      position: relative;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 58%;
+      width: 95%;
+      height: 640px;
+      right: -20px;
+      top: -20px;
 
-    @include respond-to("medium") {
-      width: 500px;
-    }
+      @include respond-to("medium") {
+        width: 500px;
+      }
 
-    overflow: hidden;
-    transform: translateY(0px);
-    //para animacion de flote
-    animation: float 6s ease-in-out infinite;
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
+      overflow: hidden;
+      transform: translateY(0px);
+      //para animacion de flote
+      animation: float 6s ease-in-out infinite;
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
       }
-      50% {
-        transform: translateY(-20px);
+      //para responsividad
+      @include respond-to("medium") {
+        background-position: right top;
       }
-      100% {
-        transform: translateY(0px);
-      }
-    }
-    //para responsividad
-    @include respond-to("medium") {
-      background-position: right top;
     }
   }
 }

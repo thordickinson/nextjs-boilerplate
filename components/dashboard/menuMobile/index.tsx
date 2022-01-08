@@ -12,7 +12,8 @@ import {
     TeamOutlined,
     DollarOutlined,
     FolderViewOutlined,
-    ContactsOutlined
+    ContactsOutlined,
+    HomeOutlined
 } from '@ant-design/icons';
 import { signIn, signOut, useSession, getSession } from 'next-auth/client';
 import styles from "./styles.module.scss";
@@ -39,6 +40,7 @@ export default function MenuMobile() {
                 mode="inline"
                 className= "navigation-menu mobile-menu"
                  >
+                     <Menu.Item icon={<HomeOutlined />} key="/" onClick={() => router.replace("/")}>Home</Menu.Item>
                      <Menu.Item icon={<TeamOutlined />} key="/about-us" onClick={() => router.replace("/about-us")}>About Us</Menu.Item>
                      <Menu.Item icon={<DollarOutlined />} key="/pricing" onClick={() => router.replace("/pricing")}>Pricing</Menu.Item>
                      <Menu.Item icon={<FolderViewOutlined />} key="/showcase" onClick={() => router.replace("/showcase")}>ShowCase</Menu.Item>
