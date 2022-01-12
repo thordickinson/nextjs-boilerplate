@@ -1,0 +1,33 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/utils.scss";
+
+.container {
+  background-color: $background-sky;
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+
+  .clearfix {
+    justify-content: center;
+    width: 98%;
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px;
+      background-color: $terciary;
+
+      @include respond-to("medium") {
+        flex-wrap: nowrap;
+      }
+
+      .object {
+        width: 100%;
+        margin: 20px;
+        border: #dddddd 1px dotted;
+      }
+    }
+  }
+}
