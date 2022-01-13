@@ -18,6 +18,7 @@
       flex-wrap: wrap;
       margin: 10px;
       background-color: $terciary;
+      border-radius: 3px;
 
       @include respond-to("medium") {
         flex-wrap: nowrap;

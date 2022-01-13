@@ -15,21 +15,45 @@ export default function UserProfile() {
     return (
 
         <DashboardLayout>
-            <DashboardTitle title={session?.user?.name} breadcrumb={["User", "Profile"]}></DashboardTitle>
-            <img src={session?.user?.image} alt="profilePhoto" />
-            <div>
-                <DashboardCard>
-                    <CardHeader title="Information">
-                    </CardHeader>
-                    <div>
-                        <span>
-                            E-mail: {session?.user?.email}
-                        </span>
+            <DashboardTitle title={session?.user?.name} breadcrumb={["", "Profile"]} iconic="fa fa-home" link="/"></DashboardTitle>
 
+            <div className={styles.container}>
+                <div className={styles.grid}>
+                    <div className={styles.leftside}>
+                        <div className={styles.profilePhoto}>
+                            <img src={session?.user?.image} alt="profilePhoto" />
+                            <span>{session?.user?.name}</span>
+                        </div>
+                        <div className={styles.infoProfile}>
+                            info profile
+                        </div>
                     </div>
-                </DashboardCard>
-                <CounterCard label="test" value="1254" icon="fa fa-eye" percent={50} />
+
+                    <div className={styles.rightside}>
+                        <div className={styles.overview}>
+                            overview & settings
+                        </div>
+                        <div className={styles.events}>
+                            <div className={styles.event}>
+                                event 1
+                            </div>
+                            <div className={styles.event}>
+                                event 2
+                            </div>
+                            <div className={styles.event}>
+                                event 3
+                            </div>
+                            <div className={styles.event}>
+                                event 4
+                            </div>
+                        </div>
+                        <div className={styles.icons}>
+                            icons
+                        </div>
+                    </div>
+                </div>
             </div>
-        </DashboardLayout>
+
+        </DashboardLayout >
     )
 }

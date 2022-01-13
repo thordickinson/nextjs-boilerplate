@@ -3,7 +3,7 @@ import DashboardTitle from "../../../components/dashboard/title"
 import ChartistGraph from 'react-chartist';
 import CounterCard from "../../../components/dashboard/counter-card";
 import styles from "./styles.module.scss";
-import { DollarCircleOutlined } from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons';
 
 export default function DashboardUser() {
 
@@ -24,11 +24,13 @@ export default function DashboardUser() {
         labelDirection: 'explode'
     };
 
+
+
     return (
         <DashboardLayout>
 
 
-            <DashboardTitle title="Dashboard" breadcrumb={["User", "Profile"]}></DashboardTitle>
+            <DashboardTitle title="Dashboard" breadcrumb={["", "Dashboard"]} iconic="fa fa-home" link="/"></DashboardTitle >
             <div className={styles.container}>
                 <div className={styles.back}>
                     <div className={styles.clearfix}>
@@ -57,6 +59,6 @@ export default function DashboardUser() {
 
 
 
-        </DashboardLayout>
+        </DashboardLayout >
     )
 }

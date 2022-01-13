@@ -297,31 +297,67 @@ button {
 //menu normal
 .navigation-menu {
   background-color: $terciary !important;
+  display: flex !important;
+  flex-flow: column wrap !important;
+  align-content: center !important;
 
   .ant-menu-item,
   .ant-menu-submenu-title {
+    width: 90% !important;
+    border-radius: 5px !important;
+
     &:hover {
       background-color: $primary;
+      width: 90% !important;
+
       span {
         color: $terciary;
       }
+    }
+  }
+  .ant-menu-submenu-title {
+    width: 100% !important;
+    &:hover {
+      width: 100% !important;
     }
   }
 }
 
 .ant-menu-item-selected {
   background-color: $secondary !important;
+  width: 100% !important;
+}
+
+//menu colapsed
+.ant-menu-inline-collapsed {
+  display: flex !important;
+  flex-flow: column wrap !important;
+  align-content: flex-start !important;
+  .ant-menu-submenu {
+    width: 100% !important;
+  }
+  .ant-menu-item,
+  .ant-menu-submenu-title {
+    width: 100% !important;
+    &:hover {
+      width: 100% !important;
+    }
+  }
 }
 
 //submenu desplegable normal
 .ant-menu-sub {
   background-color: $terciary !important;
+
   .ant-menu-item {
+    border-radius: 5px !important;
+    width: 90% !important;
     span {
       color: black;
     }
     &:hover {
       background-color: $primary;
+      width: 90% !important;
       span {
         color: $terciary;
       }

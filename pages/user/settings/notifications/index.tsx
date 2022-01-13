@@ -5,7 +5,7 @@ import DashboardTitle from "../../../../components/dashboard/title"
 export default function Notifications() {
     return (
         <DashboardLayout>
-            <DashboardTitle title="Notifications" breadcrumb={["User", "Profile"]}></DashboardTitle>
+            <DashboardTitle title="Notifications" breadcrumb={["", "Profile"]} iconic="fa fa-home" link="/"></DashboardTitle>
             <div>
                 Notificaciones reales...
             </div>
