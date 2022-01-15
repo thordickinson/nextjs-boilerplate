@@ -72,6 +72,8 @@
     width: 100%;
     flex: 1;
     background: #f1f4f9;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
