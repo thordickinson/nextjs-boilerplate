@@ -1,9 +1,11 @@
 .dashboardTitle {
-  padding: 20px;
-  background: #e9edf2;
+  padding: 10px;
+  background: white;
   border-bottom: 1px solid #dee2e8;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 30px;
+  height: 50px;
 }
 
 .breadcrumbContainer {
@@ -13,6 +15,7 @@
 .breadcrumb {
   list-style: none;
   display: flex;
+  padding-right: 30px;
   a {
     color: #204163;
   }

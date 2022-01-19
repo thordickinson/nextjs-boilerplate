@@ -3,32 +3,107 @@
 
 .container {
   background-color: $background-sky;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .back {
   display: flex;
   justify-content: center;
+  background-color: $terciary;
+  width: calc(100% - 45px);
+  border-radius: 5px;
+  border-color: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  transition: 0.5s;
 
-  .clearfix {
-    justify-content: center;
-    width: 98%;
+  &:hover {
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+  }
 
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 10px;
-      background-color: $terciary;
-      border-radius: 3px;
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 15px);
+    align-items: center;
 
-      @include respond-to("medium") {
-        flex-wrap: nowrap;
-      }
-
-      .object {
-        width: 100%;
-        margin: 20px;
-        border: #dddddd 1px dotted;
-      }
+    @include respond-to("medium") {
+      flex-wrap: nowrap;
+      flex-direction: row;
     }
+
+    .object {
+      width: 100%;
+      margin: 20px;
+    }
+  }
+}
+
+.grid {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  @include respond-to("medium") {
+    flex-direction: row;
+  }
+
+  .card {
+    background-color: $terciary;
+    width: calc(100% - 45px);
+    margin: 30px 0 0 0;
+    border-radius: 5px;
+    border-color: #eee;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    transition: 0.5s;
+
+    &:hover {
+      box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+    }
+
+    h3 {
+      padding: 10px 0 0 20px;
+    }
+
+    @include respond-to("medium") {
+      width: 70%;
+      margin: 30px 0 0 25px;
+    }
+  }
+
+  .topProducts {
+    background-color: chartreuse;
+    width: calc(100% - 45px);
+    margin: 30px 25px 0 30px;
+    border-radius: 5px;
+    height: 360px;
+    border-color: #eee;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    transition: 0.5s;
+
+    &:hover {
+      box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+    }
+
+    @include respond-to("medium") {
+      width: 30%;
+    }
+  }
+}
+
+.module {
+  background-color: chartreuse;
+  width: calc(100% - 45px);
+  margin: 30px 0 30px 0;
+  height: 200px;
+  border-radius: 5px;
+  border-color: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  transition: 0.5s;
+
+  &:hover {
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
   }
 }

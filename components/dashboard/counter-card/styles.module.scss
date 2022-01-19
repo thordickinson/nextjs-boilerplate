@@ -5,16 +5,20 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+
+  span {
+    font-size: 12px;
+  }
 }
 
 .value {
   display: flex;
   flex: 100%;
   justify-content: flex-end;
-  font-size: 28px;
+  font-size: 15px;
+  font-weight: 600;
   margin-bottom: 14px;
-  color: #374051;
-  font-weight: 300;
+  color: black;
 }
 
 .icon {
@@ -26,8 +30,9 @@
   flex: 80%;
   display: flex;
   justify-content: flex-end;
-  font-size: 13px;
-  color: #b0b0b0;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
 }
 .progress {
   flex: 100%;
