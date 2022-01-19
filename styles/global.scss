@@ -337,11 +337,24 @@ button {
   .ant-menu-submenu {
     width: 100% !important;
   }
+  .ant-menu-submenu-title,
+  .ant-menu-item {
+    border-radius: 0px !important;
+  }
   .ant-menu-item,
   .ant-menu-submenu-title {
     width: 100% !important;
     &:hover {
       width: 100% !important;
+    }
+  }
+}
+
+.ant-menu-submenu-popup {
+  .ant-menu-sub{
+    .ant-menu-item {
+      border-radius: 0 !important;
+      margin: 0 !important;
     }
   }
 }
@@ -352,13 +365,11 @@ button {
 
   .ant-menu-item {
     border-radius: 5px !important;
-    width: 90% !important;
     span {
       color: black;
     }
     &:hover {
       background-color: $primary;
-      width: 90% !important;
       span {
         color: $terciary;
       }

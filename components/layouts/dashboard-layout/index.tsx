@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react'
 import { func } from '@hapi/joi';
 import { Popover, Button, Drawer } from 'antd';
 import MenuMobile from '../../dashboard/menuMobile';
+import {setItem, getItem} from '../../../utils/local-storage'
 
 const { SubMenu } = Menu;
 
@@ -21,7 +22,8 @@ export default function DashboardLayout({ children }) {
     const router = useRouter();
     const [session, status] = useSession();
 
-    const [visible, setVisible] = useState(false);
+    const menuVisible = getItem("dashboard.bigMenu") == "true"
+    const [visible, setVisible] = useState(menuVisible);
 
 
     const menu = [
@@ -37,7 +39,6 @@ export default function DashboardLayout({ children }) {
         }
     ]
 
-
     const handleClick = c => {
         console.log('click ', c);
     };
@@ -45,10 +46,12 @@ export default function DashboardLayout({ children }) {
 
     const showDrawer = () => {
         setVisible(true);
+        setItem("dashboard.bigMenu", "true")
     };
 
     const onClose = () => {
         setVisible(false);
+        setItem("dashboard.bigMenu", "false")
     };
 
 
