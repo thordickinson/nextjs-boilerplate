@@ -76,14 +76,17 @@ export default function DashboardLayout({ children }) {
 
     const copyright = `Copyright thordickinson@gmail.com ${year}`;
 
+    const trimUserName = (user: string): string => {
+        if(!user) return null
+        const first = user.split(" ")[0]
+        return first.length > 12? first.substring(0, 9) + "..." : first
+    }
 
 
     return <>
         <Head>
             <link rel="icon" href="/favicon.ico" />
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-                integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-                crossOrigin="anonymous" referrerPolicy="no-referrer" />
+            <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"/>
         </Head>
         <main className={styles.layout}>
             <header className={styles.header}>
@@ -132,7 +135,7 @@ export default function DashboardLayout({ children }) {
                         <img src={session?.user?.image} alt="profilePhoto" width="130" className={styles.photo} />
                         <div className={styles.userInfo}>
                             <span>Welcome,</span>
-                            <h5>{session?.user?.name}</h5>
+                            <h5>{trimUserName(session?.user?.name)}</h5>
                         </div>
 
                     </div> : <div className={styles.avatarSmall}>
