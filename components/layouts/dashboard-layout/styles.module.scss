@@ -17,7 +17,9 @@
     @include respond-to("medium") {
       display: flex;
       flex-direction: column;
-
+      -webkit-box-shadow: 0 3px 5px 0px rgb(0 0 0 / 10%);
+      box-shadow: 0 3px 5px 0px rgb(0 0 0 / 10%);
+      
       span {
         color: black;
       }
@@ -42,9 +44,15 @@
         align-items: center;
         padding: 25px 0 5px 0;
 
-        .photo {
+        .photoWrapper {
+          border: 1px solid rgba(0, 0, 0, 0.116);
           border-radius: 50%;
-          border: $primary 7px solid;
+          padding: 8px;
+          .photo {
+              border: $primary 2px solid;
+              width: 90px;
+              border-radius: 50%;
+            }
         }
 
         .userInfo {
@@ -133,16 +141,19 @@
     @include respond-to("medium") {
       display: flex;
       background: white;
+      justify-content: center;
       transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
 
       a {
+        margin: 0 15px;
+        flex: 1;
         color: black;
         text-decoration: none;
-        margin: 0 auto;
         font-size: 20px;
         font-weight: 700;
         line-height: 60px;
         padding: 0 15px;
+        border-bottom: 1px solid #e3e3e3;
       }
     }
   }
@@ -213,7 +224,8 @@
         border-radius: 5px;
 
         transition: all 0.5s;
-        width: 70px;
+        font-size: 16px;
+        padding: 15px;
         height: 80%;
         i {
           color: $terciary;

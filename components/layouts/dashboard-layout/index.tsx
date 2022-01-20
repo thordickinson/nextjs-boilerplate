@@ -9,21 +9,21 @@ import React, { useState, useEffect } from 'react'
 import { func } from '@hapi/joi';
 import { Popover, Button, Drawer } from 'antd';
 import MenuMobile from '../../dashboard/menuMobile';
-import {setItem, getItem} from '../../../utils/local-storage'
 
 const { SubMenu } = Menu;
 
 export default function DashboardLayout({ children }) {
 
     const year = new Date().getFullYear()
-    const [menuCollapsed, setMenuCollapsed] = useState(false)
-
+    
     const [userstate, setUserstate] = useState(undefined);
     const router = useRouter();
+    const {menuCollapsed:menuCollapsedQueryParam} = router.query
+    console.log(menuCollapsedQueryParam == "true")
+    const [menuCollapsed, setMenuCollapsed] = useState(menuCollapsedQueryParam == "true")
     const [session, status] = useSession();
-
-    const menuVisible = getItem("dashboard.bigMenu") == "true"
-    const [visible, setVisible] = useState(menuVisible);
+    const [drawerVisible, setDrawerVisible] = useState(false);
+    
 
 
     const menu = [
@@ -45,14 +45,26 @@ export default function DashboardLayout({ children }) {
 
 
     const showDrawer = () => {
-        setVisible(true);
-        setItem("dashboard.bigMenu", "true")
+        setDrawerVisible(true);
     };
 
     const onClose = () => {
-        setVisible(false);
-        setItem("dashboard.bigMenu", "false")
+        setDrawerVisible(false);
     };
+
+    const navigate = (url: string) => {
+        if(menuCollapsed){
+            url = `${url}?menuCollapsed=true`
+        }
+        router.push(url)
+    }
+
+    const toggleMenuCollapsed = () => {
+        const collapsed = !menuCollapsed
+        setMenuCollapsed(collapsed)
+        router.query.menuCollapsed = `${collapsed}`
+        router.push(router)
+    }
 
 
 
@@ -106,7 +118,7 @@ export default function DashboardLayout({ children }) {
                         <i className="fa fa-bars"></i>
                     </div>
                     <div className={styles.navBarLeft}>
-                        <button className={`clean-button ${styles.menuArrowButton}`} onClick={() => setMenuCollapsed(!menuCollapsed)}>
+                        <button className={`clean-button ${styles.menuArrowButton}`} onClick={() => toggleMenuCollapsed()}>
                             {!menuCollapsed ? <i className="fa fa-arrow-left"></i> : <i className="fa fa-arrow-right"></i>}
                         </button>
                     </div>
@@ -135,7 +147,9 @@ export default function DashboardLayout({ children }) {
             <div className={styles.dashboard}>
                 <div className={styles.menu}>
                     {!menuCollapsed ? <div className={styles.avatar}>
-                        <img src={session?.user?.image} alt="profilePhoto" width="130" className={styles.photo} />
+                        <div className={styles.photoWrapper}>
+                            <img src={session?.user?.image} alt="Profile photo" className={styles.photo} />
+                        </div>
                         <div className={styles.userInfo}>
                             <span>Welcome,</span>
                             <h5>{trimUserName(session?.user?.name)}</h5>
@@ -145,7 +159,7 @@ export default function DashboardLayout({ children }) {
                         <img src={session?.user?.image} alt="profilePhoto" width="50" className={styles.photoSmall} />
                     </div>}
 
-                    <Drawer title="BrandName" placement="left" onClose={onClose} visible={visible} >
+                    <Drawer title="BrandName" placement="left" onClose={onClose} visible={drawerVisible} >
                         <MenuMobile />
                     </Drawer>
 
@@ -159,14 +173,16 @@ export default function DashboardLayout({ children }) {
                         className="navigation-menu"
                     >
                         <Menu.Item icon={<HomeOutlined />} key="/" onClick={() => router.push("/")}>Home</Menu.Item>
-                        <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser" onClick={() => router.push("/user/dashboardUser")}>Dashboard</Menu.Item>
+                        <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser" 
+                        onClick={() => navigate("/user/dashboardUser")}>Dashboard</Menu.Item>
 
-                        <Menu.Item key="/user/profile" icon={<UserOutlined />} title="My Profile" onClick={() => router.push("/user/profile")}>
+                        <Menu.Item key="/user/profile" icon={<UserOutlined />} title="My Profile" onClick={() => navigate("/user/profile")}>
                             My Profile
                         </Menu.Item>
 
                         <SubMenu key="sub2" icon={<SettingOutlined />} title="Settings">
-                            <Menu.Item icon={<MailOutlined />} key="/user/settings/notifications" onClick={() => router.push("/user/settings/notifications")}>Notifications</Menu.Item>
+                            <Menu.Item icon={<MailOutlined />} key="/user/settings/notifications" 
+                            onClick={() => navigate("/user/settings/notifications")}>Notifications</Menu.Item>
                             <Menu.Item key="10">Option 10</Menu.Item>
                             <Menu.Item key="11">Option 11</Menu.Item>
                             <Menu.Item key="12">Option 12</Menu.Item>
