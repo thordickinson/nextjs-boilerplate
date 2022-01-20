@@ -6,6 +6,14 @@ import '../styles/global.scss'
 //https://html.dynamiclayers.net/dl/truno/img/hero-moc-4.png
 //http://phantom-themes.com/modern/Source/admin1/?storefront=envato-elements
 
+
+import Amplify from 'aws-amplify'
+import config from '../src/aws-exports'
+Amplify.configure({
+  ...config,
+  ssr: true
+})
+
 // Create a client
 const queryClient = new QueryClient()
 
