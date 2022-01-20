@@ -299,6 +299,7 @@ button {
 .navigation-menu {
   background-color: $terciary !important;
   display: flex !important;
+  flex: 1;
   flex-flow: column wrap !important;
   align-content: center !important;
 
