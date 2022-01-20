@@ -33,12 +33,8 @@ export default function DashboardUser() {
         }
     };
 
-
-
     return (
         <DashboardLayout>
-
-
             <DashboardTitle title="Dashboard" breadcrumb={["", "Dashboard"]} iconic="fa fa-home" link="/"></DashboardTitle >
             <div className={styles.container}>
                 <div className={styles.back}>

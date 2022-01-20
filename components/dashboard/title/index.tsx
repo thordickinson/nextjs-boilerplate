@@ -17,7 +17,7 @@ export default function DashboardTitle({ title, breadcrumb, iconic, link }) {
 
         <div className={styles.breadcrumbContainer}>
             <div>
-                <a href={link}><i className={iconic} ></i></a>
+                <a href={link}><i className={iconic}></i></a>
             </div>
             <ol className={styles.breadcrumb}>
                 {bc.map((b, i) => <li key={i}> <a href={b.link}>{b.label}</a></li>)}
