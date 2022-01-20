@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from 'next-auth/client'
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+import styles from './styles.module.scss'
 
 export default function LoginButtonComponent() {
 
@@ -17,7 +18,7 @@ export default function LoginButtonComponent() {
             <a href="/user/dashboardUser">Dashboard</a>
         </Menu.Item>
         <Menu.Item key="1">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">Menu</a>
+            <a href="/user/profile">Profile</a>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item key="logout">Logout</Menu.Item>
@@ -26,10 +27,10 @@ export default function LoginButtonComponent() {
 
     return <>
         {!session && <>
-            <button onClick={() => signIn()}>Sign In</button>
+            <button onClick={() => signIn()} className={`${styles.common} ${styles.loginButton}`}>Sign In</button>
         </>}
         {session && <Dropdown overlay={menu}>
-            <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+            <a className={`ant-dropdown-link ${styles.common} ${styles.userMenu}`} onClick={e => e.preventDefault()}>
                 {username} <DownOutlined />
             </a>
         </Dropdown>
