@@ -1,10 +1,19 @@
 .cardHeader {
-    padding: 20px;
-    overflow: hidden;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border: 0!important;
-    height: 55px;
-    font-size: 14px;
-    font-weight: 600;
+    margin: 0px 0px 20px 0px;
+    color: gray;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.title {
+    flex: 1 1;
+    h4 {
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+}
+
+.controls {
+    display: flex;
 }

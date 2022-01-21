@@ -81,11 +81,11 @@
     }
   }
   .content {
-    width: calc(100% - 30px);
+    width: calc(100% - 10px);
     flex: 1;
-    padding: 15px;
+    padding: 5px;
     background: #f1f4f9;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
   }
 }

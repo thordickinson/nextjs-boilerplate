@@ -1,8 +1,12 @@
 import styles from "./styles.module.scss"
 
-export default function CardHeader({title, children = undefined}){
+export default function DashboardCardHeader({title, children = undefined}){
     return <div className={styles.cardHeader}>
-        <h4>{title}</h4>
-        <div>{children}</div>
+        <div className={styles.title}>
+            <h4>{title}</h4>
+        </div>
+        <div className={styles.controls}>
+            {children}
+        </div>
     </div>
 }
