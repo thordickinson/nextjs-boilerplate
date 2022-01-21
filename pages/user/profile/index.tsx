@@ -1,28 +1,30 @@
-import DashboardCard from '../../../components/dashboard/card'
-import CardHeader from '../../../components/dashboard/card-header'
-import CounterCard from '../../../components/dashboard/counter-card'
 import DashboardTitle from '../../../components/dashboard/title'
 import DashboardLayout from '../../../components/layouts/dashboard-layout'
 import styles from './styles.module.scss'
-import { signIn, signOut, useSession, getSession } from 'next-auth/client'
 import React, { useState, useEffect } from 'react'
+import { getUser } from '../../../utils/auth'
 
 export default function UserProfile() {
 
-    const [session, loading] = useSession();
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        (async() => {
+            const u = await getUser()
+            setUser(u)
+        })()
+    }, [])
 
 
     return (
-
         <DashboardLayout>
-            <DashboardTitle title={session?.user?.name} breadcrumb={["", "Profile"]} iconic="fa fa-home" link="/"></DashboardTitle>
+            <DashboardTitle title={user?.username} breadcrumb={["", "Profile"]} iconic="fa fa-home" link="/"></DashboardTitle>
 
             <div className={styles.container}>
                 <div className={styles.grid}>
                     <div className={styles.leftside}>
                         <div className={styles.profilePhoto}>
-                            <img src={session?.user?.image} alt="profilePhoto" />
-                            <span>{session?.user?.name}</span>
+                            <img src={user?.picture} alt="profilePhoto" />
+                            <span>{user?.username}</span>
                         </div>
                         <div className={styles.infoProfile}>
                             info profile

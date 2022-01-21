@@ -4,26 +4,28 @@ import { Menu } from 'antd';
 import { MailOutlined, SettingOutlined, DashboardOutlined, UserOutlined, LogoutOutlined, HomeOutlined, SlackOutlined } from '@ant-design/icons';
 
 import Router, { useRouter } from "next/router"
-import { signIn, signOut, useSession, getSession } from 'next-auth/client'
 import React, { useState, useEffect } from 'react'
 import { func } from '@hapi/joi';
 import { Popover, Button, Drawer } from 'antd';
 import MenuMobile from '../../dashboard/menuMobile';
+import { Auth } from 'aws-amplify';
+import { getLogger } from '../../../utils/logging';
+import { getUser, logOut } from '../../../utils/auth';
 
 const { SubMenu } = Menu;
+const logger = getLogger("DashboardLayout")
 
 export default function DashboardLayout({ children }) {
 
     const year = new Date().getFullYear()
-    
-    const [userstate, setUserstate] = useState(undefined);
+
+    const [user, setUser] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true)
     const router = useRouter();
-    const {menuCollapsed:menuCollapsedQueryParam} = router.query
-    console.log(menuCollapsedQueryParam == "true")
+    const { menuCollapsed: menuCollapsedQueryParam } = router.query
     const [menuCollapsed, setMenuCollapsed] = useState(menuCollapsedQueryParam == "true")
-    const [session, status] = useSession();
-    const [drawerVisible, setDrawerVisible] = useState(false);
-    
+    const [drawerVisible, setDrawerVisible] = useState(false)
+
 
 
     const menu = [
@@ -39,6 +41,15 @@ export default function DashboardLayout({ children }) {
         }
     ]
 
+    //effect para la sesion, si cambia la sesion, redirige al Home
+    useEffect(() => {
+        (async () => {
+            const user = await getUser()
+            setUser(user)
+            setLoadingUser(false)
+        })()
+    }, []);
+
     const handleClick = c => {
         console.log('click ', c);
     };
@@ -53,7 +64,7 @@ export default function DashboardLayout({ children }) {
     };
 
     const navigate = (url: string) => {
-        if(menuCollapsed){
+        if (menuCollapsed) {
             url = `${url}?menuCollapsed=true`
         }
         router.push(url)
@@ -66,24 +77,23 @@ export default function DashboardLayout({ children }) {
         router.push(router)
     }
 
-
-
-    //effect para la sesion, si cambia la sesion, redirige al Home
-    useEffect(() => {
-        (async () => {
-            const response = await getSession();
-            setUserstate(response || null);
-        })()
-    }, [session]);
-
-    if (userstate === undefined) return null;
-
-    if (!session && !userstate) {
-        router.push("/");
-        return null;
+    const signOut = () => { 
+        logOut().then( () => {
+            setUser(null)
+            setLoadingUser(false)
+            router.push("/")
+        })
     }
 
 
+
+    if (loadingUser) {
+        return <div> Loading... </div>
+    }
+
+    if (!user) {
+        router.push("/")
+    }
 
     //variables para las notificaciones
     const notifyA = 7;
@@ -92,16 +102,18 @@ export default function DashboardLayout({ children }) {
     const copyright = `Copyright thordickinson@gmail.com ${year}`;
 
     const trimUserName = (user: string): string => {
-        if(!user) return null
+        if (!user) return null
         const first = user.split(" ")[0]
-        return first.length > 12? first.substring(0, 9) + "..." : first
+        return first.length > 12 ? first.substring(0, 9) + "..." : first
     }
+    const username = user ? trimUserName(user.username) : undefined
+    const userImage = user?.picture
 
 
     return <>
         <Head>
             <link rel="icon" href="/favicon.ico" />
-            <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"/>
+            <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" />
         </Head>
         <main className={styles.layout}>
             <header className={styles.header}>
@@ -148,15 +160,15 @@ export default function DashboardLayout({ children }) {
                 <div className={styles.menu}>
                     {!menuCollapsed ? <div className={styles.avatar}>
                         <div className={styles.photoWrapper}>
-                            <img src={session?.user?.image} alt="Profile photo" className={styles.photo} />
+                            <img src={userImage} alt="Profile photo" className={styles.photo} />
                         </div>
                         <div className={styles.userInfo}>
                             <span>Welcome,</span>
-                            <h5>{trimUserName(session?.user?.name)}</h5>
+                            <h5>{username}</h5>
                         </div>
 
                     </div> : <div className={styles.avatarSmall}>
-                        <img src={session?.user?.image} alt="profilePhoto" width="50" className={styles.photoSmall} />
+                        <img src={userImage} alt="Profile Photo" className={styles.photoSmall} />
                     </div>}
 
                     <Drawer title="BrandName" placement="left" onClose={onClose} visible={drawerVisible} >
@@ -173,16 +185,16 @@ export default function DashboardLayout({ children }) {
                         className="navigation-menu"
                     >
                         <Menu.Item icon={<HomeOutlined />} key="/" onClick={() => router.push("/")}>Home</Menu.Item>
-                        <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser" 
-                        onClick={() => navigate("/user/dashboardUser")}>Dashboard</Menu.Item>
+                        <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser"
+                            onClick={() => navigate("/user/dashboardUser")}>Dashboard</Menu.Item>
 
                         <Menu.Item key="/user/profile" icon={<UserOutlined />} title="My Profile" onClick={() => navigate("/user/profile")}>
                             My Profile
                         </Menu.Item>
 
                         <SubMenu key="sub2" icon={<SettingOutlined />} title="Settings">
-                            <Menu.Item icon={<MailOutlined />} key="/user/settings/notifications" 
-                            onClick={() => navigate("/user/settings/notifications")}>Notifications</Menu.Item>
+                            <Menu.Item icon={<MailOutlined />} key="/user/settings/notifications"
+                                onClick={() => navigate("/user/settings/notifications")}>Notifications</Menu.Item>
                             <Menu.Item key="10">Option 10</Menu.Item>
                             <Menu.Item key="11">Option 11</Menu.Item>
                             <Menu.Item key="12">Option 12</Menu.Item>

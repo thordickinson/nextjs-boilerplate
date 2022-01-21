@@ -15,7 +15,6 @@ import {
     ContactsOutlined,
     HomeOutlined
 } from '@ant-design/icons';
-import { signIn, signOut, useSession, getSession } from 'next-auth/client';
 import styles from "./styles.module.scss";
 
 export default function MenuMobile() {
@@ -24,11 +23,14 @@ export default function MenuMobile() {
     const year = new Date().getFullYear();
     const copyright = `Copyright thordickinson@gmail.com ${year}`;
     const [userstate, setUserstate] = useState(undefined);
-    const [session, status] = useSession();
+    const [user, setUser] = useState(null)
 
     const handleClick = c => {
         console.log('click ', c);
     };
+
+    const signOut = () => {}
+    const signIn = () => {}
 
     return (
         <div>
@@ -45,9 +47,9 @@ export default function MenuMobile() {
                      <Menu.Item icon={<DollarOutlined />} key="/pricing" onClick={() => router.replace("/pricing")}>Pricing</Menu.Item>
                      <Menu.Item icon={<FolderViewOutlined />} key="/showcase" onClick={() => router.replace("/showcase")}>ShowCase</Menu.Item>
                      <Menu.Item icon={<ContactsOutlined />} key="/contact-us" onClick={() => router.replace("/contact-us")}>Contact</Menu.Item>
-                    {session? <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser" onClick={() => router.replace("/user/dashboardUser")}>Dashboard</Menu.Item>:null}
+                    {user? <Menu.Item icon={<DashboardOutlined />} key="/user/dashboardUser" onClick={() => router.replace("/user/dashboardUser")}>Dashboard</Menu.Item>:null}
 
-                    {session? <Menu.Item 
+                    {user? <Menu.Item 
                         key="/user/profile" 
                         icon={<UserOutlined />} 
                         title="My Profile" 
@@ -55,7 +57,7 @@ export default function MenuMobile() {
                     >
                         My Profile
                     </Menu.Item>: null}
-                    {session? <Menu.Item
+                    {user? <Menu.Item
                         key="/blog"
                         icon={<BookOutlined />}
                         title="Blog"
@@ -63,15 +65,15 @@ export default function MenuMobile() {
                     >
                         Blog
                     </Menu.Item>: null}
-                    {session? <SubMenu key="sub2" icon={<SettingOutlined />} title="Settings">
+                    {user? <SubMenu key="sub2" icon={<SettingOutlined />} title="Settings">
                         <Menu.Item icon={<MailOutlined />} key="/user/settings/notifications" onClick={() => router.replace("/user/settings/notifications")}>Notifications</Menu.Item>
                         <Menu.Item key="10">Option 10</Menu.Item>
                         <Menu.Item key="11">Option 11</Menu.Item>
                         <Menu.Item key="12">Option 12</Menu.Item>
                     </SubMenu>: null}
 
-                    {session? <Menu.Item icon={<LogoutOutlined />} key="sub3" onClick={() => signOut()}> Logout</Menu.Item>: null}
-                    {!session? <Menu.Item icon={<LoginOutlined />} key="sub4" onClick={() => signIn()}> Login</Menu.Item>: null}
+                    {user? <Menu.Item icon={<LogoutOutlined />} key="sub3" onClick={() => signOut()}> Logout</Menu.Item>: null}
+                    {!user? <Menu.Item icon={<LoginOutlined />} key="sub4" onClick={() => signIn()}> Login</Menu.Item>: null}
                     
                 </Menu>
                 <div className={styles.footerContainer}>

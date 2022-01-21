@@ -34,6 +34,9 @@
         .photoSmall {
           border-radius: 50%;
           border: $primary 2px solid;
+          width: 30px;
+          height: 30px;
+          margin-top: 30px;
         }
       }
 
@@ -50,7 +53,9 @@
           padding: 8px;
           .photo {
               border: $primary 2px solid;
+              transition: all 0.5s;
               width: 90px;
+              height: 90px;
               border-radius: 50%;
             }
         }

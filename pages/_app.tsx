@@ -1,4 +1,3 @@
-import { Provider } from 'next-auth/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import '../styles/global.scss'
 
@@ -20,9 +19,7 @@ const queryClient = new QueryClient()
 export default function App({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Provider session={pageProps.session}>
         <Component {...pageProps} />
-      </Provider>
     </QueryClientProvider>
   )
 }
