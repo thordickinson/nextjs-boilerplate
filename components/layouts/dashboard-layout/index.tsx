@@ -78,9 +78,9 @@ export default function DashboardLayout({ children }) {
     }
 
     const signOut = () => { 
+        setLoadingUser(true)
         logOut().then( () => {
             setUser(null)
-            setLoadingUser(false)
             router.push("/")
         })
     }
@@ -88,7 +88,18 @@ export default function DashboardLayout({ children }) {
 
 
     if (loadingUser) {
-        return <div> Loading... </div>
+        return <>
+         <Head>
+            <link rel="icon" href="/favicon.ico" />
+            <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" />
+        </Head>
+        <div className={styles.loading}>
+            <div className={styles.content}>
+                <i className={`${styles.icon} fa fa-atom fa-spin`}></i>
+                <span>Please Wait...</span>
+            </div>
+        </div>
+        </>
     }
 
     if (!user) {
