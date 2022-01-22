@@ -4,7 +4,8 @@ import styles from './header.module.scss'
 import { useEffect, useState } from 'react';
 import LoginButtonComponent from '../login-button/login-button';
 import MenuMobile from '../../dashboard/menuMobile';
-import {SlackOutlined} from '@ant-design/icons';
+import { SlackOutlined } from '@ant-design/icons';
+import { enablePushNotifications } from '../../../utils/serviceworker';
 
 export default interface MenuItem {
     label: string
@@ -16,24 +17,30 @@ export default function HeaderComponent({ links }) {
     const scrollListener = () => setScrolled(window.scrollY != 0);
 
     const [visible, setVisible] = useState(false);
-    
+
 
     useEffect(() => {
         window.addEventListener('scroll', scrollListener)
         return () => window.removeEventListener('scroll', scrollListener)
-        
+
     }, [])
 
     const showDrawer = () => {
         setVisible(true);
-      };
+    };
 
     const onClose = () => {
         setVisible(false);
-      };
-    
-//dentro del logo container el link que habia direccionaba al home, este generaba el error
-//al tocar el drawer por fuera para cerrarlo, lo dejo en # para que no genere el fallo
+    };
+
+    const handleMainLinkClick = () => {
+        (async () => {
+            await enablePushNotifications()
+        })()
+    }
+
+    //dentro del logo container el link que habia direccionaba al home, este generaba el error
+    //al tocar el drawer por fuera para cerrarlo, lo dejo en # para que no genere el fallo
     return <>
         <header className={`${styles.navbar} ${scrolled ? styles['navbar-shadow'] : ''}`} id="menuHeader">
             <div className={`${styles.menuContainer} container`}>
@@ -58,7 +65,7 @@ export default function HeaderComponent({ links }) {
                     <LoginButtonComponent></LoginButtonComponent>
                 </div>
                 <div className={styles.headerRight}>
-                    <a className={styles.mainLink}>Main Link</a>
+                    <a className={styles.mainLink} onClick={handleMainLinkClick}>Main Link</a>
                 </div>
             </div>
         </header>
