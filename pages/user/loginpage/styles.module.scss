@@ -1,0 +1,260 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/utils.scss";
+
+.authmain {
+  margin: 0 auto;
+  background-color: white;
+  display: block;
+
+  @include respond-to("medium") {
+    margin-top: 50px;
+  }
+
+  @include respond-to("large") {
+    margin-top: 100px;
+  }
+}
+
+//pseudo elementos
+.authmain::before {
+  background-color: $primary;
+  content: "";
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  box-sizing: border-box;
+
+  @include respond-to("small") {
+    width: 35%;
+  }
+
+  @include respond-to("medium") {
+    width: 50%;
+  }
+
+  @include respond-to("large") {
+    width: 31%;
+  }
+}
+
+.authmain::after {
+  background-color: white;
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  z-index: -1;
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+  }
+}
+
+.authmain::selection {
+  background-color: $primary;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+
+  @include respond-to("small") {
+    max-width: 720px;
+  }
+
+  @include respond-to("medium") {
+    max-width: 960px;
+  }
+
+  @include respond-to("large") {
+    max-width: 1140px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+
+  .col12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: block;
+
+    .navbar {
+      margin-bottom: 80px;
+      padding: 0 0 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      justify-content: space-between;
+      flex-flow: row nowrap;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .navBarBrand {
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+      }
+
+      .navbarNav {
+        flex-direction: row;
+        margin: 0;
+        display: inline-block;
+        padding-left: 0;
+        list-style: none;
+
+        li {
+          vertical-align: middle;
+          display: inline-block;
+          a {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+            color: white;
+          }
+        }
+      }
+
+      ul {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+      }
+    }
+  }
+  .col8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: block;
+
+    .detail {
+      max-width: 360px;
+      line-height: 30px;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      display: block;
+      color: white;
+      font-size: 18px;
+      h2 {
+        color: white;
+      }
+
+      @include respond-to("medium") {
+        h2 {
+          color: black;
+        }
+      }
+
+      @include respond-to("small") {
+        font-size: 25px;
+        color: black;
+      }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .carousel {
+      width: 350px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+  .col4 {
+    width: 100%;
+    position: relative;
+    display: block;
+
+    @include respond-to("medium") {
+      max-width: 33.333333%;
+    }
+
+    .card {
+      transition: all 0.3s ease-in-out;
+      background: #fff;
+      border-color: #eee;
+      margin-bottom: 30px;
+      position: relative;
+      width: 100%;
+      display: inline-block;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+
+      .regcontainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .register {
+          padding-bottom: 20px;
+          a {
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      @include respond-to("medium") {
+        width: 350px;
+      }
+
+      .header {
+        box-shadow: none;
+        color: #444;
+        padding: 15px 0 0 20px;
+        position: relative;
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  @include respond-to("medium") {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    flex-direction: row;
+  }
+
+  @include respond-to("large") {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    flex-direction: row;
+  }
+}
