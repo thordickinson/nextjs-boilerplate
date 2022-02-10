@@ -5,15 +5,18 @@ import 'react-multi-carousel/lib/styles.css';
 
 import LoginForm from './login-form';
 import RegisterForm from './register-form';
+import ConfirmSignUpForm from './confirm-signup';
 
 export default function LoginPage(ssr = true) {
     const [register, setRegister] = useState(false);
     const [otpActive, setOtpActive] = useState(false);  //para controlar si muestra o no la pagina de OTP
 
-    useEffect(() => {
+    
 
-        //poner alguna funcion que se requiera actualizar sin cargar la pagina
-    }, [register]);
+    useEffect(() => {
+        
+        console.log("estado de otp " + otpActive)
+    }, [register, otpActive]);
 
     const services = [
         { service: "Your Dashoboard" },
@@ -41,7 +44,7 @@ export default function LoginPage(ssr = true) {
         }
     };
 
-    return otpActive?<h2>otp aqui</h2>:
+    return otpActive?<ConfirmSignUpForm />:
 <div className={styles.authmain}>
     <div className={styles.container}>
         <div className={styles.row}>
@@ -87,7 +90,7 @@ export default function LoginPage(ssr = true) {
                             <p className={styles.lead}>Create Account</p>
                         </div>}
                         
-                    {!register?<LoginForm/>:<RegisterForm/>}
+                    {!register?<LoginForm/>:<RegisterForm setOtpActive ={setOtpActive}/>}
 
                     <div className={styles.regcontainer}>
                         <div className={styles.forgot}>

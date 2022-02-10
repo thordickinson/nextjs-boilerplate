@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 
 
-export default function RegisterForm() {
+export default function RegisterForm(setOtpActive) {
 
     const initialValues ={
         username: '',
@@ -28,8 +28,9 @@ export default function RegisterForm() {
 
     const onSubmit = (values, {resetForm}) => {
         console.log("form data signup " + values);
-        signUp(values.username, values.password, values.email);  //validar con un usuario existente
+        signUp(values.username, values.password, values.email);
         resetForm();
+        setOtpActive(true);//no funciona. corregir aqui
     }
 
     async function signUp(username, password, email) {
