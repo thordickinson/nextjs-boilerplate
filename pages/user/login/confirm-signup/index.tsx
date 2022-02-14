@@ -6,27 +6,27 @@ import * as Yup from "yup";
 import styles from "./styles.module.scss";
 
 
-export default function ConfirmSignUpForm() {
+export default function ConfirmSignUpForm({usernameTemp, setOtpActive}) {
 
 const initialValues = {
-    username:'',
     codeConfirmation:''
 }
 
-const validationSchema = {
-    username: Yup.string().required("Required your Username"),
-    codeConfirmation : Yup.string().required('No code security provided.')
-}
+const validationSchema = Yup.object({
+    codeConfirmation :  Yup.string().required('No code security provided.')
+})
 
 const onSubmit = (values, {resetForm}) => {
     console.log("datos de envio de codigo" + values);
-    confirmSignUp(values.username, values.codeConfirmation);  //validar con un usuario existente
+    console.log("Este es el usuario a registrarse: " + usernameTemp);
+    confirmSignUp(usernameTemp, values.codeConfirmation);  //validar con un usuario existente
     resetForm();
 }
     
 async function confirmSignUp(username, code) {
     try {
       await Auth.confirmSignUp(username, code);
+      setOtpActive(false);
     } catch (error) {
         console.log('error confirming sign up', error);
     }
@@ -40,13 +40,7 @@ async function confirmSignUp(username, code) {
   {
       formik => {
           return <Form className={styles.containerItems}>
-              <FormikControl
-                  control ='input'
-                  type='username'
-                  name='username'
-                  placeholder='Your Username'
-                  className={styles.input}
-              />
+              
               <FormikControl
                   control ='input'
                   type='username'

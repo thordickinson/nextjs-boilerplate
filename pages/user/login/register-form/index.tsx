@@ -1,12 +1,16 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, {useState} from 'react';
+import { Formik, Form, Field, ErrorMessage, validateYupSchema } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import styles from "./styles.module.scss";
 import * as Yup from "yup";
 import { Auth } from "aws-amplify";
+import ConfirmSignUpForm from '../confirm-signup';
 
 
-export default function RegisterForm(setOtpActive) {
+export default function RegisterForm() {
+
+    const [otpActive, setOtpActive] = useState(false);  //para controlar el panel OTP
+    const [usernameTemp, setUsernameTemp] = useState(undefined);
 
     const initialValues ={
         username: '',
@@ -26,12 +30,21 @@ export default function RegisterForm(setOtpActive) {
         email: Yup.string().email("Invalid Email Format").required("Required a Email")
     });
 
+    //const usernameTemp ='';
+
+    function SetUser(user) {
+        setUsernameTemp(user);
+    }
+
     const onSubmit = (values, {resetForm}) => {
         console.log("form data signup " + values);
         signUp(values.username, values.password, values.email);
+        SetUser(values.username);
         resetForm();
-        setOtpActive(true);//no funciona. corregir aqui
+        setOtpActive(true);
     }
+
+    
 
     async function signUp(username, password, email) {
         try {
@@ -50,7 +63,7 @@ export default function RegisterForm(setOtpActive) {
         }
     }
 
-    return <Formik
+    return !otpActive?<Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
@@ -93,5 +106,6 @@ export default function RegisterForm(setOtpActive) {
             }
         }
     </Formik>
-
+    :
+    <ConfirmSignUpForm usernameTemp={usernameTemp} setOtpActive={setOtpActive}/>
 }

@@ -1,35 +1,47 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import styles from "./styles.module.scss";
 import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 
+import { useRouter } from 'next/router';
+import { getUser, logOut } from '../../../../utils/auth';
+
 export default function LoginForm() {
 
+    const [user, setUser] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true);
+    const router = useRouter();
+
     const initialValues ={
-        email: '',
+        username: '',
         password: ''
     }
 
     const validationSchema = Yup.object({
-        email: Yup.string().email("Invalid Email Format").required("Required Email"),
+        username: Yup.string().required("Required Username"),
         password: Yup.string().required("Required your Password")
     });
 
     const onSubmit = (values, {resetForm}) => {
         console.log("form data " + values);
-        signIn(values.email, values.password);  //validar con un usuario existente
+        signIn(values.username, values.password);  //validar con un usuario existente
         resetForm();
+        
     }
 
-    async function signIn(email, password) {
+    async function signIn(username, password) {
         try {
-            const user = await Auth.signIn(email, password);
+            const cognitoUser = await Auth.signIn(username, password);
+            setUser(cognitoUser);
+            router.push("/");
         } catch (error) {
             console.log('error signing in', error);
         }
     }
+
+    //controlar los errores toastify
 
     return <>
         <Formik
@@ -42,9 +54,9 @@ export default function LoginForm() {
                     return <Form className={styles.containerItems}>
                         <FormikControl
                             control ='input'
-                            type='email'
-                            name='email'
-                            placeholder='Email'
+                            type='username'
+                            name='username'
+                            placeholder='Username'
                             className={styles.input}
                         />
                         <FormikControl
