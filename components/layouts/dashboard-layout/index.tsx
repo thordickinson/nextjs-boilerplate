@@ -102,9 +102,11 @@ export default function DashboardLayout({ children }) {
         </>
     }
 
+    
     if (!user) {
         router.push("/")
     }
+    
 
     //variables para las notificaciones
     const notifyA = 7;

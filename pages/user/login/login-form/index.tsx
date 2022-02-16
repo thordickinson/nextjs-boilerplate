@@ -6,12 +6,12 @@ import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 
 import { useRouter } from 'next/router';
-import { getUser, logOut } from '../../../../utils/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginForm() {
 
     const [user, setUser] = useState(null);
-    const [loadingUser, setLoadingUser] = useState(true);
     const router = useRouter();
 
     const initialValues ={
@@ -24,26 +24,29 @@ export default function LoginForm() {
         password: Yup.string().required("Required your Password")
     });
 
+    
     const onSubmit = (values, {resetForm}) => {
-        console.log("form data " + values);
         signIn(values.username, values.password);  //validar con un usuario existente
         resetForm();
-        
     }
+    
+   
 
     async function signIn(username, password) {
+        
         try {
             const cognitoUser = await Auth.signIn(username, password);
             setUser(cognitoUser);
             router.push("/");
         } catch (error) {
-            console.log('error signing in', error);
+            toast.error('Error signing in, ' + error);
         }
     }
 
-    //controlar los errores toastify
-
     return <>
+        <div className={styles.header}>
+            <p className={styles.lead}>Login to your Account</p>
+        </div>
         <Formik
             initialValues={initialValues}   
             validationSchema={validationSchema}
@@ -83,5 +86,6 @@ export default function LoginForm() {
                 }
             }
         </Formik>
+        <ToastContainer/>
     </>
 }

@@ -5,7 +5,8 @@ import styles from "./styles.module.scss";
 import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 import ConfirmSignUpForm from '../confirm-signup';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterForm() {
 
@@ -30,40 +31,43 @@ export default function RegisterForm() {
         email: Yup.string().email("Invalid Email Format").required("Required a Email")
     });
 
-    //const usernameTemp ='';
-
     function SetUser(user) {
         setUsernameTemp(user);
     }
 
     const onSubmit = (values, {resetForm}) => {
         console.log("form data signup " + values);
-        signUp(values.username, values.password, values.email);
-        SetUser(values.username);
-        resetForm();
-        setOtpActive(true);
+        signUp(values.username, values.password, values.email).then(()=>{
+            SetUser(values.username);
+            setOtpActive(true);
+            resetForm();
+        }).catch((e)=>{
+            toast.error('error signing up: ' + e);
+        });
     }
 
     
 
     async function signUp(username, password, email) {
-        try {
-            const { user } = await Auth.signUp({
-                username,
-                password,
-                attributes: {
-                    email,          // optional
-                    // optional - E.164 number convention
-                    // other custom attributes 
-                }
-            });
-            console.log(user);
-        } catch (error) {
-            console.log('error signing up:', error);
-        }
+        
+        const { user } = await Auth.signUp({
+            username,
+            password,
+            attributes: {
+                email,          // optional
+                // optional - E.164 number convention
+                // other custom attributes 
+            }
+        });
+        console.log(user);
     }
 
-    return !otpActive?<Formik
+    return <>
+    {!otpActive?<div>
+        <div className={styles.header}>
+        <p className={styles.lead}>Create Account</p>
+    </div>
+    <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
@@ -102,10 +106,14 @@ export default function RegisterForm() {
                     <div className={styles.buttonForm}>
                         <button type="submit" disabled={!formik.isValid}>CREATE ACCOUNT</button>
                     </div>
+                    <ToastContainer/>
                 </Form>
             }
         }
     </Formik>
+    </div>
     :
     <ConfirmSignUpForm usernameTemp={usernameTemp} setOtpActive={setOtpActive}/>
+    }
+    </>
 }

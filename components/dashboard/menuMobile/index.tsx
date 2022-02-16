@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Menu } from 'antd';
 import Router, { useRouter } from "next/router";
 import { 
@@ -16,6 +16,7 @@ import {
     HomeOutlined
 } from '@ant-design/icons';
 import styles from "./styles.module.scss";
+import { getUser, logOut } from '../../../utils/auth';
 
 export default function MenuMobile() {
     const { SubMenu } = Menu;
@@ -23,14 +24,35 @@ export default function MenuMobile() {
     const year = new Date().getFullYear();
     const copyright = `Copyright thordickinson@gmail.com ${year}`;
     const [userstate, setUserstate] = useState(undefined);
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true)
+
 
     const handleClick = c => {
         console.log('click ', c);
     };
 
-    const signOut = () => {}
-    const signIn = () => {}
+    //effect para la sesion, si cambia la sesion, redirige al Home
+    useEffect(() => {
+        (async () => {
+            const user = await getUser()
+            setUser(user)
+            setLoadingUser(false)
+        })()
+    }, []);
+
+    const signOut = () => { 
+        setLoadingUser(true)
+        logOut().then( () => {
+            setUser(null)
+            router.push("/")
+        })
+    }
+
+    const signIn = () => {
+        const redirectTo = encodeURIComponent(router.pathname) + encodeURIComponent(window.location.search)
+        router.push(`/user/login?redirectTo=${redirectTo}`)
+    }
 
     return (
         <div>

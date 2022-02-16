@@ -10,10 +10,12 @@ import RegisterForm from './register-form';
 export default function LoginPage(ssr = true) {
     const [register, setRegister] = useState(false);
 
+    /*
     useEffect(() => {
         
         //console.log("estado de otp ")
     }, [register]);
+    */
 
     const services = [
         { service: "Your Dashoboard" },
@@ -46,7 +48,7 @@ export default function LoginPage(ssr = true) {
         <div className={styles.row}>
             <div className={styles.col12}>
                 <nav className={styles.navbar}>
-                    <a href="#" className={styles.navBarBrand}>Brand Name</a>
+                    <a href="/" className={styles.navBarBrand}>Brand Name</a>
                     <ul className={styles.navbarNav}>
                         <li className={styles.liItem}><a href="#">Documentation</a></li>
                         <li className={styles.liItem}><a href="#">SignUp</a></li>
@@ -55,7 +57,7 @@ export default function LoginPage(ssr = true) {
             </div>
             <div className={styles.col8}>
                 <div className={styles.detail}>
-                    <h2>Everithing</h2>
+                    <h2>Everything</h2>
                     <h2>you need for</h2>
                     <h2>
                         <Carousel
@@ -78,14 +80,6 @@ export default function LoginPage(ssr = true) {
             </div>
             <div className={styles.col4}>
                 <div className={styles.card}>
-                    {!register ? <div className={styles.header}>
-                        <p className={styles.lead}>Login to your Account</p>
-                    </div>
-                        :
-                        <div className={styles.header}>
-                            <p className={styles.lead}>Create Account</p>
-                        </div>}
-                        
                     {!register?<LoginForm />:<RegisterForm />}
 
                     <div className={styles.regcontainer}>

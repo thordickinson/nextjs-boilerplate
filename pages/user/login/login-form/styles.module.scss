@@ -47,3 +47,13 @@
     color: rgb(0, 81, 255);
   }
 }
+
+.header {
+  box-shadow: none;
+  color: #444;
+  padding: 15px 0 0 20px;
+  position: relative;
+  p {
+    font-size: 20px;
+  }
+}
