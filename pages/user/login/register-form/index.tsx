@@ -36,7 +36,7 @@ export default function RegisterForm() {
     }
 
     const onSubmit = (values, {resetForm}) => {
-        console.log("form data signup " + values);
+        //console.log("form data signup " + values);
         signUp(values.username, values.password, values.email).then(()=>{
             SetUser(values.username);
             setOtpActive(true);

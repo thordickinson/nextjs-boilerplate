@@ -5,10 +5,13 @@ import 'react-multi-carousel/lib/styles.css';
 
 import LoginForm from './login-form';
 import RegisterForm from './register-form';
+import ForgotPassword from './forgot-password/indext';
+import ForgotPasswordSubmit from './forgot-password-submit';
 
 
 export default function LoginPage(ssr = true) {
     const [register, setRegister] = useState(false);
+    const [cardState, setCardState] = useState(1);
 
     /*
     useEffect(() => {
@@ -43,6 +46,10 @@ export default function LoginPage(ssr = true) {
         }
     };
 
+function UpdatePasswordModule(num){
+    setCardState(num);
+}
+
     return <div className={styles.authmain}>
     <div className={styles.container}>
         <div className={styles.row}>
@@ -51,7 +58,7 @@ export default function LoginPage(ssr = true) {
                     <a href="/" className={styles.navBarBrand}>Brand Name</a>
                     <ul className={styles.navbarNav}>
                         <li className={styles.liItem}><a href="#">Documentation</a></li>
-                        <li className={styles.liItem}><a href="#">SignUp</a></li>
+                        <li className={styles.liItem}><a onClick={()=> setCardState(1)}>SignIn</a></li>
                     </ul>
                 </nav>
             </div>
@@ -80,16 +87,23 @@ export default function LoginPage(ssr = true) {
             </div>
             <div className={styles.col4}>
                 <div className={styles.card}>
-                    {!register?<LoginForm />:<RegisterForm />}
+
+                    {cardState === 1 && <LoginForm />}
+                    {cardState === 2 && <RegisterForm />}
+                    {cardState === 3 && <ForgotPassword UpdatePasswordModule={UpdatePasswordModule}/>}
+                    {cardState === 4 && <ForgotPasswordSubmit />}
 
                     <div className={styles.regcontainer}>
-                        <div className={styles.forgot}>
-                            <a href="#">Forgot your password?</a>
-                        </div>
-                        {register ? <div className={styles.register}>
-                            have an account? <a onClick={() => setRegister(false)}>Login</a>
-                        </div> : <div className={styles.register}>
-                            dont have an account? <a onClick={() => setRegister(true)}>Register</a>
+                        {(cardState === 1 || cardState === 2) && <div className={styles.forgot}>
+                            <a onClick={() => setCardState(3)}>Forgot your password?</a>
+                        </div>}
+                        
+                        {(cardState === 1 || cardState === 3 || cardState === 4) && <div className={styles.register}>
+                            dont have an account? <a onClick={() => setCardState(2)}>Register</a>
+                        </div>}
+
+                        {(cardState === 2 || cardState === 3 || cardState === 4) && <div className={styles.register}>
+                            have an account? <a onClick={() => setCardState(1)}>Login</a>
                         </div>}
                     </div>
                 </div>
