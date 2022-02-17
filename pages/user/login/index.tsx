@@ -10,8 +10,8 @@ import ForgotPasswordSubmit from './forgot-password-submit';
 
 
 export default function LoginPage(ssr = true) {
-    const [register, setRegister] = useState(false);
-    const [cardState, setCardState] = useState(1);
+    
+    const [cardState, setCardState] = useState("loginForm");
 
     /*
     useEffect(() => {
@@ -46,8 +46,8 @@ export default function LoginPage(ssr = true) {
         }
     };
 
-function UpdatePasswordModule(num){
-    setCardState(num);
+function UpdatePasswordModule(state){
+    setCardState(state);
 }
 
     return <div className={styles.authmain}>
@@ -58,7 +58,7 @@ function UpdatePasswordModule(num){
                     <a href="/" className={styles.navBarBrand}>Brand Name</a>
                     <ul className={styles.navbarNav}>
                         <li className={styles.liItem}><a href="#">Documentation</a></li>
-                        <li className={styles.liItem}><a onClick={()=> setCardState(1)}>SignIn</a></li>
+                        <li className={styles.liItem}><a onClick={()=> setCardState("loginForm")}>SignIn</a></li>
                     </ul>
                 </nav>
             </div>
@@ -88,22 +88,22 @@ function UpdatePasswordModule(num){
             <div className={styles.col4}>
                 <div className={styles.card}>
 
-                    {cardState === 1 && <LoginForm />}
-                    {cardState === 2 && <RegisterForm />}
-                    {cardState === 3 && <ForgotPassword UpdatePasswordModule={UpdatePasswordModule}/>}
-                    {cardState === 4 && <ForgotPasswordSubmit UpdatePasswordModule={UpdatePasswordModule}/>}
+                    {cardState === "loginForm" && <LoginForm />}
+                    {cardState === "registerForm" && <RegisterForm />}
+                    {cardState === "forgotForm" && <ForgotPassword UpdatePasswordModule={UpdatePasswordModule}/>}
+                    {cardState === "forgotSubmitForm" && <ForgotPasswordSubmit UpdatePasswordModule={UpdatePasswordModule}/>}
 
                     <div className={styles.regcontainer}>
-                        {(cardState === 1 || cardState === 2) && <div className={styles.forgot}>
-                            <a onClick={() => setCardState(3)}>Forgot your password?</a>
+                        {(cardState === "loginForm" || cardState === "registerForm") && <div className={styles.forgot}>
+                            <a onClick={() => setCardState("forgotForm")}>Forgot your password?</a>
                         </div>}
                         
-                        {(cardState === 1 || cardState === 3 || cardState === 4) && <div className={styles.register}>
-                            dont have an account? <a onClick={() => setCardState(2)}>Register</a>
+                        {(cardState === "loginForm" || cardState === "forgotForm" || cardState === "forgotSubmitForm") && <div className={styles.register}>
+                            dont have an account? <a onClick={() => setCardState("registerForm")}>Register</a>
                         </div>}
 
-                        {(cardState === 2 || cardState === 3 || cardState === 4) && <div className={styles.register}>
-                            have an account? <a onClick={() => setCardState(1)}>Login</a>
+                        {(cardState === "registerForm" || cardState === "forgotForm" || cardState === "forgotSubmitForm") && <div className={styles.register}>
+                            have an account? <a onClick={() => setCardState("loginForm")}>Login</a>
                         </div>}
                     </div>
                 </div>

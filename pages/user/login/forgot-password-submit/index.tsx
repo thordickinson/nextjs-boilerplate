@@ -26,7 +26,7 @@ export default function ForgotPasswordSubmit({UpdatePasswordModule}) {
         PasswordSubmit(values.username, values.code, values.newpassword)
         .then(()=>{
             resetForm();
-            UpdatePasswordModule(1);
+            UpdatePasswordModule("loginForm");
         }).catch((e)=>{
             toast.error('error signing up: ' + e);
         });

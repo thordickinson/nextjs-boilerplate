@@ -21,7 +21,7 @@ export default function ForgotPassword({UpdatePasswordModule}) {
         ForgotPassword(values.username)
         .then(()=>{
             resetForm();
-            UpdatePasswordModule(4);
+            UpdatePasswordModule("forgotSubmitForm");
         })
         .catch((err)=>{
             toast.error('Error: ' + err);
