@@ -91,7 +91,7 @@ function UpdatePasswordModule(num){
                     {cardState === 1 && <LoginForm />}
                     {cardState === 2 && <RegisterForm />}
                     {cardState === 3 && <ForgotPassword UpdatePasswordModule={UpdatePasswordModule}/>}
-                    {cardState === 4 && <ForgotPasswordSubmit />}
+                    {cardState === 4 && <ForgotPasswordSubmit UpdatePasswordModule={UpdatePasswordModule}/>}
 
                     <div className={styles.regcontainer}>
                         {(cardState === 1 || cardState === 2) && <div className={styles.forgot}>

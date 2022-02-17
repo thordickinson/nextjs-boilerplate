@@ -6,7 +6,7 @@ import FormikControl from "../../../../components/formik-control/FormikControl";
 import { ToastContainer, toast } from 'react-toastify';
 import styles from "./styles.module.scss";
 
-export default function ForgotPasswordSubmit() {
+export default function ForgotPasswordSubmit({UpdatePasswordModule}) {
 
     const initialValues ={
         username: '',
@@ -23,20 +23,21 @@ export default function ForgotPasswordSubmit() {
     });
 
     const onSubmit = (values, {resetForm}) => {
-        PasswordSubmit(values.username, values.code, values.new_password)
+        PasswordSubmit(values.username, values.code, values.newpassword)
         .then(()=>{
             resetForm();
+            UpdatePasswordModule(1);
         }).catch((e)=>{
             toast.error('error signing up: ' + e);
         });
     }
 
-    async function PasswordSubmit(username, code, new_password) {
-        const {data} = await Auth.forgotPasswordSubmit(username, code, new_password) as any;
+    async function PasswordSubmit(username, code, newpassword) {
+        const {data} = await Auth.forgotPasswordSubmit(username, code, newpassword) as any;
         console.log(data);
     }
 
-    //corregir ya que al enviar el formulario, asi pongamos datos, la contraseña se esta llendo vacia
+    
   return <>
     <ToastContainer/>
     <div className={styles.header}>
