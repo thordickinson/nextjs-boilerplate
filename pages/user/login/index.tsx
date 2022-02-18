@@ -5,13 +5,16 @@ import 'react-multi-carousel/lib/styles.css';
 
 import LoginForm from './login-form';
 import RegisterForm from './register-form';
+import ConfirmSignUpForm from './confirm-signup';
 import ForgotPassword from './forgot-password/indext';
 import ForgotPasswordSubmit from './forgot-password-submit';
-
+import { func } from '@hapi/joi';
+import {toast } from 'react-toastify';
 
 export default function LoginPage(ssr = true) {
     
     const [cardState, setCardState] = useState("loginForm");
+    const [usernameTemp, setUsernameTemp] = useState(undefined);
 
     /*
     useEffect(() => {
@@ -46,8 +49,12 @@ export default function LoginPage(ssr = true) {
         }
     };
 
-function UpdatePasswordModule(state){
+function UpdateCardState(state){
     setCardState(state);
+}
+
+function UpdateUserName(userTemp) {
+    setUsernameTemp(userTemp);
 }
 
     return <div className={styles.authmain}>
@@ -89,9 +96,10 @@ function UpdatePasswordModule(state){
                 <div className={styles.card}>
 
                     {cardState === "loginForm" && <LoginForm />}
-                    {cardState === "registerForm" && <RegisterForm />}
-                    {cardState === "forgotForm" && <ForgotPassword UpdatePasswordModule={UpdatePasswordModule}/>}
-                    {cardState === "forgotSubmitForm" && <ForgotPasswordSubmit UpdatePasswordModule={UpdatePasswordModule}/>}
+                    {cardState === "registerForm" && <RegisterForm UpdateCardState={UpdateCardState} UpdateUserName={UpdateUserName}/>}
+                    {cardState === "confirmSignUp" && <ConfirmSignUpForm UpdateCardState={UpdateCardState} usernameTemp={usernameTemp}/>}
+                    {cardState === "forgotForm" && <ForgotPassword UpdateCardState={UpdateCardState}/>}
+                    {cardState === "forgotSubmitForm" && <ForgotPasswordSubmit UpdateCardState={UpdateCardState}/>}
 
                     <div className={styles.regcontainer}>
                         {(cardState === "loginForm" || cardState === "registerForm") && <div className={styles.forgot}>

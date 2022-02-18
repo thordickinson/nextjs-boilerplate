@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 
 import { useRouter } from 'next/router';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginForm() {
@@ -26,13 +26,13 @@ export default function LoginForm() {
 
     
     const onSubmit = (values, {resetForm}) => {
-        signIn(values.username, values.password);  //validar con un usuario existente
+        SignIn(values.username, values.password);  //validar con un usuario existente
         resetForm();
     }
     
    
 
-    async function signIn(username, password) {
+    async function SignIn(username, password) {
         
         try {
             const cognitoUser = await Auth.signIn(username, password);
@@ -86,6 +86,6 @@ export default function LoginForm() {
                 }
             }
         </Formik>
-        <ToastContainer/>
+        
     </>
 }

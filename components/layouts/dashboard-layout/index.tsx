@@ -1,7 +1,16 @@
 import styles from './styles.module.scss'
 import Head from 'next/head'
 import { Menu } from 'antd';
-import { MailOutlined, SettingOutlined, DashboardOutlined, UserOutlined, LogoutOutlined, HomeOutlined, SlackOutlined } from '@ant-design/icons';
+import { 
+    MailOutlined,
+    SettingOutlined, 
+    DashboardOutlined, 
+    UserOutlined, 
+    LogoutOutlined, 
+    HomeOutlined, 
+    SlackOutlined,
+    UnlockOutlined
+} from '@ant-design/icons';
 
 import Router, { useRouter } from "next/router"
 import React, { useState, useEffect } from 'react'
@@ -11,6 +20,9 @@ import MenuMobile from '../../dashboard/menuMobile';
 import { Auth } from 'aws-amplify';
 import { getLogger } from '../../../utils/logging';
 import { getUser, logOut } from '../../../utils/auth';
+import { toast } from 'react-toastify';
+
+
 
 const { SubMenu } = Menu;
 const logger = getLogger("DashboardLayout")
@@ -104,7 +116,7 @@ export default function DashboardLayout({ children }) {
 
     
     if (!user) {
-        router.push("/")
+        router.replace("/")
     }
     
 
@@ -129,6 +141,7 @@ export default function DashboardLayout({ children }) {
             <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" />
         </Head>
         <main className={styles.layout}>
+        
             <header className={styles.header}>
                 <div className={`${styles.logo} ${menuCollapsed ? styles.collapsed : styles.expanded}`}>
                     <a href='/'>
@@ -208,7 +221,8 @@ export default function DashboardLayout({ children }) {
                         <SubMenu key="sub2" icon={<SettingOutlined />} title="Settings">
                             <Menu.Item icon={<MailOutlined />} key="/user/settings/notifications"
                                 onClick={() => navigate("/user/settings/notifications")}>Notifications</Menu.Item>
-                            <Menu.Item key="10">Option 10</Menu.Item>
+                            <Menu.Item icon={<UnlockOutlined />} key="/user/settings/change-password"
+                                onClick={() => navigate("/user/settings/change-password")}>Change Password</Menu.Item>
                             <Menu.Item key="11">Option 11</Menu.Item>
                             <Menu.Item key="12">Option 12</Menu.Item>
                         </SubMenu>

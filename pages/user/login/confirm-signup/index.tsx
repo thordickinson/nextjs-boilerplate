@@ -4,8 +4,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import * as Yup from "yup";
 import styles from "./styles.module.scss";
+import { toast } from 'react-toastify';
 
-export default function ConfirmSignUpForm({usernameTemp, setOtpActive}) {
+export default function ConfirmSignUpForm(props) {
+const {usernameTemp, UpdateCardState} = props;
 
 const initialValues = {
     codeConfirmation:''
@@ -16,18 +18,26 @@ const validationSchema = Yup.object({
 })
 
 const onSubmit = (values, {resetForm}) => {
-    confirmSignUp(usernameTemp, values.codeConfirmation);  //validar con un usuario existente
-    resetForm();
+
+    ConfirmSignUp(usernameTemp, values.codeConfirmation).then(()=>{
+        resetForm();
+        UpdateCardState("loginForm");
+    }).catch((e)=>{
+        toast.error('error signing up: ' + e);
+    });
 }
     
-async function confirmSignUp(username, code) {
-    try {
-      await Auth.confirmSignUp(username, code);
-      setOtpActive(false);
-    } catch (error) {
-        console.log('error confirming sign up', error);
-    }
+
+async function ConfirmSignUp(username, code) {
+        
+    const { user } = await Auth.confirmSignUp(
+        username,
+        code
+    );
+    console.log(user);
 }
+
+
 
   return <>
     <div className={styles.header}>

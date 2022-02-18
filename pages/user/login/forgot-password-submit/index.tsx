@@ -3,10 +3,10 @@ import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 import { Formik, Form } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import styles from "./styles.module.scss";
 
-export default function ForgotPasswordSubmit({UpdatePasswordModule}) {
+export default function ForgotPasswordSubmit({UpdateCardState}) {
 
     const initialValues ={
         username: '',
@@ -26,7 +26,7 @@ export default function ForgotPasswordSubmit({UpdatePasswordModule}) {
         PasswordSubmit(values.username, values.code, values.newpassword)
         .then(()=>{
             resetForm();
-            UpdatePasswordModule("loginForm");
+            UpdateCardState("loginForm");
         }).catch((e)=>{
             toast.error('error signing up: ' + e);
         });
@@ -39,7 +39,6 @@ export default function ForgotPasswordSubmit({UpdatePasswordModule}) {
 
     
   return <>
-    <ToastContainer/>
     <div className={styles.header}>
         <p className={styles.lead}>Update Your Password</p>
     </div>

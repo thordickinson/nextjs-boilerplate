@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  .content{
+  .content {
     color: $primary;
     display: flex;
     flex-direction: column;
@@ -33,12 +33,15 @@
   .menu {
     display: none;
     background-color: $terciary;
+    overflow-y: auto;
+    overflow-x: hidden;
+
     @include respond-to("medium") {
       display: flex;
       flex-direction: column;
       -webkit-box-shadow: 0 3px 5px 0px rgb(0 0 0 / 10%);
       box-shadow: 0 3px 5px 0px rgb(0 0 0 / 10%);
-      
+
       span {
         color: black;
       }
@@ -71,12 +74,12 @@
           border-radius: 50%;
           padding: 8px;
           .photo {
-              border: $primary 2px solid;
-              transition: all 0.5s;
-              width: 90px;
-              height: 90px;
-              border-radius: 50%;
-            }
+            border: $primary 2px solid;
+            transition: all 0.5s;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+          }
         }
 
         .userInfo {
