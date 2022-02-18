@@ -20,7 +20,7 @@ import MenuMobile from '../../dashboard/menuMobile';
 import { Auth } from 'aws-amplify';
 import { getLogger } from '../../../utils/logging';
 import { getUser, logOut } from '../../../utils/auth';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 

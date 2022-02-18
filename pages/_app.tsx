@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import '../styles/global.scss'
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //https://html.dynamiclayers.net/dl/truno/about.html
 //https://html.dynamiclayers.net/dl/truno/img/hero-moc-4.png
@@ -20,7 +21,7 @@ const queryClient = new QueryClient()
 export default function App({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ToastContainer/>
+        <ToastContainer/>
         <Component {...pageProps} />
     </QueryClientProvider>
   )

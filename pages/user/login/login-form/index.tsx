@@ -7,7 +7,7 @@ import { Auth } from "aws-amplify";
 
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function LoginForm() {
 
@@ -39,7 +39,14 @@ export default function LoginForm() {
             setUser(cognitoUser);
             router.push("/");
         } catch (error) {
-            toast.error('Error signing in, ' + error);
+            //no enviar toastify, abrir condicional
+            console.log(error.code);
+            if(error.code === "UserNotConfirmedException"){
+                //aqui poner la funcion para poner el panel para reenviar el codigo de activacion
+            }
+            else{
+                toast.error('Error signing in, ' + error);
+            }
         }
     }
 

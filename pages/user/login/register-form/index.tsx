@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 import ConfirmSignUpForm from '../confirm-signup';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function RegisterForm({UpdateCardState, UpdateUserName}) {
 

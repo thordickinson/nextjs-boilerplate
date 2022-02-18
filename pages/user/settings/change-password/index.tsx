@@ -5,7 +5,7 @@ import { Formik, Form } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import * as Yup from "yup";
 import { Auth } from 'aws-amplify';
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 export default function ChangePassword() {
 
