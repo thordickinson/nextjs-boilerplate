@@ -8,6 +8,7 @@ import RegisterForm from './register-form';
 import ConfirmSignUpForm from './confirm-signup';
 import ForgotPassword from './forgot-password/indext';
 import ForgotPasswordSubmit from './forgot-password-submit';
+import ResendConfirmation from './resend-confirmation';
 import { func } from '@hapi/joi';
 import {toast } from 'react-toastify';
 
@@ -95,7 +96,8 @@ function UpdateUserName(userTemp) {
             <div className={styles.col4}>
                 <div className={styles.card}>
 
-                    {cardState === "loginForm" && <LoginForm />}
+                    {cardState === "loginForm" && <LoginForm UpdateCardState={UpdateCardState}/>}
+                    {cardState === "resendConfirmation" && <ResendConfirmation UpdateCardState={UpdateCardState} UpdateUserName={UpdateUserName}/>}
                     {cardState === "registerForm" && <RegisterForm UpdateCardState={UpdateCardState} UpdateUserName={UpdateUserName}/>}
                     {cardState === "confirmSignUp" && <ConfirmSignUpForm UpdateCardState={UpdateCardState} usernameTemp={usernameTemp}/>}
                     {cardState === "forgotForm" && <ForgotPassword UpdateCardState={UpdateCardState}/>}
@@ -106,11 +108,11 @@ function UpdateUserName(userTemp) {
                             <a onClick={() => setCardState("forgotForm")}>Forgot your password?</a>
                         </div>}
                         
-                        {(cardState === "loginForm" || cardState === "forgotForm" || cardState === "forgotSubmitForm") && <div className={styles.register}>
+                        {(cardState === "loginForm" || cardState === "forgotForm" || cardState === "forgotSubmitForm" || cardState === "confirmSignUp" || cardState === "resendConfirmation") && <div className={styles.register}>
                             dont have an account? <a onClick={() => setCardState("registerForm")}>Register</a>
                         </div>}
 
-                        {(cardState === "registerForm" || cardState === "forgotForm" || cardState === "forgotSubmitForm") && <div className={styles.register}>
+                        {(cardState === "registerForm" || cardState === "forgotForm" || cardState === "forgotSubmitForm" || cardState === "confirmSignUp" || cardState === "resendConfirmation") && <div className={styles.register}>
                             have an account? <a onClick={() => setCardState("loginForm")}>Login</a>
                         </div>}
                     </div>

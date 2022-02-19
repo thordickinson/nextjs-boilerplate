@@ -21,6 +21,7 @@ export default function ForgotPassword({UpdateCardState}) {
         ForgotPassword(values.username)
         .then(()=>{
             resetForm();
+            toast.info("A code has been sent to your email to reset your password");
             UpdateCardState("forgotSubmitForm");
         })
         .catch((err)=>{

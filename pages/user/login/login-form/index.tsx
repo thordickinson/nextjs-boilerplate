@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
 
-export default function LoginForm() {
+export default function LoginForm({UpdateCardState}) {
 
     const [user, setUser] = useState(null);
     const router = useRouter();
@@ -26,28 +26,21 @@ export default function LoginForm() {
 
     
     const onSubmit = (values, {resetForm}) => {
-        SignIn(values.username, values.password);  //validar con un usuario existente
-        resetForm();
+        //console.log("form data signup " + values);
+        SignIn(values.username, values.password).then(()=>{
+            //setUser(cognitoUser);
+            resetForm();
+            toast.success("Login Correct, Welcome!");
+            router.push("/");
+        }).catch((e)=>{
+            toast.error('error signing in: ' + e);
+        });
     }
-    
-   
 
+    
     async function SignIn(username, password) {
         
-        try {
-            const cognitoUser = await Auth.signIn(username, password);
-            setUser(cognitoUser);
-            router.push("/");
-        } catch (error) {
-            //no enviar toastify, abrir condicional
-            console.log(error.code);
-            if(error.code === "UserNotConfirmedException"){
-                //aqui poner la funcion para poner el panel para reenviar el codigo de activacion
-            }
-            else{
-                toast.error('Error signing in, ' + error);
-            }
-        }
+        const { cognitoUser } = await Auth.signIn({username, password});
     }
 
     return <>

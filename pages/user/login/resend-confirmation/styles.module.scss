@@ -13,13 +13,6 @@
     border: #cccccc 1px solid;
     margin: 10px;
   }
-  .inputError {
-    width: 310px;
-    height: 40px;
-    border-radius: 5px;
-    border: red 1px solid;
-    margin: 10px;
-  }
 
   .checkbox {
     display: flex;
@@ -36,7 +29,7 @@
   }
 
   .buttonForm {
-    padding-top: 20px;
+    padding-top: 10px;
     button {
       width: 310px;
       height: 40px;
@@ -61,9 +54,6 @@
   color: #444;
   padding: 15px 0 0 20px;
   position: relative;
-  display: flex;
-  justify-content: center;
-
   p {
     font-size: 20px;
   }

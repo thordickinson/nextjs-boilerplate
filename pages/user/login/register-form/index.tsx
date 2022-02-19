@@ -36,8 +36,9 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
         //console.log("form data signup " + values);
         signUp(values.username, values.password, values.email).then(()=>{
             UpdateUserName(values.username);
-            UpdateCardState('confirmSignUp');
             resetForm();
+            toast.info("A code to activate your account has been sent to your email");
+            UpdateCardState('confirmSignUp');
         }).catch((e)=>{
             toast.error('error signing up: ' + e);
         });
@@ -56,7 +57,7 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
                 // other custom attributes 
             }
         });
-        console.log(user);
+        //console.log(user);
     }
 
     return <>

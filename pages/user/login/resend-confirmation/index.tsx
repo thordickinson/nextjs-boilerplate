@@ -1,44 +1,41 @@
-import React from 'react';
+import React from 'react'
+import * as Yup from "yup";
+import { toast } from 'react-toastify';
 import { Auth } from 'aws-amplify';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
-import * as Yup from "yup";
 import styles from "./styles.module.scss";
-import { toast } from 'react-toastify';
 
-export default function ConfirmSignUpForm(props) {
-const {usernameTemp, UpdateCardState} = props;
+export default function ResendConfirmation(props) {
+    const {UpdateCardState, UpdateUserName} = props;
 
-const initialValues = {
-    codeConfirmation:''
-}
-
-const validationSchema = Yup.object({
-    codeConfirmation :  Yup.string().required('No code security provided.')
-})
-
-const onSubmit = (values, {resetForm}) => {
-
-    ConfirmSignUp(usernameTemp, values.codeConfirmation).then(()=>{
-        toast.success("Account validate succesfull");
-        resetForm();
-        UpdateCardState("loginForm");
-    }).catch((e)=>{
-        toast.error('error signing up: ' + e);
-    });
-}
+    const initialValues = {
+        username:''
+    }
     
-
-async function ConfirmSignUp(username, code) {
+    const validationSchema = Yup.object({
+        username :  Yup.string().required("Required Username")
+    })
+    
+    const onSubmit = (values, {resetForm}) => {
+    
+        ResendConfirmationCode(values.username).then(()=>{
+            UpdateUserName(values.username);
+            toast.info("Message with activation code sent to your email");
+            resetForm();
+            UpdateCardState("confirmSignUp");
+        }).catch((e)=>{
+            toast.error('error signing up: ' + e);
+        });
+    }
         
-    const { user } = await Auth.confirmSignUp(
-        username,
-        code
-    );
-    console.log(user);
-}
+    
+    async function ResendConfirmationCode(username) {
+            
+        const { user } = await Auth.resendSignUp(username);
+    }
 
-
+    
 
   return <>
     <div className={styles.header}>
@@ -56,8 +53,8 @@ async function ConfirmSignUp(username, code) {
                     <FormikControl
                         control ='input'
                         type='username'
-                        name='codeConfirmation'
-                        placeholder='Code'
+                        name='username'
+                        placeholder='username'
                         className={styles.input}
                     />
                     

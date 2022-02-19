@@ -35,10 +35,8 @@ export default function ChangePassword() {
         }).catch((e)=>{
             console.log('error signing up: ', e);
         });
-        
     }
 
-    //corregir el toast ya que dentro del dashboard no aplica la estetica del toast
     async function ChangePassword(oldPassword, newPassword) {
         
         Auth.currentAuthenticatedUser()

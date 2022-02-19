@@ -26,6 +26,7 @@ export default function ForgotPasswordSubmit({UpdateCardState}) {
         PasswordSubmit(values.username, values.code, values.newpassword)
         .then(()=>{
             resetForm();
+            toast.success("Password reset successful");
             UpdateCardState("loginForm");
         }).catch((e)=>{
             toast.error('error signing up: ' + e);
