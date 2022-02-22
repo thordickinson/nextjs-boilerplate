@@ -15,8 +15,7 @@ export default function LoginForm({UpdateCardState}) {
 
     const initialValues ={
         username: '',
-        password: '',
-        rememberme:''
+        password: ''
     }
 
     const validationSchema = Yup.object({
@@ -32,6 +31,12 @@ export default function LoginForm({UpdateCardState}) {
             router.push("/");
         }).catch((e)=>{
             if(e.code === "UserNotConfirmedException"){
+                //tomar el username del login para reenviar codigo
+                //link de reenviar codigo https://docs.amplify.aws/lib/auth/emailpassword/q/platform/js/#sign-in
+                //cambiar el update cardstate por el confirm sign up
+                //añadir el link de reenviar codigo
+                //añadir timer para ese link para volver a enviar codigo de activacion
+                //link de contador https://www.digitalocean.com/community/tutorials/react-countdown-timer-react-hooks
                 UpdateCardState("resendConfirmation");
             }
             else if(e.code === "NotAuthorizedException"){
@@ -50,45 +55,6 @@ export default function LoginForm({UpdateCardState}) {
     async function SignIn(username, password) {
         
         await Auth.signIn({username, password});
-    }
-
-    //adaptar las 3 funciones siguientes para el checkbox remember me
-    function setcookie(){
-        var u =document.getElementById('username').value;
-        var p =document.getElementById('password').value;
-        //console.log("se establecio el usuario: " + u + " y el password " + p);
-        document.cookie="myusrname="+u+";path=http://localhost:3100/user/login/";
-        document.cookie="mypswd="+p+";path=http://localhost:3100/user/login/";
-
-        console.log("result: " + document.getElementById('username'));
-    }
-
-    function getcookiedata(){
-
-        console.log(document.cookie);
-    
-        var user=getCookie('myusrname');
-        var pswd=getCookie('mypswd');
-    
-        document.getElementById('username').value = user;
-        document.getElementById('password').value = pswd;
-    
-    }
-    
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-            }
-        }
-        return "";
     }
 
 
@@ -118,16 +84,6 @@ export default function LoginForm({UpdateCardState}) {
                             placeholder='Password'
                             className={styles.input}
                         />
-                        <div className={styles.checkbox}>
-                            <Field
-                                type="checkbox"
-                                id="rememberme"
-                                name="rememberme"
-                                className={styles.box}
-                                onClick={setcookie}
-                            />
-                        <label htmlFor="rememberme"><span>Remember Me</span></label>
-                    </div>
                     <div className={styles.buttonContainer}>
                         <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">LOGIN</Button>
                         {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
