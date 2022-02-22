@@ -4,20 +4,19 @@ import FormikControl from "../../../../components/formik-control/FormikControl";
 import styles from "./styles.module.scss";
 import * as Yup from "yup";
 import { Auth } from "aws-amplify";
-
+import { Button } from 'antd';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-import { object } from '@hapi/joi';
 
 
 export default function LoginForm({UpdateCardState}) {
 
-    const [user, setUser] = useState(null);
     const router = useRouter();
 
     const initialValues ={
         username: '',
-        password: ''
+        password: '',
+        rememberme:''
     }
 
     const validationSchema = Yup.object({
@@ -27,9 +26,7 @@ export default function LoginForm({UpdateCardState}) {
 
     
     const onSubmit = (values, {resetForm}) => {
-        //console.log("form data signup " + values);
         SignIn(values.username, values.password).then(()=>{
-            //setUser(cognitoUser);
             resetForm();
             toast.success("Login Correct, Welcome!");
             router.push("/");
@@ -37,8 +34,14 @@ export default function LoginForm({UpdateCardState}) {
             if(e.code === "UserNotConfirmedException"){
                 UpdateCardState("resendConfirmation");
             }
-            else{
-                toast.error('Error signing in, ' + e);
+            else if(e.code === "NotAuthorizedException"){
+                toast.error("Username or Password incorrect")
+            }
+            else if(e.code === "UserNotFoundException"){
+                toast.error('Username or Password incorrect');
+            }
+            else if(e.code === "LimitExceededException"){
+                toast.error("Attempt limit exceeded, please try after some time.");
             }
         });
     }
@@ -46,8 +49,48 @@ export default function LoginForm({UpdateCardState}) {
     
     async function SignIn(username, password) {
         
-        const { cognitoUser } = await Auth.signIn({username, password});
+        await Auth.signIn({username, password});
     }
+
+    //adaptar las 3 funciones siguientes para el checkbox remember me
+    function setcookie(){
+        var u =document.getElementById('username').value;
+        var p =document.getElementById('password').value;
+        //console.log("se establecio el usuario: " + u + " y el password " + p);
+        document.cookie="myusrname="+u+";path=http://localhost:3100/user/login/";
+        document.cookie="mypswd="+p+";path=http://localhost:3100/user/login/";
+
+        console.log("result: " + document.getElementById('username'));
+    }
+
+    function getcookiedata(){
+
+        console.log(document.cookie);
+    
+        var user=getCookie('myusrname');
+        var pswd=getCookie('mypswd');
+    
+        document.getElementById('username').value = user;
+        document.getElementById('password').value = pswd;
+    
+    }
+    
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
 
     return <>
         <div className={styles.header}>
@@ -78,15 +121,16 @@ export default function LoginForm({UpdateCardState}) {
                         <div className={styles.checkbox}>
                             <Field
                                 type="checkbox"
-                                id="activar"
-                                name="checkbox"
-                                placeholder=""
+                                id="rememberme"
+                                name="rememberme"
                                 className={styles.box}
+                                onClick={setcookie}
                             />
-                        <label htmlFor="activar"><span>Remember Me</span></label>
+                        <label htmlFor="rememberme"><span>Remember Me</span></label>
                     </div>
-                    <div className={styles.buttonForm}>
-                        <button type="submit" disabled={!formik.isValid}>LOGIN</button>
+                    <div className={styles.buttonContainer}>
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">LOGIN</Button>
+                        {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
                     </div>
                 </Form>
                 }
@@ -95,3 +139,4 @@ export default function LoginForm({UpdateCardState}) {
         
     </>
 }
+

@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import { toast } from 'react-toastify';
 import styles from "./styles.module.scss";
+import { Button } from 'antd';
 
 export default function ForgotPasswordSubmit({UpdateCardState}) {
 
@@ -29,19 +30,29 @@ export default function ForgotPasswordSubmit({UpdateCardState}) {
             toast.success("Password reset successful");
             UpdateCardState("loginForm");
         }).catch((e)=>{
-            toast.error('error signing up: ' + e);
+            if(e.code === "UserNotFoundException"){
+                toast.error('Wrong user');
+            }
+            else if(e.code === "CodeMismatchException"){
+                toast.error('The code does not match');
+            }
+            else if(e.code === "LimitExceededException"){
+                toast.error("Attempt limit exceeded, please try after some time.");
+            }
         });
     }
 
     async function PasswordSubmit(username, code, newpassword) {
-        const {data} = await Auth.forgotPasswordSubmit(username, code, newpassword) as any;
-        console.log(data);
+        await Auth.forgotPasswordSubmit(username, code, newpassword) as any;
     }
 
     
   return <>
     <div className={styles.header}>
         <p className={styles.lead}>Update Your Password</p>
+    </div>
+    <div className={styles.messaje}>
+        <span>A code to reset your password has been sent to your email</span>
     </div>
     <Formik
         initialValues={initialValues}   
@@ -72,9 +83,10 @@ export default function ForgotPasswordSubmit({UpdateCardState}) {
                         placeholder='New Password'
                         className={styles.input}
                     />
-                <div className={styles.buttonForm}>
-                    <button type="submit" disabled={!formik.isValid}>UPDATE PASSWORD</button>
-                </div>
+                <div className={styles.buttonContainer}>
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">UPDATE PASSWORD</Button>
+                        {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
+                    </div>
             </Form>
             }
         }

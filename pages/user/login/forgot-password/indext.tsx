@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import { toast } from 'react-toastify';
 import styles from "./styles.module.scss";
+import { Button } from 'antd';
 
 export default function ForgotPassword({UpdateCardState}) {
 
@@ -24,15 +25,18 @@ export default function ForgotPassword({UpdateCardState}) {
             toast.info("A code has been sent to your email to reset your password");
             UpdateCardState("forgotSubmitForm");
         })
-        .catch((err)=>{
-            toast.error('Error: ' + err);
-            resetForm();
+        .catch((e)=>{
+            if(e.code === "UserNotFoundException"){
+                toast.error("Username does not exist");
+            }
+            else if(e.code === "LimitExceededException"){
+                toast.error("Attempt limit exceeded, please try after some time.");
+            }
         });
     }
 
     async function ForgotPassword(username) {
-        const {user} = await Auth.forgotPassword(username);
-        console.log(user);
+        await Auth.forgotPassword(username);
     }
 
   return <>
@@ -55,8 +59,9 @@ export default function ForgotPassword({UpdateCardState}) {
                             placeholder='Username'
                             className={styles.input}
                         />
-                    <div className={styles.buttonForm}>
-                        <button type="submit" disabled={!formik.isValid}>SUBMIT</button>
+                    <div className={styles.buttonContainer}>
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">SUBMIT</Button>
+                        {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
                     </div>
                 </Form>
                 }

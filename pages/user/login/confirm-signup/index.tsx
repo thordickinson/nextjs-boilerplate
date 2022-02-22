@@ -5,6 +5,7 @@ import FormikControl from "../../../../components/formik-control/FormikControl";
 import * as Yup from "yup";
 import styles from "./styles.module.scss";
 import { toast } from 'react-toastify';
+import { Button } from 'antd';
 
 export default function ConfirmSignUpForm(props) {
 const {usernameTemp, UpdateCardState} = props;
@@ -24,18 +25,22 @@ const onSubmit = (values, {resetForm}) => {
         resetForm();
         UpdateCardState("loginForm");
     }).catch((e)=>{
-        toast.error('error signing up: ' + e);
+        if(e.code=== "CodeMismatchException"){
+            toast.error("The code does not match");
+        }
+        else if(e.code === "LimitExceededException"){
+            toast.error("Attempt limit exceeded, please try after some time.");
+        }
     });
 }
     
 
 async function ConfirmSignUp(username, code) {
         
-    const { user } = await Auth.confirmSignUp(
+    await Auth.confirmSignUp(
         username,
         code
     );
-    console.log(user);
 }
 
 
@@ -43,6 +48,9 @@ async function ConfirmSignUp(username, code) {
   return <>
     <div className={styles.header}>
         <p className={styles.lead}>Confirm Account</p>
+    </div>
+    <div className={styles.messaje}>
+        <span>A code to activate your account has been sent to your email</span>
     </div>
     <Formik
         initialValues={initialValues}
@@ -61,8 +69,9 @@ async function ConfirmSignUp(username, code) {
                         className={styles.input}
                     />
                     
-                    <div className={styles.buttonForm}>
-                        <button type="submit" disabled={!formik.isValid}>ACTIVATE ACCOUNT</button>
+                    <div className={styles.buttonContainer}>
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">ACTIVATE ACCOUNT</Button>
+                        {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
                     </div>
                 </Form>
             }

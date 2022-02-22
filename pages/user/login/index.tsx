@@ -9,8 +9,6 @@ import ConfirmSignUpForm from './confirm-signup';
 import ForgotPassword from './forgot-password/indext';
 import ForgotPasswordSubmit from './forgot-password-submit';
 import ResendConfirmation from './resend-confirmation';
-import { func } from '@hapi/joi';
-import {toast } from 'react-toastify';
 
 export default function LoginPage(ssr = true) {
     
@@ -58,7 +56,9 @@ function UpdateUserName(userTemp) {
     setUsernameTemp(userTemp);
 }
 
-    return <div className={styles.authmain}>
+
+
+    return <div  className={styles.authmain}>
     <div className={styles.container}>
         <div className={styles.row}>
             <div className={styles.col12}>

@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
-import { Formik, Form, Field, ErrorMessage, validateYupSchema } from "formik";
+import { Formik, Form } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import styles from "./styles.module.scss";
 import * as Yup from "yup";
 import { Auth } from "aws-amplify";
-import ConfirmSignUpForm from '../confirm-signup';
 import { toast } from 'react-toastify';
-
+import { Button } from 'antd';
 
 export default function RegisterForm({UpdateCardState, UpdateUserName}) {
 
-    const [usernameTemp, setUsernameTemp] = useState(undefined);
+    //const [usernameTemp, setUsernameTemp] = useState(undefined);
 
     const initialValues ={
         username: '',
@@ -30,25 +29,24 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
         email: Yup.string().email("Invalid Email Format").required("Required a Email")
     });
 
-    
-
     const onSubmit = (values, {resetForm}) => {
-        //console.log("form data signup " + values);
         signUp(values.username, values.password, values.email).then(()=>{
             UpdateUserName(values.username);
             resetForm();
-            toast.info("A code to activate your account has been sent to your email");
             UpdateCardState('confirmSignUp');
         }).catch((e)=>{
-            toast.error('error signing up: ' + e);
+            if(e.code === "UsernameExistsException"){
+                toast.error('Username already exist');
+            }
+            else if(e.code === "LimitExceededException"){
+                toast.error("Attempt limit exceeded, please try after some time.");
+            }
         });
     }
 
-    
-
     async function signUp(username, password, email) {
         
-        const { user } = await Auth.signUp({
+        await Auth.signUp({
             username,
             password,
             attributes: {
@@ -57,7 +55,6 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
                 // other custom attributes 
             }
         });
-        //console.log(user);
     }
 
     return <>
@@ -101,8 +98,10 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
                         placeholder='Valid Email'
                         className={styles.input}
                     />
-                    <div className={styles.buttonForm}>
-                        <button type="submit" disabled={!formik.isValid}>CREATE ACCOUNT</button>
+                    <div className={styles.buttonContainer}>
+                        
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">CREATE ACCOUNT</Button>
+                        {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
                     </div>
                 </Form>
             }

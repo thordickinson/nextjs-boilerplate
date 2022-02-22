@@ -310,7 +310,7 @@ button {
     padding-top: 5px !important;
     height: 50px !important;
     .ant-menu-item-icon {
-      line-height: 50px; 
+      line-height: 50px;
     }
 
     &:hover {
@@ -358,7 +358,7 @@ button {
 }
 
 .ant-menu-submenu-popup {
-  .ant-menu-sub{
+  .ant-menu-sub {
     .ant-menu-item {
       border-radius: 0 !important;
       margin: 0 !important;
@@ -386,5 +386,20 @@ button {
     span {
       color: $terciary;
     }
+  }
+}
+
+.ant-btn-primary {
+  background-color: $primary !important;
+  border: $primary 1px solid;
+
+  &:hover {
+    background-color: $hover-button-color !important;
+    border: $hover-button-color 1px solid;
+  }
+
+  &:disabled {
+    background-color: rgb(201, 200, 200) !important;
+    color: white !important;
   }
 }
