@@ -7,6 +7,7 @@ import { Auth } from "aws-amplify";
 
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import { object } from '@hapi/joi';
 
 
 export default function LoginForm({UpdateCardState}) {
@@ -33,7 +34,12 @@ export default function LoginForm({UpdateCardState}) {
             toast.success("Login Correct, Welcome!");
             router.push("/");
         }).catch((e)=>{
-            toast.error('error signing in: ' + e);
+            if(e.code === "UserNotConfirmedException"){
+                UpdateCardState("resendConfirmation");
+            }
+            else{
+                toast.error('Error signing in, ' + e);
+            }
         });
     }
 
