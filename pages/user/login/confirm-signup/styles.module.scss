@@ -29,7 +29,7 @@
   }
 
   .buttonContainer {
-    padding: 10px 0 20px 0;
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,6 +39,17 @@
       position: absolute;
       transform: translateY(38px);
     }
+    .timer {
+      font-size: 12px;
+      color: $primary;
+      transform: translate(110px, 55px);
+      position: absolute;
+    }
+  }
+
+  .resendCode {
+    padding-top: 15px;
+    font-size: 10px;
   }
 
   .forgot {

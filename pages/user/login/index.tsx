@@ -2,25 +2,16 @@ import React, { useState, useEffect } from 'react';
 import styles from "./styles.module.scss";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 import LoginForm from './login-form';
 import RegisterForm from './register-form';
 import ConfirmSignUpForm from './confirm-signup';
 import ForgotPassword from './forgot-password/indext';
 import ForgotPasswordSubmit from './forgot-password-submit';
-import ResendConfirmation from './resend-confirmation';
 
 export default function LoginPage(ssr = true) {
     
     const [cardState, setCardState] = useState("loginForm");
     const [usernameTemp, setUsernameTemp] = useState(undefined);
-
-    /*
-    useEffect(() => {
-        
-        //console.log("estado de otp ")
-    }, [register]);
-    */
 
     const services = [
         { service: "Your Dashoboard" },
@@ -55,9 +46,6 @@ function UpdateCardState(state){
 function UpdateUserName(userTemp) {
     setUsernameTemp(userTemp);
 }
-
-
-
     return <div  className={styles.authmain}>
     <div className={styles.container}>
         <div className={styles.row}>
@@ -96,10 +84,9 @@ function UpdateUserName(userTemp) {
             <div className={styles.col4}>
                 <div className={styles.card}>
 
-                    {cardState === "loginForm" && <LoginForm UpdateCardState={UpdateCardState}/>}
-                    {cardState === "resendConfirmation" && <ResendConfirmation UpdateCardState={UpdateCardState} UpdateUserName={UpdateUserName}/>}
+                    {cardState === "loginForm" && <LoginForm UpdateCardState={UpdateCardState} UpdateUserName={UpdateUserName}/>}
                     {cardState === "registerForm" && <RegisterForm UpdateCardState={UpdateCardState} UpdateUserName={UpdateUserName}/>}
-                    {cardState === "confirmSignUp" && <ConfirmSignUpForm UpdateCardState={UpdateCardState} usernameTemp={usernameTemp}/>}
+                    {cardState === "confirmSignUp" && <ConfirmSignUpForm UpdateCardState={UpdateCardState} usernameTemp={usernameTemp} UpdateUserName={UpdateUserName}/>}
                     {cardState === "forgotForm" && <ForgotPassword UpdateCardState={UpdateCardState}/>}
                     {cardState === "forgotSubmitForm" && <ForgotPasswordSubmit UpdateCardState={UpdateCardState}/>}
 

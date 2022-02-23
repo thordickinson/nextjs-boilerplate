@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as Yup from "yup";
 import { Auth } from "aws-amplify";
 import { Formik, Form } from "formik";
@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 import { Button } from 'antd';
 
 export default function ForgotPassword({UpdateCardState}) {
-
+    const [loading, setLoading] = useState(false);
     const initialValues ={
         username: ''
     }
@@ -19,10 +19,12 @@ export default function ForgotPassword({UpdateCardState}) {
 
     
     const onSubmit = (values, {resetForm}) => {
+        setLoading(true);
         ForgotPassword(values.username)
         .then(()=>{
             resetForm();
             toast.info("A code has been sent to your email to reset your password");
+            setLoading(false);
             UpdateCardState("forgotSubmitForm");
         })
         .catch((e)=>{
@@ -32,6 +34,10 @@ export default function ForgotPassword({UpdateCardState}) {
             else if(e.code === "LimitExceededException"){
                 toast.error("Attempt limit exceeded, please try after some time.");
             }
+            else{
+                toast.error("Invalid Parameter");
+            }
+            setLoading(false);
         });
     }
 
@@ -60,7 +66,7 @@ export default function ForgotPassword({UpdateCardState}) {
                             className={styles.input}
                         />
                     <div className={styles.buttonContainer}>
-                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">SUBMIT</Button>
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large" loading={loading}>SUBMIT</Button>
                         {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
                     </div>
                 </Form>

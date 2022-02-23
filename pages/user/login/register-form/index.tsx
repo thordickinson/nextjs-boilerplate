@@ -9,7 +9,7 @@ import { Button } from 'antd';
 
 export default function RegisterForm({UpdateCardState, UpdateUserName}) {
 
-    //const [usernameTemp, setUsernameTemp] = useState(undefined);
+    const [loading, setLoading] = useState(false);
 
     const initialValues ={
         username: '',
@@ -30,9 +30,11 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
     });
 
     const onSubmit = (values, {resetForm}) => {
+        setLoading(true);
         signUp(values.username, values.password, values.email).then(()=>{
             UpdateUserName(values.username);
             resetForm();
+            setLoading(false);
             UpdateCardState('confirmSignUp');
         }).catch((e)=>{
             if(e.code === "UsernameExistsException"){
@@ -41,6 +43,7 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
             else if(e.code === "LimitExceededException"){
                 toast.error("Attempt limit exceeded, please try after some time.");
             }
+            setLoading(false);
         });
     }
 
@@ -100,7 +103,7 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
                     />
                     <div className={styles.buttonContainer}>
                         
-                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">CREATE ACCOUNT</Button>
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large" loading ={loading}>CREATE ACCOUNT</Button>
                         {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
                     </div>
                 </Form>

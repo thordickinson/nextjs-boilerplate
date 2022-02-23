@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import FormikControl from "../../../../components/formik-control/FormikControl";
 import styles from "./styles.module.scss";
 import * as Yup from "yup";
@@ -9,9 +9,10 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
 
-export default function LoginForm({UpdateCardState}) {
+export default function LoginForm({UpdateCardState, UpdateUserName}) {
 
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
 
     const initialValues ={
         username: '',
@@ -25,19 +26,17 @@ export default function LoginForm({UpdateCardState}) {
 
     
     const onSubmit = (values, {resetForm}) => {
+        setLoading(true);
         SignIn(values.username, values.password).then(()=>{
-            resetForm();
+            UpdateUserName(values.username);
             toast.success("Login Correct, Welcome!");
+            setLoading(false);
             router.push("/");
         }).catch((e)=>{
             if(e.code === "UserNotConfirmedException"){
-                //tomar el username del login para reenviar codigo
-                //link de reenviar codigo https://docs.amplify.aws/lib/auth/emailpassword/q/platform/js/#sign-in
-                //cambiar el update cardstate por el confirm sign up
-                //añadir el link de reenviar codigo
-                //añadir timer para ese link para volver a enviar codigo de activacion
-                //link de contador https://www.digitalocean.com/community/tutorials/react-countdown-timer-react-hooks
-                UpdateCardState("resendConfirmation");
+                ResendConfirmationCode(values.username);
+                toast.info("Unconfirmed account");
+                UpdateCardState("confirmSignUp");
             }
             else if(e.code === "NotAuthorizedException"){
                 toast.error("Username or Password incorrect")
@@ -48,6 +47,7 @@ export default function LoginForm({UpdateCardState}) {
             else if(e.code === "LimitExceededException"){
                 toast.error("Attempt limit exceeded, please try after some time.");
             }
+            setLoading(false);
         });
     }
 
@@ -57,6 +57,10 @@ export default function LoginForm({UpdateCardState}) {
         await Auth.signIn({username, password});
     }
 
+    async function ResendConfirmationCode(username) {
+            
+        await Auth.resendSignUp(username);
+    }
 
     return <>
         <div className={styles.header}>
@@ -85,7 +89,7 @@ export default function LoginForm({UpdateCardState}) {
                             className={styles.input}
                         />
                     <div className={styles.buttonContainer}>
-                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large">LOGIN</Button>
+                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large" loading={loading}>LOGIN</Button>
                         {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
                     </div>
                 </Form>
