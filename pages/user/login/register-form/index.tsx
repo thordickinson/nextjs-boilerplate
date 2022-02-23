@@ -84,6 +84,7 @@ export default function RegisterForm({ UpdateCardState, UpdateUserName }) {
                 />
                 <FormikControl
                   control="input"
+                  label="Password"
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -91,6 +92,7 @@ export default function RegisterForm({ UpdateCardState, UpdateUserName }) {
                 <FormikControl
                   control="input"
                   type="password"
+                  label="Confirm Password"
                   name="passwordConfirmation"
                   placeholder="Password Confirmation"
                 />
