@@ -1,0 +1,38 @@
+.formControl {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5px 0;
+}
+
+.label {
+  font-size: 0.8em;
+  line-height: 1em;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.fieldform {
+  margin: 0 10px;
+}
+
+.filler {
+  height: 15px;
+}
+
+.error {
+  position: relative;
+  display: block;
+}
+
+.input {
+  width: 310px;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: #cccccc 1px solid;
+}
+
+.inputError {
+  //TODO: Convertir en variable
+  border: red 1px solid;
+}

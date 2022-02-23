@@ -19,7 +19,7 @@ export default function RegisterForm({ UpdateCardState, UpdateUserName }) {
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid Email Format")
-      .required("Required a Email"),
+      .required("Your email is required"),
     password: Yup.string()
       .required("No password provided.")
       .min(8, "Password is too short - should be 8 chars minimum."),
@@ -77,24 +77,22 @@ export default function RegisterForm({ UpdateCardState, UpdateUserName }) {
               <Form className={styles.containerItems}>
                 <FormikControl
                   control="input"
+                  label="Email"
                   type="email"
                   name="email"
-                  placeholder="Valid Email"
-                  className={styles.input}
+                  placeholder="Enter your Email"
                 />
                 <FormikControl
                   control="input"
                   type="password"
                   name="password"
                   placeholder="Password"
-                  className={styles.input}
                 />
                 <FormikControl
                   control="input"
                   type="password"
                   name="passwordConfirmation"
                   placeholder="Password Confirmation"
-                  className={styles.input}
                 />
                 <div className={styles.buttonContainer}>
                   <Button

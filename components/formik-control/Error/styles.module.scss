@@ -1,7 +1,6 @@
 .error {
+  //TODO: Este color debe estar como variable
   color: red;
   font-size: 10px;
-  position: absolute;
-  transform: translateY(-15px);
-  padding-left: 10px;
+  line-height: 15px;
 }

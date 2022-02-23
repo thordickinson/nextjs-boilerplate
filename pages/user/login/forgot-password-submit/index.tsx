@@ -43,7 +43,7 @@ export default function ForgotPasswordSubmit({ UpdateCardState }) {
           toast.error("The code does not match");
         } else if (e.code === "LimitExceededException") {
           toast.error("Attempt limit exceeded, please try after some time.");
-        }
+        } //TODO: Controlar el caso else
         setLoading(false);
       });
   };
