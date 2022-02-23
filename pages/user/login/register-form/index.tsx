@@ -43,6 +43,9 @@ export default function RegisterForm({UpdateCardState, UpdateUserName}) {
             else if(e.code === "LimitExceededException"){
                 toast.error("Attempt limit exceeded, please try after some time.");
             }
+            else{
+                toast.error("." + e.code);
+            }
             setLoading(false);
         });
     }
