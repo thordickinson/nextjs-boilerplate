@@ -1,13 +1,16 @@
 {
   "auth": {
-    "nextjsboilerplatec284d669": {
+    "bolierplate": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL",
+          "PHONE_NUMBER"
+        ],
         "signupAttributes": [
           "EMAIL"
         ],

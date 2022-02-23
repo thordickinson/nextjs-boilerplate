@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "nextjsboilerplatec284d669_identitypool_c284d669",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "nextjsc284d669",
-    "userPoolName": "nextjsboilerplatec284d669_userpool_c284d669",
+    "identityPoolName": "boilerplateidentitypool",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "nextjs41dee042",
+    "userPoolName": "boilerplateuserpool",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,7 +14,7 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Your verification code",
+    "emailVerificationSubject": "Your verificationcode",
     "emailVerificationMessage": "Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
@@ -31,12 +31,24 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "nextjsc284d669_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "bolier41dee042_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "c284d669",
-    "resourceName": "nextjsboilerplatec284d669",
+    "sharedId": "41dee042",
+    "resourceName": "bolierplate",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "manual",
+    "thirdPartyAuth": true,
+    "authProviders": [
+      "graph.facebook.com",
+      "accounts.google.com"
+    ],
+    "usernameAttributes": [
+      "email, phone_number"
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {},
+    "hostedUI": false,
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

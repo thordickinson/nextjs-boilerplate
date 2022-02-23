@@ -13,7 +13,10 @@
     },
     "categories": {
       "auth": {
-        "nextjsboilerplatec284d669": {}
+        "bolierplate": {
+          "facebookAppId": "facebookappid",
+          "googleClientId": "googlewebclientid"
+        }
       }
     }
   }
