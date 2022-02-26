@@ -117,14 +117,32 @@ async function resendConfirmationCode(username) {
                         control ='input'
                         type='username'
                         name='codeConfirmation'
+                        label="Code Confirmation"
                         placeholder='Code'
-                        className={styles.input}
                     />
                     
                     <div className={styles.buttonContainer}>
-                        <Button type='primary' htmlType='submit' disabled={!formik.isValid} size="large" loading={loading}>ACTIVATE ACCOUNT</Button>
+                        <Button 
+                            type='primary' 
+                            htmlType='submit' 
+                            disabled={!formik.isValid} 
+                            size="large" 
+                            loading={loading}
+                        >
+                            ACTIVATE ACCOUNT
+                        </Button>
                         {!formik.isValid?<span className={styles.note}>COMPLETE THE FIELDS</span>:null}
-                        <span className={styles.resendCode}>Don't have your code yet? <Button onClick={ResendCode} type='link' size='small' disabled={resendButton} loading={miniLoad}> Click here</Button></span>
+                        <span className={styles.resendCode}>Don't have your code yet? 
+                            <Button 
+                                onClick={ResendCode} 
+                                type='link' 
+                                size='small' 
+                                disabled={resendButton} 
+                                loading={miniLoad}
+                            > 
+                                Click here
+                            </Button>
+                        </span>
                         {resendButton?<span className={styles.timer}>{minutes<10?"0"+minutes:minutes}:{seconds<10?"0"+seconds:seconds}</span>:null}
                     </div>
                 </Form>

@@ -72,22 +72,22 @@ export default function ForgotPasswordSubmit({ UpdateCardState }) {
                 control="input"
                 type="email"
                 name="email"
+                label="E-mail"
                 placeholder="Your email"
-                className={styles.input}
               />
               <FormikControl
                 control="input"
                 type="code"
                 name="code"
+                label="Code"
                 placeholder="Code Security"
-                className={styles.input}
               />
               <FormikControl
                 control="input"
                 type="password"
                 name="newpassword"
+                label="New Password"
                 placeholder="New Password"
-                className={styles.input}
               />
               <div className={styles.buttonContainer}>
                 <Button

@@ -7,7 +7,7 @@ export default function Input(props) {
   const { name, label, ...rest } = props;
   const { errors, touched } = useFormikContext();
   const showError = errors[name] && touched[name];
-  console.log(`${name}`, showError);
+  //console.log(`${name}`, showError);
   return (
     <div className={styles.formControl}>
       {label && (

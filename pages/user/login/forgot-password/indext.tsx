@@ -49,7 +49,7 @@ export default function ForgotPassword({ UpdateCardState }) {
       <div className={styles.header}>
         <p className={styles.lead}>Forgot Your Password</p>
       </div>
-      <p>
+      <p className={styles.info}>
         Please enter your email here, we'll send you a confirmation code to your
         email so you can update your password
       </p>
@@ -65,8 +65,8 @@ export default function ForgotPassword({ UpdateCardState }) {
                 control="input"
                 type="email"
                 name="email"
+                label= "E-mail"
                 placeholder="Your email"
-                className={styles.input}
               />
               <div className={styles.buttonContainer}>
                 <Button

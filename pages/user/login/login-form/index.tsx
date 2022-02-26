@@ -74,15 +74,15 @@ export default function LoginForm({ UpdateCardState, UpdateUserName }) {
                 control="input"
                 type="email"
                 name="email"
+                label="Email"
                 placeholder="Email"
-                className={styles.input}
               />
               <FormikControl
                 control="input"
                 type="password"
                 name="password"
+                label="Password"
                 placeholder="Password"
-                className={styles.input}
               />
               <div className={styles.buttonContainer}>
                 <Button

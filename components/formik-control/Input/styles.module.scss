@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .formControl {
   display: flex;
   flex-direction: column;
@@ -33,6 +35,5 @@
 }
 
 .inputError {
-  //TODO: Convertir en variable el color
-  border: red 1px solid;
+  border: $error 1px solid;
 }
