@@ -7,16 +7,24 @@ import { getUser } from '../../../utils/auth'
 import DashboardCardHeader from '../../../components/dashboard/card-header'
 import DashboardCardHeaderButton from '../../../components/dashboard/card-header-button'
 import { Auth } from "aws-amplify";
+import { Formik, Form } from "formik";
+import FormikControl from "../../../components/formik-control/FormikControl";
+import { toast } from "react-toastify";
+import { Button } from "antd";
+import * as Yup from "yup";
 
 export default function UserProfile() {
 
     const [user, setUser] = useState(null);
+
     const [currentName, setCurrentName] = useState(undefined);
     const [currentLastName, setCurrentLastName] = useState(undefined);
     const [currentBirthdate, setCurrentBirthdate] = useState(undefined);
     const [currentPhone, setCurrentPhone] = useState(undefined);
 
-    
+    const [updateField, setUpdateField] = useState(false);
+
+
     useEffect(() => {
         (async () => {
             const u = await getUser()
@@ -26,7 +34,7 @@ export default function UserProfile() {
     }, [])
 
 
-
+    //test
     function SetCurrentUser(username, lastname, birthdate, phone) {
         setCurrentName(username);
         setCurrentLastName(lastname);
@@ -34,7 +42,7 @@ export default function UserProfile() {
         setCurrentPhone(phone);
     }
 
-
+    //test
     async function getUserInfo() {
         const user = await Auth.currentAuthenticatedUser();
         const thisUser = user.attributes;
@@ -42,15 +50,43 @@ export default function UserProfile() {
         //console.log('attributes:', user.attributes);
     }
 
-    async function updateUser() {
+    async function updateUser(name) {
         const user = await Auth.currentAuthenticatedUser();
         await Auth.updateUserAttributes(user ,{
           'family_name':"Ramos",
-          'given_name' : "Oscar",
+          'given_name' : name,
           'birthdate': "18/08/1986",
           'phone_number': "+573173811011"
         });
     }
+
+
+    const initialValues = {
+        name: ""
+      };
+    
+    const validationSchema = Yup.object({
+    name: Yup.string().required("update your name")
+    });
+    
+    const onSubmit = (values, { resetForm }) => {
+        updateUser(values.name)
+        .then(() => {
+        //resetForm();
+        })
+        .catch((e) => {
+        toast.error(`${e.code}`);
+        });
+    };
+
+    //preguntar si toda la informacion va en una sola tarjeta, 
+    //o para cada campo usar una tarjeta aparte
+
+    //preguntar por el objeto como ponerlo en una constante
+
+    //como usar el effect para cuando cambien el nombre, apellido o alguno de los campos
+
+
 
     return (
         <DashboardLayout>
@@ -58,8 +94,44 @@ export default function UserProfile() {
             <div style={{'display':'flex'}}>
                 <DashboardCard>
                     <DashboardCardHeader title="Current Name">
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
+                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => setUpdateField(true)}/>
+                        {updateField?<DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => setUpdateField(false)}/>:null}
+                        {updateField? <Formik
+                            initialValues={initialValues}
+                            validationSchema={validationSchema}
+                            onSubmit={onSubmit}
+                        >
+                        {(formik) => {
+                            return (
+                            <Form className={styles.containerItems}>
+                                <FormikControl
+                                control="input"
+                                label="Name"
+                                type="name"
+                                name="name"
+                                placeholder="Enter your Name"
+                                />
+
+                                <div className={styles.buttonContainer}>
+                                <Button
+                                    type="primary"
+                                    htmlType="submit"
+                                    disabled={!formik.isValid}
+                                    size="large"
+                                >
+                                    Send
+                                </Button>
+                                {!formik.isValid ? (
+                                    <span className={styles.note}>COMPLETE THE FIELDS</span>
+                                ) : null}
+                                </div>
+                            </Form>
+                            );
+                        }}
+                        </Formik>:null}
+                        
+
+
                     </DashboardCardHeader>
                     <div>{currentName}</div>
                 </DashboardCard>
