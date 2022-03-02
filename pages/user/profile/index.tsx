@@ -24,6 +24,7 @@ export default function UserProfile() {
 
     const [updateField, setUpdateField] = useState(false);
 
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -31,7 +32,7 @@ export default function UserProfile() {
             setUser(u)
             getUserInfo();
         })()
-    }, [])
+    }, [updateField])
 
 
     //test
@@ -50,32 +51,42 @@ export default function UserProfile() {
         //console.log('attributes:', user.attributes);
     }
 
-    async function updateUser(name) {
+    async function updateUser(name, lastname, birthdate, phone) {
         const user = await Auth.currentAuthenticatedUser();
         await Auth.updateUserAttributes(user ,{
-          'family_name':"Ramos",
+          'family_name': lastname,
           'given_name' : name,
-          'birthdate': "18/08/1986",
-          'phone_number': "+573173811011"
+          'birthdate': birthdate,
+          'phone_number': phone
         });
     }
 
 
     const initialValues = {
-        name: ""
+        name: currentName,
+        lastname:currentLastName,
+        birthdate:currentBirthdate,
+        phone:currentPhone
       };
     
     const validationSchema = Yup.object({
-    name: Yup.string().required("update your name")
+    name: Yup.string().required("update your name"),
+    lastname: Yup.string().required("Update your Lastname"),
+    birthdate: Yup.date().required("Update your Birthdate"),
+    phone: Yup.string().required("Update your phone number")
     });
     
     const onSubmit = (values, { resetForm }) => {
-        updateUser(values.name)
+        setLoading(true);
+        updateUser(values.name, values.lastname, values.birthdate, values.phone)
         .then(() => {
-        //resetForm();
+        setUpdateField(false);
+        toast.success("Data Updated");
+        setLoading(false);
         })
         .catch((e) => {
         toast.error(`${e.code}`);
+        setLoading(false);
         });
     };
 
@@ -93,70 +104,97 @@ export default function UserProfile() {
             <DashboardTitle title={user?.username} breadcrumb={["", "Profile"]} iconic="fa fa-home" link="/"></DashboardTitle>
             <div style={{'display':'flex'}}>
                 <DashboardCard>
-                    <DashboardCardHeader title="Current Name">
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => setUpdateField(true)}/>
-                        {updateField?<DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => setUpdateField(false)}/>:null}
+                    <DashboardCardHeader title="Current Info Profile">
+                        {!updateField?<DashboardCardHeaderButton iconClass="fa fa-wrench" onClick={() => setUpdateField(true)}/>:null}
+                        {updateField?<DashboardCardHeaderButton iconClass="fa fa-id-card" onClick={() => setUpdateField(false)}/>:null}
+                    </DashboardCardHeader>
+                    <div className={styles.cardContainer}>
+                    {!updateField?<div className={styles.cardInfo}>
+                        <div className={styles.row}>
+                            <h4>Name</h4>
+                            <div>{currentName}</div>
+                        </div>
+                        <div className={styles.row}>
+                            <h4>Lastname</h4>
+                            <div>{currentLastName}</div>
+                        </div>
+                        <div className={styles.row}>
+                            <h4>Birthdate</h4>
+                            <div>{currentBirthdate}</div>
+                        </div>
+                        <div className={styles.row}>
+                            <h4>Phone Number</h4>
+                            <div>{currentPhone}</div>
+                        </div>
+                        </div>:null}
+                        <div className={styles.form}>
                         {updateField? <Formik
-                            initialValues={initialValues}
-                            validationSchema={validationSchema}
-                            onSubmit={onSubmit}
-                        >
-                        {(formik) => {
-                            return (
-                            <Form className={styles.containerItems}>
-                                <FormikControl
-                                control="input"
-                                label="Name"
-                                type="name"
-                                name="name"
-                                placeholder="Enter your Name"
-                                />
+                                initialValues={initialValues}
+                                validationSchema={validationSchema}
+                                onSubmit={onSubmit}
+                            >
+                            {(formik) => {
+                                return (
+                                <Form className={styles.containerItems}>
+                                    <FormikControl
+                                    control="input"
+                                    label="Name"
+                                    type="name"
+                                    name="name"
+                                    placeholder={currentName}
+                                    />
+                                
+                                    <FormikControl
+                                    control="input"
+                                    label="Lastname"
+                                    type="lastname"
+                                    name="lastname"
+                                    placeholder={currentLastName}
+                                    />
 
-                                <div className={styles.buttonContainer}>
-                                <Button
-                                    type="primary"
-                                    htmlType="submit"
-                                    disabled={!formik.isValid}
-                                    size="large"
-                                >
-                                    Send
-                                </Button>
-                                {!formik.isValid ? (
-                                    <span className={styles.note}>COMPLETE THE FIELDS</span>
-                                ) : null}
-                                </div>
-                            </Form>
-                            );
-                        }}
-                        </Formik>:null}
-                        
+                                    <FormikControl
+                                    control="input"
+                                    label="Birthdate"
+                                    type="date"
+                                    name="birthdate"
+                                    placeholder={currentBirthdate}
+                                    />
 
+                                    <FormikControl
+                                    control="input"
+                                    label="Phone"
+                                    type="phone"
+                                    name="phone"
+                                    placeholder={currentPhone}
+                                    />
 
-                    </DashboardCardHeader>
-                    <div>{currentName}</div>
+                                    <div className={styles.buttonContainer}>
+                                    <Button
+                                        type="primary"
+                                        htmlType="submit"
+                                        disabled={!formik.isValid}
+                                        size="large"
+                                        loading={loading}
+                                    >
+                                        Send
+                                    </Button>
+                                    {!formik.isValid ? (
+                                        <span className={styles.note}>COMPLETE THE FIELDS</span>
+                                    ) : null}
+                                    </div>
+                                </Form>
+                                );
+                            }}
+                            </Formik>:null}
+                        </div>
+                    </div>
                 </DashboardCard>
 
                 <DashboardCard>
-                    <DashboardCardHeader title="Current Lastname">
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
+                    <DashboardCardHeader title="Hello">
+                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("OK")}/>
+                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("OK")}/>
                     </DashboardCardHeader>
-                    <div>{currentLastName}</div>
-                </DashboardCard>
-
-                <DashboardCard>
-                    <DashboardCardHeader title="Birthdate">
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
-                    </DashboardCardHeader>
-                    <div>{currentBirthdate}</div>
-                </DashboardCard>
-                <DashboardCard>
-                    <DashboardCardHeader title="Phone Number">
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
-                        <DashboardCardHeaderButton iconClass="fa fa-bell" onClick={() => console.log("done")}/>
-                    </DashboardCardHeader>
-                    <div>{currentPhone}</div>
                 </DashboardCard>
             </div>
 

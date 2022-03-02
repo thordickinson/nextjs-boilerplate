@@ -148,3 +148,24 @@
     }
   }
 }
+
+.cardContainer {
+  .cardInfo {
+    //width: 50%;
+    //background-color: aqua;
+    margin: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    .row {
+      padding: 10px 0;
+      font-weight: 600;
+    }
+  }
+
+  .form {
+    //width: 50%;
+    //background-color: blueviolet;
+    margin: 10px 10px;
+  }
+}
