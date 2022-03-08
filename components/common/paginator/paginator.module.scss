@@ -1,43 +1,45 @@
-@import '~/styles/utils.scss';
+@import "~/styles/utils.scss";
 
-.paginator{
+.paginator {
+  display: flex;
+  justify-content: center;
+  ul {
     display: flex;
-    justify-content: center;
-    ul {
-        display: flex;
-        flex-wrap: nowrap;
-    }    
-    li {
-        list-style-type: none;
-        margin: 0 10px 0 0;
-    }
-    a {
-        border: 1px solid #e5e5e5;
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        line-height: 38px;
-        text-align: center;
-        color: #204163;
-        font-weight: 600;
-        border-radius: 2px;
-        transition: all 0.5s;
-    }
+    flex-wrap: nowrap;
+  }
+  li {
+    list-style-type: none;
+    margin: 0 10px 0 0;
+  }
+  a {
+    border: 1px solid #e5e5e5;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    color: #204163;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: all 0.5s;
+  }
 
-    a:hover {
-        background-color: #2500f9;
-        color: #fff;
-        opacity: 1;
-        text-decoration: none;
-    }
+  a:hover {
+    background-color: #2500f9;
+    color: #fff;
+    opacity: 1;
+    text-decoration: none;
+  }
 
-    a, a:hover, a:focus {
-        text-decoration: none;
-    }
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+  }
 }
 
 a.active {
-    background-color: #2500f9;
-    border: 1px solid #2500f9;
-    color: #fff;
+  background-color: #2500f9;
+  border: 1px solid #2500f9;
+  color: #fff;
 }

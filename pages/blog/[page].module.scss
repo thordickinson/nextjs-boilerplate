@@ -1,15 +1,15 @@
-@import '~/styles/utils.scss';
+@import "~/styles/utils.scss";
 
 .postList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .entryCard {
-    flex: 100% 0;
-    padding-bottom: 30px;
-    @include respond-to("small") {
-        flex: 47% 0;
-    }
+  flex: 100% 0;
+  padding-bottom: 30px;
+  @include respond-to("small") {
+    flex: 47% 0;
+  }
 }

@@ -1,25 +1,25 @@
 @import "~/styles/utils.scss";
 
 .asideContentSection {
-    display: flex;
+  display: flex;
 }
 
 .contentWrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .mainContent {
-    flex: 100%;
-    @include respond-to("medium") {
-        flex: 67% 0;
-    }
+  flex: 100%;
+  @include respond-to("medium") {
+    flex: 67% 0;
+  }
 }
 .asideContent {
-    flex: 100%;
-    @include respond-to("medium") {
-        flex: 28% 0;
-    }
+  flex: 100%;
+  @include respond-to("medium") {
+    flex: 28% 0;
+  }
 }

@@ -1,21 +1,21 @@
 .recent {
-    display: flex;
-    margin-bottom: 20px;
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .recent > img {
-    width: 100px;
+  width: 100px;
 }
 
 .recent > a {
-    font-family: poppins, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: #204163;
-    padding-left: 15px;
-    letter-spacing: -0.5px;
+  font-family: poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #204163;
+  padding-left: 15px;
+  letter-spacing: -0.5px;
 }
 
 .listItem {
-    list-style-type: none;
+  list-style-type: none;
 }

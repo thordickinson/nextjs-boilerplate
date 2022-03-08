@@ -1,19 +1,19 @@
 .cardHeader {
-    margin: 0px 0px 20px 0px;
-    color: gray;
-    display: flex;
-    flex-wrap: nowrap;
+  margin: 0px 0px 20px 0px;
+  color: gray;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .title {
-    flex: 1 1;
-    h4 {
-        font-size: 15px;
-        font-weight: 500;
-        margin-bottom: 0;
-    }
+  flex: 1 1;
+  h4 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
 }
 
 .controls {
-    display: flex;
+  display: flex;
 }
