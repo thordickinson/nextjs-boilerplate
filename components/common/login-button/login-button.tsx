@@ -36,7 +36,7 @@ export default function LoginButtonComponent() {
   const menu = (
     <Menu onClick={onMenuClick}>
       <Menu.Item key="0">
-        <a href="/user/dashboardUser">Dashboard</a>
+        <a href="/user/dashboard">Dashboard</a>
       </Menu.Item>
       <Menu.Item key="1">
         <a href="/user/profile">Profile</a>
