@@ -18,7 +18,9 @@ import RecentPostsWidgets from "../../components/blog/recent-widget/recent-widge
 const PAGE_SIZE = 6;
 const REVALIDATION = 60 * 60; //1 hour
 
+
 export default function PostList({ posts, tags, recent }) {
+
   const asideContent = (
     <div>
       <TagsWidget tags={tags}></TagsWidget>

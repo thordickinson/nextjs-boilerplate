@@ -22,5 +22,3 @@ export default async function handler(
   if (req.method == "POST") return await handlePost(req, res);
   res.status(404).json({ message: "Unknown method" });
 }
-
-///result = await fetch("/api/pruebas")
