@@ -11,5 +11,23 @@ export type AmplifyDependentResourcesAttributes = {
             "GoogleWebClient": "string",
             "FacebookWebClient": "string"
         }
+    },
+    "function": {
+        "nextjsboilerplatesharedlibslayer": {
+            "Arn": "string"
+        },
+        "boilerplatebackend": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
+    "api": {
+        "boilerplatebackendapi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
     }
 }

@@ -9,13 +9,24 @@
       "UnauthRoleName": "amplify-nextjsboilerplate-dev-120229-unauthRole",
       "StackName": "amplify-nextjsboilerplate-dev-120229",
       "StackId": "arn:aws:cloudformation:us-east-1:871174821634:stack/amplify-nextjsboilerplate-dev-120229/c20b6750-7a12-11ec-be2a-0aa078cebe9b",
-      "AmplifyAppId": "d2794naelbxyje"
+      "AmplifyAppId": "d2794naelbxyje",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-nextjsboilerplate-dev-120229-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
         "bolierplate": {
           "facebookAppId": "facebookappid",
           "googleClientId": "googlewebclientid"
+        }
+      },
+      "function": {
+        "nextjsboilerplatesharedlibslayer": {
+          "deploymentBucketName": "amplify-nextjsboilerplate-dev-120229-deployment",
+          "s3Key": "amplify-builds/nextjsboilerplatesharedlibslayer-LambdaLayerVersionf264dafe-build.zip"
+        },
+        "boilerplatebackend": {
+          "deploymentBucketName": "amplify-nextjsboilerplate-dev-120229-deployment",
+          "s3Key": "amplify-builds/boilerplatebackend-7a746b5236743870364b-build.zip"
         }
       }
     }
