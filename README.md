@@ -15,3 +15,7 @@
 Icon set comes from line awesome [https://icons8.com/line-awesome]
 
 
+[GET, POST, PUT, DELETE]
+
+ http://localhost:3000/api/pruebas
+
